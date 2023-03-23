@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://0mqmdhj4tnmk"]
+
+[ext_resource type="Material" uid="uid://c23knu4mwuai5" path="res://Testing/Tree_Mat.tres" id="1_qt7vb"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mex1v"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_rxki3"]
+radius = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_ts71o"]
+radius = 0.4
+height = 0.8
+
+[node name="Tree" type="Node3D"]
+
+[node name="Trunk" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482925, 0)
+mesh = SubResource("CylinderMesh_mex1v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109056, 0.885169, 0.19209)
+material_override = ExtResource("1_qt7vb")
+mesh = SubResource("SphereMesh_rxki3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.309244, 0.769793, -0.137775)
+material_override = ExtResource("1_qt7vb")
+mesh = SubResource("SphereMesh_ts71o")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0501401, 1.10367, 0.0524289)
+material_override = ExtResource("1_qt7vb")
+mesh = SubResource("SphereMesh_ts71o")

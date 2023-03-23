@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://tnqncynq7f8b"]
+
+[ext_resource type="PackedScene" uid="uid://0mqmdhj4tnmk" path="res://Testing/tree.tscn" id="1_jsl1d"]
+[ext_resource type="Script" path="res://Testing/performance_test.gd" id="1_mlrfd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tmwh1"]
+size = Vector3(10, 1, 20)
+subdivide_width = 4
+subdivide_depth = 9
+
+[sub_resource type="Environment" id="Environment_wcpw3"]
+background_mode = 1
+background_color = Color(1, 0.984314, 0.686275, 1)
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="PerformanceTest" type="Node3D"]
+script = ExtResource("1_mlrfd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_tmwh1")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.909882, 0.414868, 0, -0.414868, 0.909882, 0, 7.87926, 14.1591)
+environment = SubResource("Environment_wcpw3")
+
+[node name="Tree" parent="." instance=ExtResource("1_jsl1d")]
+transform = Transform3D(0.762804, 0, -0.64663, 0, 1, 0, 0.64663, 0, 0.762804, 0, 0.492255, 0)
+
+[node name="Tree2" parent="." instance=ExtResource("1_jsl1d")]
+transform = Transform3D(0.874137, 0, 0.485679, 0, 1, 0, -0.485679, 0, 0.874137, 2.86096, 0.492255, -1.2836)
+
+[node name="Tree3" parent="." instance=ExtResource("1_jsl1d")]
+transform = Transform3D(0.874137, 0, 0.485679, 0, 1, 0, -0.485679, 0, 0.874137, -3.16763, 0.492255, -3.3284)
+
+[node name="Tree4" parent="." instance=ExtResource("1_jsl1d")]
+transform = Transform3D(0.0608744, 0, 0.998145, 0, 1, 0, -0.998145, 0, 0.0608744, -2.77195, 0.492255, 2.22512)
+
+[node name="Tree5" parent="." instance=ExtResource("1_jsl1d")]
+transform = Transform3D(0.789191, 0, 0.614147, 0, 1, 0, -0.614147, 0, 0.789191, -1.06368, 0.492255, 3.47927)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.84714, -1.56295e-08, 0.531369, -0.437252, -0.568217, 0.697094, 0.301933, -0.822879, -0.48136, 0, 3.27589, 0.0249031)
+shadow_enabled = true

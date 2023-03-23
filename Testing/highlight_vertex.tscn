@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8yberlhmrrg1"]
+
+[ext_resource type="Script" path="res://Testing/highlight_vertex.gd" id="1_vqj28"]
+[ext_resource type="PackedScene" uid="uid://gxgm7qbdhipi" path="res://Stage_Objects/platform.tscn" id="2_k62dh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hlpd"]
+albedo_color = Color(0.847059, 0, 0.203922, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_opbg4"]
+material = SubResource("StandardMaterial3D_0hlpd")
+
+[node name="Highlight_Vertex" type="Node3D"]
+script = ExtResource("1_vqj28")
+
+[node name="Point" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_opbg4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.875936, 0.482427, 0, -0.482427, 0.875936, 0, 6.98779, 10.4516)
+
+[node name="Platform" parent="." instance=ExtResource("2_k62dh")]
+metadata/Bongus = "Flerpy"
+
+[connection signal="input_event" from="Platform" to="." method="_on_platform_input_event"]

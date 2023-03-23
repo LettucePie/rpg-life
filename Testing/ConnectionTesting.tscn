@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://jo5yp7cqy2k4"]
+
+[ext_resource type="Script" path="res://Testing/ConnectionTesting.gd" id="1"]
+
+[sub_resource type="SystemFont" id="SystemFont_5qpny"]
+font_names = PackedStringArray("Arial")
+
+[sub_resource type="Theme" id="Theme_f7lx3"]
+default_font = SubResource("SystemFont_5qpny")
+default_font_size = 30
+
+[node name="ConnectionTesting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme_f7lx3")
+script = ExtResource("1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 1
+
+[node name="Host" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Host"
+
+[node name="Terminate" type="Button" parent="VBoxContainer"]
+modulate = Color(1, 0.478431, 0.478431, 1)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Terminate"
+
+[node name="ServerIP" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+placeholder_text = "Server IP"
+
+[node name="Client" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Client"
+
+[node name="Ping" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Ping"
+
+[node name="ModeStatus" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.062
+anchor_top = 0.142
+anchor_right = 0.466
+anchor_bottom = 0.365
+text = "User is: "
+
+[node name="Input" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.062
+anchor_top = 0.53
+anchor_right = 0.457
+anchor_bottom = 0.887
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Initialize" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 606.0
+offset_right = -322.0
+offset_bottom = -591.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Initialize"
+
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_Host_pressed"]
+[connection signal="pressed" from="VBoxContainer/Terminate" to="." method="_on_Terminate_pressed"]
+[connection signal="text_changed" from="VBoxContainer/ServerIP" to="." method="_on_ServerIP_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_Client_pressed"]
+[connection signal="pressed" from="VBoxContainer/Ping" to="." method="_on_Ping_pressed"]
+[connection signal="pressed" from="Panel/Initialize" to="." method="_on_Initialize_pressed"]
