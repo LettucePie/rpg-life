@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8yberlhmrrg1"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://Testing/highlight_vertex.gd" id="1_vqj28"]
-[ext_resource type="PackedScene" uid="uid://gxgm7qbdhipi" path="res://Stage_Objects/platform.tscn" id="2_k62dh"]
+[ext_resource type="Script" path="res://Scenes/Userspace/Space_Editor/highlight_vertex.gd" id="1_vqj28"]
+[ext_resource type="PackedScene" uid="uid://gxgm7qbdhipi" path="res://Assets/Stage_Objects/platform.tscn" id="2_k62dh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hlpd"]
 albedo_color = Color(0.847059, 0, 0.203922, 1)

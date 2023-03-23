@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RPG Life 4"
-run/main_scene="res://Testing/ConnectionTesting.tscn"
+run/main_scene="res://Scenes/Connection/ConnectionTesting.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
