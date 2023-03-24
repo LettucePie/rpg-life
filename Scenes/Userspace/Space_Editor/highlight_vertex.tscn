@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://b2hu0nsgfdkcv"]
 
 [ext_resource type="Script" path="res://Scenes/Userspace/Space_Editor/highlight_vertex.gd" id="1_vqj28"]
-[ext_resource type="PackedScene" uid="uid://gxgm7qbdhipi" path="res://Assets/Stage_Objects/platform.tscn" id="2_k62dh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hlpd"]
 albedo_color = Color(0.847059, 0, 0.203922, 1)
@@ -9,16 +8,35 @@ albedo_color = Color(0.847059, 0, 0.203922, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_opbg4"]
 material = SubResource("StandardMaterial3D_0hlpd")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_n5di2"]
+size = Vector2(20, 20)
+subdivide_width = 5
+subdivide_depth = 5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1v64"]
+size = Vector3(20, 1, 20)
+
 [node name="Highlight_Vertex" type="Node3D"]
 script = ExtResource("1_vqj28")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.86858, -1.15172e-08, 0.49555, -0.398063, 0.595608, 0.697708, -0.295153, -0.803275, 0.517333, 0.0903664, 14.0395, 10.3815)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.875936, 0.482427, 0, -0.482427, 0.875936, 0, 13.5679, 22.3989)
 
 [node name="Point" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_opbg4")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.875936, 0.482427, 0, -0.482427, 0.875936, 0, 6.98779, 10.4516)
+[node name="Platform" type="Area3D" parent="."]
 
-[node name="Platform" parent="." instance=ExtResource("2_k62dh")]
-metadata/Bongus = "Flerpy"
+[node name="Mesh" type="MeshInstance3D" parent="Platform"]
+mesh = SubResource("PlaneMesh_n5di2")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.5, 2.08165e-12)
+shape = SubResource("BoxShape3D_j1v64")
 
 [connection signal="input_event" from="Platform" to="." method="_on_platform_input_event"]
