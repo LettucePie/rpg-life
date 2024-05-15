@@ -1,7 +1,7 @@
 # rpg-life
 A FOSS mobile game based on medieval fantasy. Made with the goal of connecting others.
 
-
+Made in Godot 4.2.2
 
 
 # RPG Life - Game Design Document
