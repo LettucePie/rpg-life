@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cbvd11vvgr106"]
+
+[ext_resource type="Texture2D" uid="uid://b060gn3ltokyo" path="res://Assets/2D/Textures/Terrain/dirt_splatter_pattern.png" id="1_nb5eh"]
+
+[resource]
+resource_name = "Island_Dirt"
+cull_mode = 2
+albedo_color = Color(0.905882, 0.482353, 0.258824, 1)
+metallic = 1.0
+detail_enabled = true
+detail_mask = ExtResource("1_nb5eh")
+detail_albedo = ExtResource("1_nb5eh")

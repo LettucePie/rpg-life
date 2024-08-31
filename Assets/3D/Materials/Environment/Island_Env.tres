@@ -1,0 +1,13 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://dh4n3y1ayb2mf"]
+
+[ext_resource type="Material" uid="uid://4gdqag811pky" path="res://Assets/3D/Materials/Environment/Island_ProcSky.tres" id="1_g7hf4"]
+
+[sub_resource type="Sky" id="Sky_4567f"]
+sky_material = ExtResource("1_g7hf4")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_4567f")
+ambient_light_source = 3
+ambient_light_color = Color(0.774491, 0.728449, 0.822345, 1)
+reflected_light_source = 2

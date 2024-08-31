@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://tg6vyip8div0"]
+
+[resource]
+resource_name = "Island_Top"
+cull_mode = 2
+albedo_color = Color(0.486275, 0.905882, 0.321569, 1)
+metallic = 1.0

@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://pbcncmyk6ao2"]
+
+[ext_resource type="PackedScene" uid="uid://nxnuxj8k2vqt" path="res://Assets/3D/Models/island.glb" id="1_5q8sx"]
+[ext_resource type="Environment" uid="uid://dh4n3y1ayb2mf" path="res://Assets/3D/Materials/Environment/Island_Env.tres" id="1_wi46e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g35o5"]
+height = 0.458647
+radius = 9.6399
+
+[node name="IslandSpace" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_wi46e")
+
+[node name="CameraDial" type="Node3D" parent="."]
+
+[node name="CameraTilt" type="Node3D" parent="CameraDial"]
+transform = Transform3D(1, 0, 0, 0, 0.748134, 0.663548, 0, -0.663548, 0.748134, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraDial/CameraTilt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.6207)
+
+[node name="island" parent="." instance=ExtResource("1_5q8sx")]
+
+[node name="island_area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="island_area"]
+shape = SubResource("CylinderShape3D_g35o5")
+
+[node name="LightRack" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5462, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="LightRack" groups=["SpaceLight"]]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+light_energy = 0.25
+directional_shadow_mode = 0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="LightRack" groups=["SpaceLight"]]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 0, 0, 0)
+light_energy = 0.25
+directional_shadow_mode = 0
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="LightRack" groups=["SpaceLight"]]
+transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 0, 0)
+light_energy = 0.25
+directional_shadow_mode = 0
+
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="LightRack" groups=["SpaceLight"]]
+transform = Transform3D(1.31134e-07, 0.5, -0.866025, 0, 0.866025, 0.5, 1, -6.55671e-08, 1.13566e-07, 0, 0, 0)
+light_energy = 0.25
+directional_shadow_mode = 0

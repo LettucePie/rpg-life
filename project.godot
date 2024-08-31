@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="RPG Life 4"
-run/main_scene="res://Scenes/Connection/ConnectionTesting.tscn"
+run/main_scene="res://Scenes/PLAY/island_play.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=1920
+window/size/viewport_width=540
+window/size/viewport_height=960
 window/handheld/orientation=5
 
 [rendering]
