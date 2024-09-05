@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://pbcncmyk6ao2"]
+[gd_scene load_steps=5 format=3 uid="uid://pbcncmyk6ao2"]
 
 [ext_resource type="PackedScene" uid="uid://nxnuxj8k2vqt" path="res://Assets/3D/Models/island.glb" id="1_5q8sx"]
 [ext_resource type="Environment" uid="uid://dh4n3y1ayb2mf" path="res://Assets/3D/Materials/Environment/Island_Env.tres" id="1_wi46e"]
+[ext_resource type="PackedScene" uid="uid://dqlqwfeehuxvf" path="res://Scenes/Userspace/Stations/house_station_01.tscn" id="3_j84yx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g35o5"]
 height = 0.458647
@@ -49,3 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.6207)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="island_area"]
 shape = SubResource("CylinderShape3D_g35o5")
+
+[node name="Stations" type="Node3D" parent="."]
+
+[node name="House_01" parent="Stations" instance=ExtResource("3_j84yx")]
