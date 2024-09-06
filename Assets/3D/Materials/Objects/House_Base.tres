@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bo8l220xm5uc2"]
+
+[ext_resource type="Texture2D" uid="uid://bgo18qppy6wfk" path="res://Assets/3D/Materials/Objects/Textures/House_Base_Tex.png" id="1_ontt7"]
+
+[resource]
+resource_name = "House_Base"
+albedo_texture = ExtResource("1_ontt7")
+metallic = 1.0
