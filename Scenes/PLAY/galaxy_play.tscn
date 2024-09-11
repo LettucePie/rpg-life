@@ -12,8 +12,8 @@ main_island = NodePath("Islands/MainIsland")
 
 [node name="GalaxyMenu" parent="." instance=ExtResource("2_p6km3")]
 
-[node name="CameraDial" parent="." instance=ExtResource("3_f2ti4")]
-
 [node name="Islands" type="Node3D" parent="."]
 
 [node name="MainIsland" parent="Islands" instance=ExtResource("4_q7c1h")]
+
+[node name="CameraDial" parent="." instance=ExtResource("3_f2ti4")]

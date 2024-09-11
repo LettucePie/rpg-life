@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bumidsvtd0rql"]
+[gd_scene load_steps=6 format=3 uid="uid://bumidsvtd0rql"]
 
 [ext_resource type="Script" path="res://Scenes/GUI/galaxy_menu.gd" id="1_uij3n"]
+[ext_resource type="Texture2D" uid="uid://c5abale7ittub" path="res://Assets/2D/UI/inventory_button_big.png" id="2_qe24v"]
+[ext_resource type="Texture2D" uid="uid://bpfd6n381865v" path="res://Assets/2D/UI/connect_button_big.png" id="3_y0bx1"]
+[ext_resource type="Texture2D" uid="uid://ct8ygf0mo3tpi" path="res://Assets/2D/UI/battle_button_big.png" id="4_qhfln"]
+[ext_resource type="Texture2D" uid="uid://bwaqfgaqs574n" path="res://Assets/2D/UI/roster_button_big.png" id="5_vuicy"]
 
 [node name="GalaxyMenu" type="Control"]
 layout_mode = 3
@@ -11,3 +15,64 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_uij3n")
+
+[node name="BottomRow" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.846
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.160034
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="StartPadding" type="Control" parent="BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="InventoryButton" type="TextureButton" parent="BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_qe24v")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ConnectButton" type="TextureButton" parent="BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.6
+texture_normal = ExtResource("3_y0bx1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BattleButton" type="TextureButton" parent="BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_qhfln")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EndPadding" type="Control" parent="BottomRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="UpperRightMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.794
+anchor_right = 1.0
+anchor_bottom = 0.116
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+
+[node name="RosterButton" type="TextureRect" parent="UpperRightMargin"]
+layout_mode = 2
+texture = ExtResource("5_vuicy")
+expand_mode = 1
+stretch_mode = 5
