@@ -1,6 +1,8 @@
 extends StaticBody3D
 class_name Station
 
+signal station_selected(station)
+
 var default_station_shape : PackedScene = preload(
 	"res://Scenes/Userspace/Stations/default_station_shape.tscn"
 	)
@@ -34,3 +36,4 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index <= 1:
 			print("Station Pressed: ", station_name)
+			emit_signal("station_selected", self)
