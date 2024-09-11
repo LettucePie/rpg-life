@@ -21,8 +21,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.846
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.160034
+anchor_bottom = 0.953
+offset_top = -11.16
+offset_bottom = 0.119934
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
@@ -30,7 +31,7 @@ alignment = 1
 [node name="StartPadding" type="Control" parent="BottomRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.7
 
 [node name="InventoryButton" type="TextureButton" parent="BottomRow"]
 layout_mode = 2
@@ -42,7 +43,7 @@ stretch_mode = 5
 [node name="ConnectButton" type="TextureButton" parent="BottomRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.6
+size_flags_stretch_ratio = 2.2
 texture_normal = ExtResource("3_y0bx1")
 ignore_texture_size = true
 stretch_mode = 5
@@ -57,7 +58,7 @@ stretch_mode = 5
 [node name="EndPadding" type="Control" parent="BottomRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.7
 
 [node name="UpperRightMargin" type="MarginContainer" parent="."]
 layout_mode = 1
