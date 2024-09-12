@@ -1,11 +1,23 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cosewbtd26cka"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cosewbtd26cka"]
 
 [ext_resource type="StyleBox" uid="uid://k1kawow6sj7c" path="res://Assets/2D/UI/Styles/panel_beige_stylebox_texture.tres" id="1_3dl53"]
+[ext_resource type="StyleBox" uid="uid://ckmiqml585esb" path="res://Assets/2D/UI/Styles/inlet_white_stylebox_texture.tres" id="1_6yj70"]
+[ext_resource type="StyleBox" uid="uid://drnkbwlkbpdbb" path="res://Assets/2D/UI/Styles/inlet_beige_stylebox_texture.tres" id="1_36xow"]
 [ext_resource type="StyleBox" uid="uid://pjd1wwd5i7oo" path="res://Assets/2D/UI/Styles/panel_blue_stylebox_texture.tres" id="2_05gnb"]
+[ext_resource type="StyleBox" uid="uid://b12wh2cqhx1ae" path="res://Assets/2D/UI/Styles/inlet_blue_stylebox_texture.tres" id="2_blxst"]
+[ext_resource type="StyleBox" uid="uid://dpeo4u05amkt" path="res://Assets/2D/UI/Styles/inlet_brown_stylebox_texture.tres" id="3_bsunk"]
 [ext_resource type="StyleBox" uid="uid://0rww1mw7fwp0" path="res://Assets/2D/UI/Styles/panel_brown_stylebox_texture.tres" id="3_t0q68"]
 [ext_resource type="StyleBox" uid="uid://c6salvyhq1vcw" path="res://Assets/2D/UI/Styles/panel_white_stylebox_texture.tres" id="4_o17qd"]
 
 [resource]
+Inlet/base_type = &"Panel"
+Inlet/styles/panel = ExtResource("1_36xow")
+InletBlue/base_type = &"Panel"
+InletBlue/styles/panel = ExtResource("2_blxst")
+InletBrown/base_type = &"Panel"
+InletBrown/styles/panel = ExtResource("3_bsunk")
+InletWhite/base_type = &"Panel"
+InletWhite/styles/panel = ExtResource("1_6yj70")
 Panel/styles/panel = ExtResource("1_3dl53")
 PanelBlue/base_type = &"Panel"
 PanelBlue/styles/panel = ExtResource("2_05gnb")
