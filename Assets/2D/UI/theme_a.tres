@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cosewbtd26cka"]
+
+[ext_resource type="StyleBox" uid="uid://k1kawow6sj7c" path="res://Assets/2D/UI/Styles/panel_beige_stylebox_texture.tres" id="1_3dl53"]
+[ext_resource type="StyleBox" uid="uid://pjd1wwd5i7oo" path="res://Assets/2D/UI/Styles/panel_blue_stylebox_texture.tres" id="2_05gnb"]
+[ext_resource type="StyleBox" uid="uid://0rww1mw7fwp0" path="res://Assets/2D/UI/Styles/panel_brown_stylebox_texture.tres" id="3_t0q68"]
+[ext_resource type="StyleBox" uid="uid://c6salvyhq1vcw" path="res://Assets/2D/UI/Styles/panel_white_stylebox_texture.tres" id="4_o17qd"]
+
+[resource]
+Panel/styles/panel = ExtResource("1_3dl53")
+PanelBlue/base_type = &"Panel"
+PanelBlue/styles/panel = ExtResource("2_05gnb")
+PanelBrown/base_type = &"Panel"
+PanelBrown/styles/panel = ExtResource("3_t0q68")
+PanelWhite/base_type = &"Panel"
+PanelWhite/styles/panel = ExtResource("4_o17qd")

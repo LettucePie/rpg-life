@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://pjd1wwd5i7oo"]
+
+[ext_resource type="Texture2D" uid="uid://d3kq0il4eru1d" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/panel_blue.png" id="1_do4tk"]
+
+[resource]
+texture = ExtResource("1_do4tk")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 100, 100)

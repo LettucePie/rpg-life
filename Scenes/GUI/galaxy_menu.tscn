@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://bumidsvtd0rql"]
+[gd_scene load_steps=7 format=3 uid="uid://bumidsvtd0rql"]
 
+[ext_resource type="Theme" uid="uid://cosewbtd26cka" path="res://Assets/2D/UI/theme_a.tres" id="1_3bxbr"]
 [ext_resource type="Script" path="res://Scenes/GUI/galaxy_menu.gd" id="1_uij3n"]
 [ext_resource type="Texture2D" uid="uid://c5abale7ittub" path="res://Assets/2D/UI/inventory_button_big.png" id="2_qe24v"]
 [ext_resource type="Texture2D" uid="uid://bpfd6n381865v" path="res://Assets/2D/UI/connect_button_big.png" id="3_y0bx1"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_3bxbr")
 script = ExtResource("1_uij3n")
 
 [node name="BottomRow" type="HBoxContainer" parent="."]
@@ -72,8 +74,31 @@ offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 0
 
-[node name="RosterButton" type="TextureRect" parent="UpperRightMargin"]
+[node name="MenuButton" type="TextureRect" parent="UpperRightMargin"]
 layout_mode = 2
 texture = ExtResource("5_vuicy")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="InventorySubMenu" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.808
+offset_bottom = 0.319946
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="InventorySubMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.153
+anchor_right = 0.92
+anchor_bottom = 0.969
+offset_left = -0.200001
+offset_top = 0.271988
+offset_right = 0.199982
+offset_bottom = 0.0559692
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelBrown"
