@@ -112,3 +112,47 @@ offset_bottom = 0.0559692
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"PanelBrown"
+
+[node name="Label" type="Label" parent="InventorySubMenu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.019
+anchor_right = 1.0
+anchor_bottom = 0.141
+offset_top = -0.0269995
+offset_bottom = -0.252991
+grow_horizontal = 2
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventorySubMenu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.137
+anchor_right = 0.952
+anchor_bottom = 0.95
+offset_left = 0.299999
+offset_top = 0.278999
+offset_right = -0.208008
+offset_bottom = -0.349915
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StockButton" type="Button" parent="InventorySubMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Stock"
+
+[node name="CraftingButton" type="Button" parent="InventorySubMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Crafting"
+
+[node name="DecorateButton" type="Button" parent="InventorySubMenu/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Decorate"

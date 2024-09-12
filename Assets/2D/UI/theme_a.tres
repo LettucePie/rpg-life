@@ -1,27 +1,36 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cosewbtd26cka"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cosewbtd26cka"]
 
-[ext_resource type="StyleBox" uid="uid://k1kawow6sj7c" path="res://Assets/2D/UI/Styles/panel_beige_stylebox_texture.tres" id="1_3dl53"]
-[ext_resource type="StyleBox" uid="uid://ckmiqml585esb" path="res://Assets/2D/UI/Styles/inlet_white_stylebox_texture.tres" id="1_6yj70"]
-[ext_resource type="StyleBox" uid="uid://drnkbwlkbpdbb" path="res://Assets/2D/UI/Styles/inlet_beige_stylebox_texture.tres" id="1_36xow"]
-[ext_resource type="StyleBox" uid="uid://pjd1wwd5i7oo" path="res://Assets/2D/UI/Styles/panel_blue_stylebox_texture.tres" id="2_05gnb"]
-[ext_resource type="StyleBox" uid="uid://b12wh2cqhx1ae" path="res://Assets/2D/UI/Styles/inlet_blue_stylebox_texture.tres" id="2_blxst"]
-[ext_resource type="StyleBox" uid="uid://dpeo4u05amkt" path="res://Assets/2D/UI/Styles/inlet_brown_stylebox_texture.tres" id="3_bsunk"]
-[ext_resource type="StyleBox" uid="uid://0rww1mw7fwp0" path="res://Assets/2D/UI/Styles/panel_brown_stylebox_texture.tres" id="3_t0q68"]
-[ext_resource type="StyleBox" uid="uid://c6salvyhq1vcw" path="res://Assets/2D/UI/Styles/panel_white_stylebox_texture.tres" id="4_o17qd"]
+[ext_resource type="StyleBox" uid="uid://dstf4yr12n44n" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_highlight_beige_stylebox_texture.tres" id="1_1x1is"]
+[ext_resource type="StyleBox" uid="uid://bnmkyo634a12c" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_normal_beige_stylebox_texture.tres" id="1_3ocjr"]
+[ext_resource type="StyleBox" uid="uid://dclribgvqfagg" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_pressed_beige_stylebox_texture.tres" id="1_vupfr"]
+[ext_resource type="StyleBox" uid="uid://drnkbwlkbpdbb" path="res://Assets/2D/UI/Styles/Panels/inlet_beige_stylebox_texture.tres" id="2_3ahhs"]
+[ext_resource type="StyleBox" uid="uid://b12wh2cqhx1ae" path="res://Assets/2D/UI/Styles/Panels/inlet_blue_stylebox_texture.tres" id="3_s5pun"]
+[ext_resource type="StyleBox" uid="uid://dpeo4u05amkt" path="res://Assets/2D/UI/Styles/Panels/inlet_brown_stylebox_texture.tres" id="4_0vxx3"]
+[ext_resource type="StyleBox" uid="uid://ckmiqml585esb" path="res://Assets/2D/UI/Styles/Panels/inlet_white_stylebox_texture.tres" id="5_vngcw"]
+[ext_resource type="StyleBox" uid="uid://k1kawow6sj7c" path="res://Assets/2D/UI/Styles/Panels/panel_beige_stylebox_texture.tres" id="6_d3f6n"]
+[ext_resource type="StyleBox" uid="uid://pjd1wwd5i7oo" path="res://Assets/2D/UI/Styles/Panels/panel_blue_stylebox_texture.tres" id="7_0kqk6"]
+[ext_resource type="StyleBox" uid="uid://0rww1mw7fwp0" path="res://Assets/2D/UI/Styles/Panels/panel_brown_stylebox_texture.tres" id="8_48ckx"]
+[ext_resource type="StyleBox" uid="uid://c6salvyhq1vcw" path="res://Assets/2D/UI/Styles/Panels/panel_white_stylebox_texture.tres" id="9_8gu5v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4u2u"]
 
 [resource]
+Button/styles/focus = SubResource("StyleBoxEmpty_k4u2u")
+Button/styles/hover = ExtResource("1_1x1is")
+Button/styles/normal = ExtResource("1_3ocjr")
+Button/styles/pressed = ExtResource("1_vupfr")
 Inlet/base_type = &"Panel"
-Inlet/styles/panel = ExtResource("1_36xow")
+Inlet/styles/panel = ExtResource("2_3ahhs")
 InletBlue/base_type = &"Panel"
-InletBlue/styles/panel = ExtResource("2_blxst")
+InletBlue/styles/panel = ExtResource("3_s5pun")
 InletBrown/base_type = &"Panel"
-InletBrown/styles/panel = ExtResource("3_bsunk")
+InletBrown/styles/panel = ExtResource("4_0vxx3")
 InletWhite/base_type = &"Panel"
-InletWhite/styles/panel = ExtResource("1_6yj70")
-Panel/styles/panel = ExtResource("1_3dl53")
+InletWhite/styles/panel = ExtResource("5_vngcw")
+Panel/styles/panel = ExtResource("6_d3f6n")
 PanelBlue/base_type = &"Panel"
-PanelBlue/styles/panel = ExtResource("2_05gnb")
+PanelBlue/styles/panel = ExtResource("7_0kqk6")
 PanelBrown/base_type = &"Panel"
-PanelBrown/styles/panel = ExtResource("3_t0q68")
+PanelBrown/styles/panel = ExtResource("8_48ckx")
 PanelWhite/base_type = &"Panel"
-PanelWhite/styles/panel = ExtResource("4_o17qd")
+PanelWhite/styles/panel = ExtResource("9_8gu5v")
