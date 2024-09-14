@@ -1,11 +1,11 @@
-#Trestoria
+#Trestoria#
 World of RPG-Life
 
-##Document Purpose / Intent
+##Document Purpose / Intent##
 
 This Document aims to provide a solid contextual world and backbone to the Enemies, Designs, and Materials used within RPG-Life. The general aesthetic and flavor of RPG-Life is Medieval Fantasy. There are many potential inspirations to draw from in this genre. I’m not a writer or world-builder, so hopefully this is more Generic/Safe rather than Confusing or Generic/Boring.
 
-##Starting Big and Vague – The Galaxy
+##Starting Big and Vague – The Galaxy##
 
  - Trestoria – The primary planet
     - Oleane – The Moon of Trestoria
@@ -16,7 +16,7 @@ This Document aims to provide a solid contextual world and backbone to the Enemi
  - Perlin Shroud – The Galaxy hosting Rue’Lantah
 
 
-##The Deities
+##The Deities##
 
  - Perlin – The All Powerful
     - Origin of all other Deities
@@ -64,7 +64,7 @@ This Document aims to provide a solid contextual world and backbone to the Enemi
     - Looks like a Dragon with Antlers rather than horns, and Fur rather than scales.
 
 
-##Trestoria Geology
+##Trestoria Geology##
 
 Trestoria features many Biomes and Ecosystems. Most of these biomes are Earth Adjacent, and some are more Fantasy inspired.
 
