@@ -2,3 +2,4 @@
 .godot/
 *.kra~
 *.blend1
+*.~lock*

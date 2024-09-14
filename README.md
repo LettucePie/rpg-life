@@ -3,6 +3,12 @@ A FOSS mobile game based on medieval fantasy. Made with the goal of connecting o
 
 Made in Godot 4.2.2
 
+## Developement Software
+ - Godot Engine 4.2.2
+ - Blender 3.3 and up
+ - Krita 5.0 and up
+ - LibreOffice Suite (Writer, Calc)
+
 
 # RPG Life - Game Design Document
 
