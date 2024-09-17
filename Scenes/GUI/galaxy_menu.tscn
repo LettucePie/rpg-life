@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bumidsvtd0rql"]
+[gd_scene load_steps=9 format=3 uid="uid://bumidsvtd0rql"]
 
 [ext_resource type="Theme" uid="uid://cosewbtd26cka" path="res://Assets/2D/UI/theme_a.tres" id="1_3bxbr"]
 [ext_resource type="Script" path="res://Scenes/GUI/galaxy_menu.gd" id="1_uij3n"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ct8ygf0mo3tpi" path="res://Assets/2D/UI/battle_button_big.png" id="4_qhfln"]
 [ext_resource type="Texture2D" uid="uid://bwaqfgaqs574n" path="res://Assets/2D/UI/roster_button_big.png" id="5_vuicy"]
 [ext_resource type="Texture2D" uid="uid://b2ir7aqqbyfey" path="res://Assets/2D/UI/menu_shroud_gradient.tres" id="7_2gge6"]
+[ext_resource type="Texture2D" uid="uid://dakouoxyicrj4" path="res://icon.svg" id="8_c0sia"]
 
 [node name="GalaxyMenu" type="Control"]
 layout_mode = 3
@@ -75,10 +76,10 @@ offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 0
 
-[node name="MenuButton" type="TextureRect" parent="UpperRightMargin"]
+[node name="MenuButton" type="TextureButton" parent="UpperRightMargin"]
 layout_mode = 2
-texture = ExtResource("5_vuicy")
-expand_mode = 1
+texture_normal = ExtResource("5_vuicy")
+ignore_texture_size = true
 stretch_mode = 5
 
 [node name="InventorySubMenu" type="Control" parent="."]
@@ -98,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_2gge6")
 
-[node name="Panel" type="Panel" parent="InventorySubMenu"]
+[node name="BackPanel" type="Panel" parent="InventorySubMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.08
@@ -113,20 +114,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"PanelBrown"
 
-[node name="Label" type="Label" parent="InventorySubMenu/Panel"]
+[node name="InventoryControls" type="Control" parent="InventorySubMenu/BackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="InventorySubMenu/BackPanel/InventoryControls"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.019
 anchor_right = 1.0
 anchor_bottom = 0.141
-offset_top = -0.0269995
+offset_top = -0.0269985
 offset_bottom = -0.252991
 grow_horizontal = 2
 text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventorySubMenu/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InventorySubMenu/BackPanel/InventoryControls"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -142,17 +151,318 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="StockButton" type="Button" parent="InventorySubMenu/Panel/VBoxContainer"]
+[node name="StockButton" type="Button" parent="InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Stock"
 
-[node name="CraftingButton" type="Button" parent="InventorySubMenu/Panel/VBoxContainer"]
+[node name="CraftingButton" type="Button" parent="InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Crafting"
 
-[node name="DecorateButton" type="Button" parent="InventorySubMenu/Panel/VBoxContainer"]
+[node name="DecorateButton" type="Button" parent="InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Decorate"
+
+[node name="StockInletPanel" type="Panel" parent="InventorySubMenu/BackPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.02
+anchor_right = 0.95
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Inlet"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -6.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SortRow" type="HBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="SortAll" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortMaterials" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortConsumable" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortFurniture" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortEquipment" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GridInlet" type="Panel" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"InletBrown"
+
+[node name="StockScroll" type="ScrollContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="StockGrid" type="GridContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 10
+columns = 4
+
+[node name="TestIcon" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon2" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon3" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon4" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon5" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon6" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon7" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon8" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon9" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon10" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon11" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon12" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon13" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon14" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon15" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon16" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon17" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon18" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="StockActions" type="VBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.85
+
+[node name="SelectedRow" type="HBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SelectedIcon" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectedItem" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Selected Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedQuantity" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "25"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SellRow" type="HBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SellButton" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.34
+text = "Back"
+
+[node name="QuantityMinus" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " - "
+
+[node name="QuantitySell" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuantityAdd" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " + "
+
+[node name="SellEarning" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StockBackButton" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Back"
