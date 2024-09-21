@@ -83,6 +83,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="InventorySubMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.808
@@ -467,6 +468,396 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="StockBackButton" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"ButtonBlue"
+text = "Back"
+
+[node name="ConnectSubMenu" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.808
+offset_bottom = 0.319946
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shroud" type="TextureRect" parent="ConnectSubMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2gge6")
+
+[node name="BackPanel" type="Panel" parent="ConnectSubMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.153
+anchor_right = 0.92
+anchor_bottom = 0.969
+offset_left = -0.200001
+offset_top = 0.271988
+offset_right = 0.199982
+offset_bottom = 0.0559692
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"PanelSpace"
+
+[node name="ConnectControls" type="Control" parent="ConnectSubMenu/BackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ConnectSubMenu/BackPanel/ConnectControls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.019
+anchor_right = 1.0
+anchor_bottom = 0.141
+offset_top = -0.0269985
+offset_bottom = -0.252991
+grow_horizontal = 2
+text = "Connect"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectSubMenu/BackPanel/ConnectControls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.137
+anchor_right = 0.952
+anchor_bottom = 0.95
+offset_left = 0.299999
+offset_top = 0.278999
+offset_right = -0.208008
+offset_bottom = -0.349915
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StockButton" type="Button" parent="ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Stock"
+
+[node name="CraftingButton" type="Button" parent="ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Crafting"
+
+[node name="DecorateButton" type="Button" parent="ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Decorate"
+
+[node name="StockInletPanel" type="Panel" parent="ConnectSubMenu/BackPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.02
+anchor_right = 0.95
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"Inlet"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -6.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SortRow" type="HBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="SortAll" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortMaterials" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortConsumable" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortFurniture" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SortEquipment" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GridInlet" type="Panel" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"InletBrown"
+
+[node name="StockScroll" type="ScrollContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="StockGrid" type="GridContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="TestIcon" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon2" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon3" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon4" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon5" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon6" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon7" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon8" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon9" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon10" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon11" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon12" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon13" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon14" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon15" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon16" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon17" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TestIcon18" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("8_c0sia")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="StockActions" type="VBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.85
+
+[node name="SelectedRow" type="HBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SelectedIcon" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_c0sia")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectedItem" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Selected Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectedQuantity" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "25"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SellRow" type="HBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SellButton" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.34
+theme_type_variation = &"ButtonWhite"
+text = "Sell"
+
+[node name="QuantityMinus" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonBrown"
+text = " - "
+
+[node name="QuantitySell" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuantityAdd" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonBrown"
+text = " + "
+
+[node name="SellEarning" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StockBackButton" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"ButtonBlue"

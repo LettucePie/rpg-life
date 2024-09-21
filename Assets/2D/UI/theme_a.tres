@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://cosewbtd26cka"]
+[gd_resource type="Theme" load_steps=26 format=3 uid="uid://cosewbtd26cka"]
 
 [ext_resource type="StyleBox" uid="uid://dstf4yr12n44n" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_highlight_beige_stylebox_texture.tres" id="1_1x1is"]
 [ext_resource type="StyleBox" uid="uid://bnmkyo634a12c" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_normal_beige_stylebox_texture.tres" id="1_3ocjr"]
 [ext_resource type="StyleBox" uid="uid://drnkbwlkbpdbb" path="res://Assets/2D/UI/Styles/Panels/inlet_beige_stylebox_texture.tres" id="2_3ahhs"]
 [ext_resource type="StyleBox" uid="uid://bj0p7v2wlpoll" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_highlight_blue_stylebox_texture.tres" id="3_8h672"]
+[ext_resource type="StyleBox" uid="uid://dclribgvqfagg" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_pressed_beige_stylebox_texture.tres" id="3_ksi4f"]
 [ext_resource type="StyleBox" uid="uid://b12wh2cqhx1ae" path="res://Assets/2D/UI/Styles/Panels/inlet_blue_stylebox_texture.tres" id="3_s5pun"]
 [ext_resource type="StyleBox" uid="uid://dpeo4u05amkt" path="res://Assets/2D/UI/Styles/Panels/inlet_brown_stylebox_texture.tres" id="4_0vxx3"]
 [ext_resource type="StyleBox" uid="uid://cqcngairvjan1" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_normal_blue_stylebox_texture.tres" id="4_05m8j"]
@@ -19,6 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://sygu6lv3rrs8" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_highlight_white_stylebox_texture.tres" id="9_baahx"]
 [ext_resource type="StyleBox" uid="uid://ddv3kw5map7e8" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_normal_white_stylebox_texture.tres" id="10_6sbn3"]
 [ext_resource type="StyleBox" uid="uid://blakub8yc5k08" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_pressed_white_stylebox_texture.tres" id="11_ww1ob"]
+[ext_resource type="StyleBox" uid="uid://gh0w88q84s7r" path="res://Assets/2D/UI/Styles/Panels/panel_space_stylebox_texture.tres" id="20_g8ca7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4u2u"]
 
@@ -32,7 +34,7 @@
 Button/styles/focus = SubResource("StyleBoxEmpty_k4u2u")
 Button/styles/hover = ExtResource("1_1x1is")
 Button/styles/normal = ExtResource("1_3ocjr")
-Button/styles/pressed = ExtResource("1_1x1is")
+Button/styles/pressed = ExtResource("3_ksi4f")
 ButtonBlue/base_type = &"Button"
 ButtonBlue/styles/focus = SubResource("StyleBoxEmpty_ud7qv")
 ButtonBlue/styles/hover = ExtResource("3_8h672")
@@ -61,5 +63,7 @@ PanelBlue/base_type = &"Panel"
 PanelBlue/styles/panel = ExtResource("7_0kqk6")
 PanelBrown/base_type = &"Panel"
 PanelBrown/styles/panel = ExtResource("8_48ckx")
+PanelSpace/base_type = &"Panel"
+PanelSpace/styles/panel = ExtResource("20_g8ca7")
 PanelWhite/base_type = &"Panel"
 PanelWhite/styles/panel = ExtResource("9_8gu5v")
