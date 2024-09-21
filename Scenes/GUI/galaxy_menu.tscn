@@ -251,8 +251,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 10
-columns = 4
+theme_override_constants/v_separation = 20
+columns = 3
 
 [node name="TestIcon" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
@@ -436,11 +436,13 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.34
-text = "Back"
+theme_type_variation = &"ButtonWhite"
+text = "Sell"
 
 [node name="QuantityMinus" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"ButtonBrown"
 text = " - "
 
 [node name="QuantitySell" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
@@ -453,6 +455,7 @@ vertical_alignment = 1
 [node name="QuantityAdd" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"ButtonBrown"
 text = " + "
 
 [node name="SellEarning" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
@@ -465,4 +468,5 @@ vertical_alignment = 1
 [node name="StockBackButton" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"ButtonBlue"
 text = "Back"

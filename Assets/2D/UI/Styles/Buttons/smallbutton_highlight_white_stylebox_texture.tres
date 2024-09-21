@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://sygu6lv3rrs8"]
+
+[ext_resource type="Texture2D" uid="uid://big02tv46q8a3" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/buttonSquare_grey.png" id="1_fjta6"]
+
+[resource]
+texture = ExtResource("1_fjta6")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.941176, 0.941176, 0.941176, 1)
