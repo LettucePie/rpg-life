@@ -32,7 +32,7 @@
 Button/styles/focus = SubResource("StyleBoxEmpty_k4u2u")
 Button/styles/hover = ExtResource("1_1x1is")
 Button/styles/normal = ExtResource("1_3ocjr")
-Button/styles/pressed = ExtResource("3_8h672")
+Button/styles/pressed = ExtResource("1_1x1is")
 ButtonBlue/base_type = &"Button"
 ButtonBlue/styles/focus = SubResource("StyleBoxEmpty_ud7qv")
 ButtonBlue/styles/hover = ExtResource("3_8h672")
