@@ -474,6 +474,7 @@ theme_type_variation = &"ButtonBlue"
 text = "Back"
 
 [node name="ConnectSubMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.808
