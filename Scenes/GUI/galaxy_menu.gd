@@ -1,8 +1,13 @@
 extends Control
 class_name GalaxyMenu
 
-@onready var inventory_sub : Control = $InventorySubMenu
-@onready var connect_sub : Control = $ConnectSubMenu
+## Submenu Stuff
+@onready var submenu_root : Control = $SubMenus
+@onready var inventory_sub : Control = $SubMenus/InventorySubMenu
+@onready var connect_sub : Control = $SubMenus/ConnectSubMenu
+
+## Auxillery Menu Stuff
+@onready var decoration_menu : Control = $DecorateMenu
 
 var primary_menu_elements : Array = []
 var auxillery_menus : Array = []
@@ -13,7 +18,7 @@ var current_submenu : int = -1
 
 func _ready():
 	_gather_menus()
-	hide_all_submenus()
+	hide_all_submenus(true)
 	hide_all_auxmenus()
 
 
@@ -32,10 +37,11 @@ func hide_all_primary():
 		control.hide()
 
 
-func hide_all_submenus():
-	inventory_sub.hide()
-	connect_sub.hide()
-	print("Add more submenus as they are made")
+func hide_all_submenus(thorough : bool):
+	if thorough:
+		for child in submenu_root.get_children():
+			child.hide()
+	submenu_root.hide()
 
 
 func hide_all_auxmenus():
@@ -45,7 +51,8 @@ func hide_all_auxmenus():
 
 func bottom_row_button(id : int):
 	if current_submenu != id:
-		hide_all_submenus()
+		hide_all_submenus(true)
+		submenu_root.show()
 		current_submenu = id
 		if id <= 0:
 			print("Inventory Button")
@@ -56,5 +63,17 @@ func bottom_row_button(id : int):
 		elif id == 2:
 			print("Battle Button")
 	else:
-		hide_all_submenus()
+		hide_all_submenus(true)
 		current_submenu = -1
+
+
+func inventory_sub_button(id : int):
+	if id <= 0:
+		print("Show Stock")
+	elif id == 1:
+		print("Show Crafting")
+	elif id == 2:
+		print("Show Decoration Menu")
+		hide_all_submenus(false)
+		hide_all_primary()
+		decoration_menu.show()

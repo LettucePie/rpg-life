@@ -83,7 +83,15 @@ texture_normal = ExtResource("5_vuicy")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="InventorySubMenu" type="Control" parent="."]
+[node name="SubMenus" type="Control" parent="." groups=["primary_menu"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventorySubMenu" type="Control" parent="SubMenus"]
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.808
@@ -91,7 +99,7 @@ offset_bottom = 0.319946
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shroud" type="TextureRect" parent="InventorySubMenu"]
+[node name="Shroud" type="TextureRect" parent="SubMenus/InventorySubMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,7 +108,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_2gge6")
 
-[node name="BackPanel" type="Panel" parent="InventorySubMenu"]
+[node name="BackPanel" type="Panel" parent="SubMenus/InventorySubMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.08
@@ -115,7 +123,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"PanelBrown"
 
-[node name="InventoryControls" type="Control" parent="InventorySubMenu/BackPanel"]
+[node name="InventoryControls" type="Control" parent="SubMenus/InventorySubMenu/BackPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,7 +131,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="InventorySubMenu/BackPanel/InventoryControls"]
+[node name="Label" type="Label" parent="SubMenus/InventorySubMenu/BackPanel/InventoryControls"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.019
@@ -136,7 +144,7 @@ text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventorySubMenu/BackPanel/InventoryControls"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubMenus/InventorySubMenu/BackPanel/InventoryControls"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -152,22 +160,22 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="StockButton" type="Button" parent="InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
+[node name="StockButton" type="Button" parent="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Stock"
 
-[node name="CraftingButton" type="Button" parent="InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
+[node name="CraftingButton" type="Button" parent="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Crafting"
 
-[node name="DecorateButton" type="Button" parent="InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
+[node name="DecorateButton" type="Button" parent="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Decorate"
 
-[node name="StockInletPanel" type="Panel" parent="InventorySubMenu/BackPanel"]
+[node name="StockInletPanel" type="Panel" parent="SubMenus/InventorySubMenu/BackPanel"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -179,7 +187,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Inlet"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -191,52 +199,52 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SortRow" type="HBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+[node name="SortRow" type="HBoxContainer" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 
-[node name="SortAll" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortAll" type="TextureRect" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortMaterials" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortMaterials" type="TextureRect" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortConsumable" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortConsumable" type="TextureRect" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortFurniture" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortFurniture" type="TextureRect" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortEquipment" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortEquipment" type="TextureRect" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GridInlet" type="Panel" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+[node name="GridInlet" type="Panel" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"InletBrown"
 
-[node name="StockScroll" type="ScrollContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet"]
+[node name="StockScroll" type="ScrollContainer" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -248,7 +256,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="StockGrid" type="GridContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll"]
+[node name="StockGrid" type="GridContainer" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -256,7 +264,7 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 20
 columns = 3
 
-[node name="TestIcon" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -264,7 +272,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon2" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon2" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -272,7 +280,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon3" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon3" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -280,7 +288,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon4" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon4" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -288,7 +296,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon5" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon5" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -296,7 +304,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon6" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon6" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -304,7 +312,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon7" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon7" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -312,7 +320,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon8" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon8" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -320,7 +328,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon9" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon9" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -328,7 +336,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon10" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon10" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -336,7 +344,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon11" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon11" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -344,7 +352,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon12" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon12" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -352,7 +360,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon13" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon13" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -360,7 +368,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon14" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon14" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -368,7 +376,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon15" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon15" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -376,7 +384,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon16" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon16" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -384,7 +392,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon17" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon17" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -392,7 +400,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon18" type="TextureButton" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon18" type="TextureButton" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -400,80 +408,80 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="StockActions" type="VBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+[node name="StockActions" type="VBoxContainer" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.85
 
-[node name="SelectedRow" type="HBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+[node name="SelectedRow" type="HBoxContainer" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SelectedIcon" type="TextureRect" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+[node name="SelectedIcon" type="TextureRect" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SelectedItem" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+[node name="SelectedItem" type="Label" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Selected Item"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SelectedQuantity" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+[node name="SelectedQuantity" type="Label" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "25"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SellRow" type="HBoxContainer" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+[node name="SellRow" type="HBoxContainer" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SellButton" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="SellButton" type="Button" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.34
 theme_type_variation = &"ButtonWhite"
 text = "Sell"
 
-[node name="QuantityMinus" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="QuantityMinus" type="Button" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"ButtonBrown"
 text = " - "
 
-[node name="QuantitySell" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="QuantitySell" type="Label" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuantityAdd" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="QuantityAdd" type="Button" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"ButtonBrown"
 text = " + "
 
-[node name="SellEarning" type="Label" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="SellEarning" type="Label" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="StockBackButton" type="Button" parent="InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+[node name="StockBackButton" type="Button" parent="SubMenus/InventorySubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"ButtonBlue"
 text = "Back"
 
-[node name="ConnectSubMenu" type="Control" parent="."]
+[node name="ConnectSubMenu" type="Control" parent="SubMenus"]
 visible = false
 layout_mode = 1
 anchor_right = 1.0
@@ -482,7 +490,7 @@ offset_bottom = 0.319946
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shroud" type="TextureRect" parent="ConnectSubMenu"]
+[node name="Shroud" type="TextureRect" parent="SubMenus/ConnectSubMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -491,7 +499,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_2gge6")
 
-[node name="BackPanel" type="Panel" parent="ConnectSubMenu"]
+[node name="BackPanel" type="Panel" parent="SubMenus/ConnectSubMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.08
@@ -506,7 +514,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"PanelSpace"
 
-[node name="ConnectControls" type="Control" parent="ConnectSubMenu/BackPanel"]
+[node name="ConnectControls" type="Control" parent="SubMenus/ConnectSubMenu/BackPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -514,7 +522,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="ConnectSubMenu/BackPanel/ConnectControls"]
+[node name="Label" type="Label" parent="SubMenus/ConnectSubMenu/BackPanel/ConnectControls"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.019
@@ -527,7 +535,7 @@ text = "Connect"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ConnectSubMenu/BackPanel/ConnectControls"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubMenus/ConnectSubMenu/BackPanel/ConnectControls"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -543,22 +551,22 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="StockButton" type="Button" parent="ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
+[node name="StockButton" type="Button" parent="SubMenus/ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Stock"
 
-[node name="CraftingButton" type="Button" parent="ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
+[node name="CraftingButton" type="Button" parent="SubMenus/ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Crafting"
 
-[node name="DecorateButton" type="Button" parent="ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
+[node name="DecorateButton" type="Button" parent="SubMenus/ConnectSubMenu/BackPanel/ConnectControls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Decorate"
 
-[node name="StockInletPanel" type="Panel" parent="ConnectSubMenu/BackPanel"]
+[node name="StockInletPanel" type="Panel" parent="SubMenus/ConnectSubMenu/BackPanel"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -570,7 +578,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"Inlet"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -582,52 +590,52 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SortRow" type="HBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+[node name="SortRow" type="HBoxContainer" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 
-[node name="SortAll" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortAll" type="TextureRect" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortMaterials" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortMaterials" type="TextureRect" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortConsumable" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortConsumable" type="TextureRect" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortFurniture" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortFurniture" type="TextureRect" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SortEquipment" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
+[node name="SortEquipment" type="TextureRect" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/SortRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GridInlet" type="Panel" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+[node name="GridInlet" type="Panel" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"InletBrown"
 
-[node name="StockScroll" type="ScrollContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet"]
+[node name="StockScroll" type="ScrollContainer" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -639,7 +647,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="StockGrid" type="GridContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll"]
+[node name="StockGrid" type="GridContainer" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -647,7 +655,7 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 20
 columns = 3
 
-[node name="TestIcon" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -655,7 +663,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon2" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon2" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -663,7 +671,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon3" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon3" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -671,7 +679,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon4" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon4" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -679,7 +687,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon5" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon5" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -687,7 +695,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon6" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon6" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -695,7 +703,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon7" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon7" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -703,7 +711,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon8" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon8" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -711,7 +719,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon9" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon9" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -719,7 +727,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon10" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon10" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -727,7 +735,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon11" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon11" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -735,7 +743,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon12" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon12" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -743,7 +751,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon13" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon13" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -751,7 +759,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon14" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon14" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -759,7 +767,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon15" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon15" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -767,7 +775,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon16" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon16" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -775,7 +783,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon17" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon17" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -783,7 +791,7 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="TestIcon18" type="TextureButton" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
+[node name="TestIcon18" type="TextureButton" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/GridInlet/StockScroll/StockGrid"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -791,74 +799,74 @@ texture_normal = ExtResource("8_c0sia")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="StockActions" type="VBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
+[node name="StockActions" type="VBoxContainer" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.85
 
-[node name="SelectedRow" type="HBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+[node name="SelectedRow" type="HBoxContainer" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SelectedIcon" type="TextureRect" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+[node name="SelectedIcon" type="TextureRect" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("8_c0sia")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="SelectedItem" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+[node name="SelectedItem" type="Label" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Selected Item"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SelectedQuantity" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
+[node name="SelectedQuantity" type="Label" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SelectedRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "25"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SellRow" type="HBoxContainer" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+[node name="SellRow" type="HBoxContainer" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SellButton" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="SellButton" type="Button" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.34
 theme_type_variation = &"ButtonWhite"
 text = "Sell"
 
-[node name="QuantityMinus" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="QuantityMinus" type="Button" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"ButtonBrown"
 text = " - "
 
-[node name="QuantitySell" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="QuantitySell" type="Label" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuantityAdd" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="QuantityAdd" type="Button" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"ButtonBrown"
 text = " + "
 
-[node name="SellEarning" type="Label" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
+[node name="SellEarning" type="Label" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions/SellRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "100"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="StockBackButton" type="Button" parent="ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
+[node name="StockBackButton" type="Button" parent="SubMenus/ConnectSubMenu/BackPanel/StockInletPanel/VBoxContainer/StockActions"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"ButtonBlue"
@@ -870,3 +878,6 @@ layout_mode = 1
 [connection signal="pressed" from="BottomRow/InventoryButton" to="." method="bottom_row_button" binds= [0]]
 [connection signal="pressed" from="BottomRow/ConnectButton" to="." method="bottom_row_button" binds= [1]]
 [connection signal="pressed" from="BottomRow/BattleButton" to="." method="bottom_row_button" binds= [2]]
+[connection signal="pressed" from="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer/StockButton" to="." method="inventory_sub_button" binds= [0]]
+[connection signal="pressed" from="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer/CraftingButton" to="." method="inventory_sub_button" binds= [1]]
+[connection signal="pressed" from="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer/DecorateButton" to="." method="inventory_sub_button" binds= [2]]
