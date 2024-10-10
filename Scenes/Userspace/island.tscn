@@ -8,8 +8,9 @@
 height = 6.18917
 radius = 9.6399
 
-[node name="Island" type="Node3D"]
+[node name="Island" type="Node3D" node_paths=PackedStringArray("object_container")]
 script = ExtResource("1_p7qw4")
+object_container = NodePath("IslandObjects")
 
 [node name="LightRack" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.5462, 0)
@@ -42,8 +43,8 @@ directional_shadow_mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.96955, 0)
 shape = SubResource("CylinderShape3D_g35o5")
 
-[node name="Stations" type="Node3D" parent="."]
+[node name="IslandObjects" type="Node3D" parent="."]
 
-[node name="House_01" parent="Stations" instance=ExtResource("3_j84yx")]
+[node name="House_01" parent="IslandObjects" instance=ExtResource("3_j84yx")]
 
 [connection signal="input_event" from="island_area" to="." method="_on_island_area_input_event"]

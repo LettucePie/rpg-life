@@ -6,6 +6,7 @@
 
 [node name="House_01" type="StaticBody3D"]
 script = ExtResource("1_nyusu")
+object_name = "House A"
 
 [node name="house_01" parent="." instance=ExtResource("3_h1ojj")]
 

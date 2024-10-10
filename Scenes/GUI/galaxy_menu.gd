@@ -1,13 +1,21 @@
 extends Control
 class_name GalaxyMenu
 
+enum MENU_STATES {
+	FREE,
+	SUBMENU,
+	DECORATE
+}
+
+var state : MENU_STATES = MENU_STATES.FREE
+
 ## Submenu Stuff
 @onready var submenu_root : Control = $SubMenus
 @onready var inventory_sub : Control = $SubMenus/InventorySubMenu
 @onready var connect_sub : Control = $SubMenus/ConnectSubMenu
 
 ## Auxillery Menu Stuff
-@onready var decoration_menu : Control = $DecorateMenu
+@onready var decoration_menu : DecorateMenu = $DecorateMenu
 
 var primary_menu_elements : Array = []
 var auxillery_menus : Array = []
@@ -32,6 +40,10 @@ func _gather_menus():
 			auxillery_menus.append(child)
 
 
+func set_menu_state(new_state : MENU_STATES):
+	state = new_state
+
+
 func hide_all_primary():
 	for control in primary_menu_elements:
 		control.hide()
@@ -54,6 +66,7 @@ func bottom_row_button(id : int):
 		hide_all_submenus(true)
 		submenu_root.show()
 		current_submenu = id
+		set_menu_state(MENU_STATES.SUBMENU)
 		if id <= 0:
 			print("Inventory Button")
 			#hide_all_primary()
@@ -65,6 +78,7 @@ func bottom_row_button(id : int):
 	else:
 		hide_all_submenus(true)
 		current_submenu = -1
+		set_menu_state(MENU_STATES.FREE)
 
 
 func inventory_sub_button(id : int):
@@ -77,3 +91,4 @@ func inventory_sub_button(id : int):
 		hide_all_submenus(false)
 		hide_all_primary()
 		decoration_menu.show()
+		set_menu_state(MENU_STATES.DECORATE)

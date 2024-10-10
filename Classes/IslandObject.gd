@@ -1,7 +1,7 @@
 extends StaticBody3D
 class_name IslandObject
 
-signal object_selected(station)
+signal object_selected(object)
 
 var default_object_shape : PackedScene = preload(
 	"res://Scenes/Userspace/Stations/default_station_shape.tscn"

@@ -8,6 +8,7 @@ class_name Play
 var islands : Array[Island] = []
 var focused_island : Island
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if main_island != null:
@@ -35,8 +36,18 @@ func _connect_islands():
 
 func _island_selected(target_island : Island):
 	if !menu.menu_locked:
-		focused_island = target_island
-		target_island.focus
+		if focused_island != target_island:
+			if focused_island != null:
+				focused_island.object_selected.disconnect(_island_object_selected)
+			focused_island = target_island
+			target_island.object_selected.connect(_island_object_selected)
+			target_island.focus()
+
+
+func _island_object_selected(object : IslandObject):
+	print("Play Recieved Island Object: ", object.object_name)
+	if menu.state == menu.MENU_STATES.DECORATE:
+		menu.decoration_menu.set_active_object(object)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
