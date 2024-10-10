@@ -62,6 +62,7 @@ func hide_all_auxmenus():
 
 
 func bottom_row_button(id : int):
+	print("Bottom Row Button: ", id)
 	if current_submenu != id:
 		hide_all_submenus(true)
 		submenu_root.show()
