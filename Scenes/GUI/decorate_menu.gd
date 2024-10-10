@@ -34,6 +34,7 @@ func hide_all():
 func set_active_object(object : IslandObject):
 	_reset_active_elements()
 	current_object = object
+	current_object.outline(true)
 	active_label.text = object.object_name
 	active_actions.show()
 	back_button.hide()

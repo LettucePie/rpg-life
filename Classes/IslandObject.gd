@@ -11,6 +11,7 @@ var outline_material : ShaderMaterial = preload(
 )
 
 var children_geometry : Array = []
+var outlined : bool = false
 
 @export var object_name : String
 
@@ -27,8 +28,6 @@ func initialize():
 	_connect_signals()
 	_groupify()
 	_find_geometries()
-	for g in children_geometry:
-		g.set_material_overlay(outline_material)
 
 
 func _check_shape() -> bool:
@@ -79,3 +78,12 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 		if event.pressed and event.button_index <= 1:
 			print("Object Pressed: ", object_name)
 			emit_signal("object_selected", self)
+
+
+func outline(tf):
+	if tf:
+		for geo in children_geometry:
+			geo.set_material_overlay(outline_material)
+	else:
+		for geo in children_geometry:
+			geo.set_material_overlay(null)
