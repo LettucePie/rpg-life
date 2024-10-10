@@ -7,6 +7,9 @@ var current_object : IslandObject
 @onready var active_icon : TextureRect = $ActiveHUD/ActiveVbox/ActiveIcon
 @onready var active_label : Label = $ActiveHUD/ActiveVbox/ActiveLabel
 
+## Static Elements
+@onready var back_button : BaseButton = $MarginContainer/BackButton
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clean()
@@ -25,6 +28,7 @@ func _reset_active_elements():
 
 func hide_all():
 	active_actions.hide()
+	back_button.show()
 
 
 func set_active_object(object : IslandObject):
@@ -32,8 +36,17 @@ func set_active_object(object : IslandObject):
 	current_object = object
 	active_label.text = object.object_name
 	active_actions.show()
+	back_button.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_back_button_pressed():
+	print("Exit Decorate")
+
+
+func _active_buttons(id : int):
+	print("Active Object Button Pressed. ID: ", id)

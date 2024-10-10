@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgh0rnbsb6o7q"]
+[gd_scene load_steps=8 format=3 uid="uid://dgh0rnbsb6o7q"]
 
 [ext_resource type="Theme" uid="uid://cosewbtd26cka" path="res://Assets/2D/UI/theme_a.tres" id="1_rvsfk"]
 [ext_resource type="Script" path="res://Scenes/GUI/decorate_menu.gd" id="1_yyjg0"]
 [ext_resource type="Texture2D" uid="uid://dakouoxyicrj4" path="res://icon.svg" id="3_0j1f7"]
+[ext_resource type="Texture2D" uid="uid://byhy7ay4gf8ah" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/buttonRound_beige.png" id="4_63ur0"]
+[ext_resource type="Texture2D" uid="uid://dfoi0btexvk1o" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/arrowBrown_left.png" id="5_sqfrd"]
 
 [sub_resource type="Gradient" id="Gradient_gobuk"]
 colors = PackedColorArray(0, 0, 0, 0.278431, 0, 0, 0, 0)
@@ -96,3 +98,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.189
+anchor_bottom = 0.106
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="BackButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_63ur0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BackIcon" type="TextureRect" parent="MarginContainer/BackButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.146
+anchor_top = 0.148
+anchor_right = 0.805
+anchor_bottom = 0.765
+offset_left = 0.0279989
+offset_top = 0.0120001
+offset_right = -0.0100021
+offset_bottom = 0.034996
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_sqfrd")
+stretch_mode = 5
+
+[connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/RemoveActive" to="." method="_active_buttons" binds= [0]]
+[connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DuplicateActive" to="." method="_active_buttons" binds= [1]]
+[connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DoneActive" to="." method="_active_buttons" binds= [2]]
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
