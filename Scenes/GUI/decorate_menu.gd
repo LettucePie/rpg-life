@@ -46,7 +46,9 @@ func _process(delta):
 
 func _on_back_button_pressed():
 	print("Exit Decorate")
+	## Save/update island data
 
 
 func _active_buttons(id : int):
 	print("Active Object Button Pressed. ID: ", id)
+	
