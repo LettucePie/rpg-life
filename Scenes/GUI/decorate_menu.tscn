@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgh0rnbsb6o7q"]
+[gd_scene load_steps=9 format=3 uid="uid://dgh0rnbsb6o7q"]
 
 [ext_resource type="Theme" uid="uid://cosewbtd26cka" path="res://Assets/2D/UI/theme_a.tres" id="1_rvsfk"]
 [ext_resource type="Script" path="res://Scenes/GUI/decorate_menu.gd" id="1_yyjg0"]
-[ext_resource type="Texture2D" uid="uid://dakouoxyicrj4" path="res://icon.svg" id="3_0j1f7"]
+[ext_resource type="Script" path="res://Classes/StudioTexture.gd" id="3_qr6gy"]
 [ext_resource type="Texture2D" uid="uid://byhy7ay4gf8ah" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/buttonRound_beige.png" id="4_63ur0"]
 [ext_resource type="Texture2D" uid="uid://dfoi0btexvk1o" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/arrowBrown_left.png" id="5_sqfrd"]
 
@@ -12,6 +12,11 @@ colors = PackedColorArray(0, 0, 0, 0.278431, 0, 0, 0, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_83u44"]
 gradient = SubResource("Gradient_gobuk")
 fill_to = Vector2(0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_egma1"]
+script = ExtResource("3_qr6gy")
+starting_angle = 0.392699
+rotate_cam = false
 
 [node name="DecorateMenu" type="Control"]
 layout_mode = 3
@@ -50,7 +55,7 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.75
-texture = ExtResource("3_0j1f7")
+texture = SubResource("ViewportTexture_egma1")
 expand_mode = 1
 stretch_mode = 5
 

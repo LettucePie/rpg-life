@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bempgiy0vwcbi"]
+
+[ext_resource type="Script" path="res://Scenes/GUI/icon_studio.gd" id="1_4poiq"]
+
+[sub_resource type="World3D" id="World3D_34xca"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p444h"]
+ground_curve = 0.32
+
+[sub_resource type="Sky" id="Sky_1pjbo"]
+sky_material = SubResource("ProceduralSkyMaterial_p444h")
+
+[sub_resource type="Environment" id="Environment_n3vc8"]
+background_mode = 2
+sky = SubResource("Sky_1pjbo")
+tonemap_mode = 2
+
+[node name="IconStudio" type="SubViewport"]
+own_world_3d = true
+world_3d = SubResource("World3D_34xca")
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+script = ExtResource("1_4poiq")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n3vc8")
+
+[node name="Spin" type="Node3D" parent="."]
+
+[node name="Distance" type="Node3D" parent="Spin"]
+transform = Transform3D(1, 0, 0, 0, 0.714082, 0.700062, 0, -0.700062, 0.714082, 0, 4.31921, 4.40571)
+
+[node name="Camera3D" type="Camera3D" parent="Spin/Distance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444546, 0)

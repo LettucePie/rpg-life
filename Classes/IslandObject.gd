@@ -80,7 +80,7 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 			emit_signal("object_selected", self)
 
 
-func outline(tf):
+func outline(tf : bool):
 	if tf:
 		for geo in children_geometry:
 			geo.set_material_overlay(outline_material)

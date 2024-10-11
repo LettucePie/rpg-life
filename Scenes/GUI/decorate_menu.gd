@@ -22,7 +22,7 @@ func clean():
 
 
 func _reset_active_elements():
-	active_icon.texture = null
+	active_icon.texture.clear_object()
 	active_label.text = ""
 
 
@@ -35,6 +35,7 @@ func set_active_object(object : IslandObject):
 	_reset_active_elements()
 	current_object = object
 	current_object.outline(true)
+	active_icon.texture.studio_capture_object(object)
 	active_label.text = object.object_name
 	active_actions.show()
 	back_button.hide()
