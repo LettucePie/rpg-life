@@ -4,18 +4,15 @@ class_name IconStudio
 var subject : IslandObject = null
 var rotate : bool = false
 var studiotex : StudioTexture = null
+var host_node : Control = null
 
 
-func prep_studio(object : IslandObject, 
-spin : bool, initial_angle : float, display : StudioTexture):
+func assign_subject(object : IslandObject):
 	if subject != null:
 		subject.queue_free()
 	subject = object
 	add_child(subject)
 	subject.outline(false)
-	subject.rotation.y = initial_angle
-	rotate = spin
-	studiotex = display
 
 
 func clear_subject():
@@ -23,8 +20,19 @@ func clear_subject():
 		subject.queue_free()
 
 
+func set_camera(spin : bool, initial_angle : float):
+	subject.rotation.y = initial_angle
+	rotate = spin
+
+
+func associate_nodes(display : StudioTexture, node : Control):
+	studiotex = display
+	host_node = node
+
+
 func _process(delta):
 	if rotate:
 		$Spin.rotate_y((PI / 8) * delta)
 	if studiotex != null:
-		print("studio_tex refcount: ", studiotex.get_reference_count())
+		if studiotex.get_reference_count() <= 1:
+			self.queue_free()

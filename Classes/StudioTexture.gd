@@ -13,7 +13,9 @@ func studio_capture_object(object : IslandObject):
 		var new_studio = studio_scene.instantiate()
 		get_local_scene().get_window().add_child(new_studio)
 		studio_node = new_studio
-	studio_node.prep_studio(object.duplicate(), rotate_cam, starting_angle, self)
+	studio_node.assign_subject(object.duplicate())
+	studio_node.set_camera(rotate_cam, starting_angle)
+	studio_node.associate_nodes(self, get_local_scene())
 	set_viewport_path_in_scene(studio_node.get_path())
 
 

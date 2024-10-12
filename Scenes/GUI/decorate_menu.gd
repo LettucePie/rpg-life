@@ -54,3 +54,16 @@ func _on_back_button_pressed():
 func _active_buttons(id : int):
 	print("Active Object Button Pressed. ID: ", id)
 	
+
+
+##
+##
+## Testing
+func _input(event):
+	if event is InputEventKey:
+		if event.keycode == KEY_SPACE and event.pressed and is_instance_valid(active_icon):
+			print("Delete Icon")
+			active_icon.queue_free()
+		if event.keycode == KEY_H and event.pressed and is_instance_valid(active_icon):
+			print("Hide Icon")
+			active_icon.hide()
