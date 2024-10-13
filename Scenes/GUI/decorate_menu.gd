@@ -1,6 +1,9 @@
 extends Control
 class_name DecorateMenu
 
+## Constants
+const ROTATE_SPEED : float = 0.045
+
 ## Active Elements
 var current_object : IslandObject
 @onready var active_actions : Container = $ActiveHUD/ActiveVbox/ActiveActions
@@ -10,6 +13,9 @@ var current_object : IslandObject
 ## Static Elements
 @onready var back_button : BaseButton = $MarginContainer/BackButton
 @onready var edit_tools : Control = $Edit_Toolset
+
+## Tool States
+var rotating : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -57,3 +63,16 @@ func _active_buttons(id : int):
 	print("Active Object Button Pressed. ID: ", id)
 	
 
+
+func _on_rotate_zone_pressed():
+	rotating = true
+	print("Begin Rotating")
+
+
+func _input(event):
+	if rotating and event is InputEventMouseButton:
+		if event.pressed == false:
+			print("End Rotating")
+			rotating = false
+	if rotating and event is InputEventMouseMotion:
+		current_object.rotate_y((event.relative.x / PI) * ROTATE_SPEED)

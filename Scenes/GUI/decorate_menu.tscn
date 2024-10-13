@@ -107,6 +107,7 @@ offset_top = 3.05176e-05
 offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
+action_mode = 0
 texture_normal = ExtResource("4_wbw3g")
 ignore_texture_size = true
 stretch_mode = 0
@@ -155,4 +156,5 @@ stretch_mode = 5
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/RemoveActive" to="." method="_active_buttons" binds= [0]]
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DuplicateActive" to="." method="_active_buttons" binds= [1]]
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DoneActive" to="." method="_active_buttons" binds= [2]]
+[connection signal="pressed" from="Edit_Toolset/RotateZone" to="." method="_on_rotate_zone_pressed"]
 [connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
