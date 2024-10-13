@@ -9,6 +9,7 @@ var current_object : IslandObject
 
 ## Static Elements
 @onready var back_button : BaseButton = $MarginContainer/BackButton
+@onready var edit_tools : Control = $Edit_Toolset
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +30,7 @@ func _reset_active_elements():
 func hide_all():
 	active_actions.hide()
 	back_button.show()
+	edit_tools.hide()
 
 
 func set_active_object(object : IslandObject):
@@ -39,9 +41,9 @@ func set_active_object(object : IslandObject):
 	active_label.text = object.object_name
 	active_actions.show()
 	back_button.hide()
+	edit_tools.show()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 

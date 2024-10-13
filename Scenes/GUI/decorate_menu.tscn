@@ -88,6 +88,7 @@ size_flags_horizontal = 3
 text = "Done"
 
 [node name="Edit_Toolset" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_top = 0.871
 anchor_right = 1.0
@@ -96,13 +97,14 @@ offset_top = -0.160034
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="Edit_Toolset"]
+[node name="RotateZone" type="TextureButton" parent="Edit_Toolset"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.185
+anchor_top = -0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.0599995
+offset_top = 3.05176e-05
+offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("4_wbw3g")

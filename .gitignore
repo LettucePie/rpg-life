@@ -1,5 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 *.kra~
+*.png~
 *.blend1
 *.~lock*
