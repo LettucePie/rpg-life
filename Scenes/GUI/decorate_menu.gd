@@ -48,6 +48,8 @@ func set_active_object(object : IslandObject):
 	active_actions.show()
 	back_button.hide()
 	edit_tools.show()
+	##
+	PlayerInput.movement_locked = false
 
 
 func _process(delta):
@@ -67,6 +69,8 @@ func _active_buttons(id : int):
 func _on_rotate_zone_pressed():
 	rotating = true
 	print("Begin Rotating")
+	##
+	PlayerInput.movement_locked = true
 
 
 func _input(event):
@@ -74,5 +78,7 @@ func _input(event):
 		if event.pressed == false:
 			print("End Rotating")
 			rotating = false
+			##
+			PlayerInput.movement_locked = false
 	if rotating and event is InputEventMouseMotion:
 		current_object.rotate_y((event.relative.x / PI) * ROTATE_SPEED)

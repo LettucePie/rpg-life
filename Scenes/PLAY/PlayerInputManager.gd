@@ -3,8 +3,6 @@ class_name PlayerInputManager
 ## Handles Player inputs in 3D worldspace
 ## Menu navigation is independant
 
-signal manipulate_camera(vec_in)
-
 ## Setup
 var play : Play = null
 
@@ -27,12 +25,15 @@ func object_selected(object : Node3D):
 
 func object_released(object : Node3D):
 	print("InputManager Released: ", object)
+	selected_object = null
 
 
 func _input(event):
 	if event is InputEventMouseMotion and selected_object != null:
 		if selected_object is Island and !camera_locked:
-			emit_signal("manipulate_camera", event.relative)
+			play.manipulate_camera(event.relative)
 		if selected_object is IslandObject and !movement_locked:
-			pass
+			play.focused_island.translate_object(
+				selected_object, event.relative, play.cam_dial
+			)
 

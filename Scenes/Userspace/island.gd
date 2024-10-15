@@ -1,9 +1,9 @@
 extends Node3D
 class_name Island
 ## 3D Visual host of PlayerData stations and decorations (IslandObjects)
-## Also forwards inputs to camera manipulation
 
 signal island_selected(island)
+signal island_released(island)
 
 var focused : bool = false
 @export var object_container : Node3D
@@ -20,10 +20,16 @@ func _on_island_area_input_event(camera, event, position, normal, shape_idx):
 		if event.pressed and event.button_index <= 1:
 			print("Island Selected: ", self)
 			emit_signal("island_selected", self)
+		else:
+			emit_signal("island_released", self)
 
 
 func focus():
 	print("Island Being Focused: ", self)
+	if !is_connected("island_selected", PlayerInput.object_selected):
+		connect("island_selected", PlayerInput.object_selected)
+	if !is_connected("island_released", PlayerInput.object_released):
+		connect("island_released", PlayerInput.object_released)
 	objects.clear()
 	stations.clear()
 	if object_container != null:
@@ -47,7 +53,17 @@ func _connect_objects():
 
 func unfocus():
 	focused = false
+	if is_connected("island_selected", PlayerInput.object_selected):
+		disconnect("island_selected", PlayerInput.object_selected)
+	if is_connected("island_released", PlayerInput.object_released):
+		disconnect("island_released", PlayerInput.object_released)
 	if objects.size() > 0:
 		for io in objects:
 			if io is IslandObject:
 				io.disconnect_signals()
+
+
+func translate_object(
+	target_object : IslandObject, 
+	input_vec : Vector2, cam_dial : Node3D):
+	print("Moving Object: ", target_object, " by: ", input_vec, " against angle of: ", cam_dial)

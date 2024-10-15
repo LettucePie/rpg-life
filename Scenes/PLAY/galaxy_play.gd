@@ -4,6 +4,8 @@ class_name Play
 ## Also loads in PlayerData and connected Players PlayerData into the "Galaxy"
 
 @onready var menu : GalaxyMenu = $GalaxyMenu
+@onready var cam_dial : Node3D = $CameraDial
+@onready var cam : Camera3D = get_viewport().get_camera_3d()
 @export var island_container : Node3D
 @export var main_island : Island
 
@@ -49,7 +51,12 @@ func _island_selected(target_island : Island):
 func island_object_selected(object : IslandObject):
 	print("Play Recieved Island Object: ", object.object_name)
 	if menu.state == menu.MENU_STATES.DECORATE:
-		menu.decoration_menu.set_active_object(object)
+		if menu.decoration_menu.current_object != object:
+			menu.decoration_menu.set_active_object(object)
+
+
+func manipulate_camera(input_vec : Vector2):
+	print("Manipulating Camera by: ", input_vec)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
