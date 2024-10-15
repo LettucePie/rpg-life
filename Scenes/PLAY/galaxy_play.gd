@@ -57,6 +57,7 @@ func island_object_selected(object : IslandObject):
 
 func manipulate_camera(input_vec : Vector2):
 	print("Manipulating Camera by: ", input_vec)
+	cam_dial.rotate_y((input_vec.x / PI) * -0.045)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

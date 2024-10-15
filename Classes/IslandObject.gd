@@ -68,12 +68,10 @@ func _groupify():
 
 
 func _find_geometries():
-	print("Finding Meshes/GeometryInstances")
 	var pile = []
 	var array = get_children()
 	_iterate(array, pile)
 	for node in pile:
-		print(node)
 		if node is GeometryInstance3D:
 			children_geometry.append(node)
 
