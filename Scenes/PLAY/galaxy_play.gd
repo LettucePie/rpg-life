@@ -1,5 +1,7 @@
 extends Node
 class_name Play
+## Coordinates the interaction between 3D world events into 2D GUI events
+## Also loads in PlayerData and connected Players PlayerData into the "Galaxy"
 
 @onready var menu : GalaxyMenu = $GalaxyMenu
 @export var island_container : Node3D
@@ -11,6 +13,7 @@ var focused_island : Island
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	PlayerInput._introduce_play(self)
 	if main_island != null:
 		_gather_islands()
 		_connect_islands()
@@ -38,13 +41,12 @@ func _island_selected(target_island : Island):
 	if !menu.menu_locked:
 		if focused_island != target_island:
 			if focused_island != null:
-				focused_island.object_selected.disconnect(_island_object_selected)
+				focused_island.unfocus()
 			focused_island = target_island
-			target_island.object_selected.connect(_island_object_selected)
 			target_island.focus()
 
 
-func _island_object_selected(object : IslandObject):
+func island_object_selected(object : IslandObject):
 	print("Play Recieved Island Object: ", object.object_name)
 	if menu.state == menu.MENU_STATES.DECORATE:
 		menu.decoration_menu.set_active_object(object)

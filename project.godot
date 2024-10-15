@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/PLAY/galaxy_play.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerInput="*res://Scenes/PLAY/player_input_manager.tscn"
+
 [display]
 
 window/size/viewport_width=540

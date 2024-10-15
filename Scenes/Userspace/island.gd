@@ -1,8 +1,9 @@
 extends Node3D
 class_name Island
+## 3D Visual host of PlayerData stations and decorations (IslandObjects)
+## Also forwards inputs to camera manipulation
 
 signal island_selected(island)
-signal object_selected(object)
 
 var focused : bool = false
 @export var object_container : Node3D
@@ -17,6 +18,7 @@ func _ready():
 func _on_island_area_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index <= 1:
+			print("Island Selected: ", self)
 			emit_signal("island_selected", self)
 
 
@@ -40,11 +42,12 @@ func _connect_objects():
 	if objects.size() > 0:
 		for io in objects:
 			if io is IslandObject:
-				if !io.object_selected.is_connected(_object_selected):
-					io.object_selected.connect(_object_selected)
+				io.connect_signals()
 
 
-func _object_selected(object : IslandObject):
-	if focused:
-		print("Island Recieved object selection: ", object.object_name)
-		emit_signal("object_selected", object)
+func unfocus():
+	focused = false
+	if objects.size() > 0:
+		for io in objects:
+			if io is IslandObject:
+				io.disconnect_signals()

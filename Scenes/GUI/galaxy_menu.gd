@@ -1,5 +1,7 @@
 extends Control
 class_name GalaxyMenu
+## Governs the Primary and Secondary (Sub) menus.
+## Visibility State Machine
 
 enum MENU_STATES {
 	FREE,

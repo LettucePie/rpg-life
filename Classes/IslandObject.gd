@@ -2,7 +2,12 @@ extends StaticBody3D
 class_name IslandObject
 
 signal object_selected(object)
+signal object_released(object)
 
+## Settings
+@export var object_name : String
+
+## Assets
 var default_object_shape : PackedScene = preload(
 	"res://Scenes/Userspace/Stations/default_station_shape.tscn"
 	)
@@ -10,10 +15,13 @@ var outline_material : ShaderMaterial = preload(
 	"res://Assets/3D/Materials/FX/outline_shader_mat.tres"
 )
 
+## Visual
 var children_geometry : Array = []
 var outlined : bool = false
 
-@export var object_name : String
+
+## Input States
+var held : bool = false
 
 
 func _ready():
@@ -25,7 +33,7 @@ func initialize():
 		print("**ERROR**")
 		print("Object Missing Shape: ", object_name, " | ", self.name)
 		add_child(default_object_shape.instantiate())
-	_connect_signals()
+	connect_signals()
 	_groupify()
 	_find_geometries()
 
@@ -38,9 +46,20 @@ func _check_shape() -> bool:
 	return result
 
 
-func _connect_signals():
+func connect_signals():
 	if !is_connected("input_event", _on_input_event):
 		input_event.connect(_on_input_event)
+	if !is_connected("object_selected", PlayerInput.object_selected):
+		connect("object_selected", PlayerInput.object_selected)
+	if !is_connected("object_released", PlayerInput.object_released):
+		connect("object_released", PlayerInput.object_released)
+
+
+func disconnect_signals():
+	if is_connected("object_selected", PlayerInput.object_selected):
+		disconnect("object_selected", PlayerInput.object_selected)
+	if is_connected("object_released", PlayerInput.object_released):
+		disconnect("object_released", PlayerInput.object_released)
 
 
 func _groupify():
@@ -77,7 +96,11 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index <= 1:
 			print("Object Pressed: ", object_name)
+			held = true
 			emit_signal("object_selected", self)
+		else:
+			held = false
+			emit_signal("object_released", self)
 
 
 func outline(tf : bool):
