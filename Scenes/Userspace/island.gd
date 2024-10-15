@@ -63,8 +63,5 @@ func unfocus():
 				io.disconnect_signals()
 
 
-func translate_object(
-	target_object : IslandObject, 
-	input_vec : Vector2, cam_dial : Node3D):
-	print("Moving Object: ", target_object, " by: ", input_vec, " against angle of: ", cam_dial)
-	
+func translate_object(target_object : IslandObject, target_pos : Vector3):
+	target_object.global_position = target_pos

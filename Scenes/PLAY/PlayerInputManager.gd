@@ -38,7 +38,20 @@ func _input(event):
 		if selected_object is Island and !camera_locked:
 			play.manipulate_camera(event.relative)
 		if selected_object is IslandObject and !movement_locked:
-			play.focused_island.translate_object(
-				selected_object, event.relative, play.cam_dial
-			)
+			var world_pos : Vector3 = plane_projection(event.global_position, play.cam)
+			play.focused_island.translate_object(selected_object, world_pos)
 
+
+## Nice Answer Theraot
+## https://gamedev.stackexchange.com/questions/194616/
+func plane_projection(mouse_pos : Vector2, cam : Camera3D):
+	var result : Vector3 = Vector3.ZERO
+	##
+	var origin : Vector3 = cam.project_ray_origin(mouse_pos)
+	var normal : Vector3 = cam.project_ray_normal(mouse_pos)
+	var distance : float = play.focused_island.global_position.distance_to(cam.global_position)
+	if normal.y != 0:
+		distance = -origin.y / normal.y
+	result = origin + normal * distance
+	##
+	return result
