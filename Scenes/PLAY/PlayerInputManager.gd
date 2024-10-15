@@ -29,6 +29,11 @@ func object_released(object : Node3D):
 
 
 func _input(event):
+	if event is InputEventMouseButton:
+		if !event.pressed and selected_object != null:
+			if selected_object is IslandObject:
+				selected_object.held = false
+			selected_object = null
 	if event is InputEventMouseMotion and selected_object != null:
 		if selected_object is Island and !camera_locked:
 			play.manipulate_camera(event.relative)
