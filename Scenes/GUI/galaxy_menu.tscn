@@ -883,3 +883,4 @@ layout_mode = 1
 [connection signal="pressed" from="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer/StockButton" to="." method="inventory_sub_button" binds= [0]]
 [connection signal="pressed" from="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer/CraftingButton" to="." method="inventory_sub_button" binds= [1]]
 [connection signal="pressed" from="SubMenus/InventorySubMenu/BackPanel/InventoryControls/VBoxContainer/DecorateButton" to="." method="inventory_sub_button" binds= [2]]
+[connection signal="exit_decorate" from="DecorateMenu" to="." method="_on_decorate_menu_exit_decorate"]

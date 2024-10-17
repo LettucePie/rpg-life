@@ -51,6 +51,11 @@ func hide_all_primary():
 		control.hide()
 
 
+func show_all_primary():
+	for control in primary_menu_elements:
+		control.show()
+
+
 func hide_all_submenus(thorough : bool):
 	if thorough:
 		for child in submenu_root.get_children():
@@ -95,3 +100,12 @@ func inventory_sub_button(id : int):
 		hide_all_primary()
 		decoration_menu.show()
 		set_menu_state(MENU_STATES.DECORATE)
+
+
+func _on_decorate_menu_exit_decorate():
+	if state == MENU_STATES.DECORATE:
+		decoration_menu.hide()
+		hide_all_submenus(true)
+		show_all_primary()
+		set_menu_state(MENU_STATES.FREE)
+		current_submenu = -1

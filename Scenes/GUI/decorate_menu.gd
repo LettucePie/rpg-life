@@ -1,6 +1,8 @@
 extends Control
 class_name DecorateMenu
 
+signal exit_decorate()
+
 ## Constants
 const ROTATE_SPEED : float = 0.045
 
@@ -70,6 +72,7 @@ func _process(delta):
 
 func _on_back_button_pressed():
 	print("Exit Decorate")
+	emit_signal("exit_decorate")
 	## Save/update island data
 
 
