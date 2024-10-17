@@ -12,6 +12,7 @@ func assign_subject(object : IslandObject):
 		subject.queue_free()
 	subject = object
 	add_child(subject)
+	subject.position = Vector3.ZERO
 	subject.outline(false)
 
 

@@ -52,6 +52,18 @@ func set_active_object(object : IslandObject):
 	PlayerInput.movement_locked = false
 
 
+func unset_active_object():
+	_reset_active_elements()
+	if current_object != null:
+		current_object.outline(false)
+	current_object = null
+	active_actions.hide()
+	back_button.show()
+	edit_tools.hide()
+	##
+	PlayerInput.movement_locked = true
+
+
 func _process(delta):
 	pass
 
@@ -62,8 +74,13 @@ func _on_back_button_pressed():
 
 
 func _active_buttons(id : int):
-	print("Active Object Button Pressed. ID: ", id)
-	
+	if id == 0:
+		print("Remove Active Decoration")
+	elif id == 1:
+		print("Duplicate Active Decoration")
+	elif id == 2:
+		print("Finish Manipulating Active Decoration")
+		unset_active_object()
 
 
 func _on_rotate_zone_pressed():
