@@ -21,6 +21,8 @@ func object_selected(object : Node3D):
 	selected_object = object
 	if object is IslandObject:
 		play.island_object_selected(object)
+	if object is Island and !camera_locked:
+		play.set_cam_anchor(plane_projection(get_window().get_mouse_position(), play.cam))
 
 
 func object_released(object : Node3D):
@@ -36,7 +38,8 @@ func _input(event):
 			selected_object = null
 	if event is InputEventMouseMotion and selected_object != null:
 		if selected_object is Island and !camera_locked:
-			play.manipulate_camera(event.relative)
+			#play.manipulate_camera(event.relative)
+			play.manipulate_camera(plane_projection(event.global_position, play.cam))
 		if selected_object is IslandObject and !movement_locked:
 			var world_pos : Vector3 = plane_projection(event.global_position, play.cam)
 			play.focused_island.translate_object(selected_object, world_pos)

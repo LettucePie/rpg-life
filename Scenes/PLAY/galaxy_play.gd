@@ -11,6 +11,7 @@ class_name Play
 
 var islands : Array[Island] = []
 var focused_island : Island
+var camera_anchor : Vector3 = Vector3.ZERO
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,9 +56,15 @@ func island_object_selected(object : IslandObject):
 			menu.decoration_menu.set_active_object(object)
 
 
-func manipulate_camera(input_vec : Vector2):
-	print("Manipulating Camera by: ", input_vec)
-	cam_dial.rotate_y((input_vec.x / PI) * -0.045)
+func set_cam_anchor(world_pos : Vector3):
+	camera_anchor = world_pos
+	$pointer_a.position = world_pos
+
+
+func manipulate_camera(world_pos : Vector3):
+	#print("Manipulating Camera by: ", input_vec)
+	#cam_dial.rotate_y((input_vec.x / PI) * -0.045)
+	$pointer_b.position = world_pos
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
