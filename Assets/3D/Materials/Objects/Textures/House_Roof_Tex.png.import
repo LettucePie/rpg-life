@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://l81vwj1pubqi"
 path.s3tc="res://.godot/imported/House_Roof_Tex.png-effd85eff89235cd4461eafc33e21ebf.s3tc.ctex"
+path.etc2="res://.godot/imported/House_Roof_Tex.png-effd85eff89235cd4461eafc33e21ebf.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/3D/Materials/Objects/Textures/House_Roof_Tex.png"
-dest_files=["res://.godot/imported/House_Roof_Tex.png-effd85eff89235cd4461eafc33e21ebf.s3tc.ctex"]
+dest_files=["res://.godot/imported/House_Roof_Tex.png-effd85eff89235cd4461eafc33e21ebf.s3tc.ctex", "res://.godot/imported/House_Roof_Tex.png-effd85eff89235cd4461eafc33e21ebf.etc2.ctex"]
 
 [params]
 
