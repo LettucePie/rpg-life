@@ -9,6 +9,7 @@ var play : Play = null
 ## Dynamic
 var selected_object : Node3D = null
 var camera_locked : bool = false
+var camera_input_clone : Camera3D = null
 var movement_locked : bool = true
 
 
@@ -22,7 +23,8 @@ func object_selected(object : Node3D):
 	if object is IslandObject:
 		play.island_object_selected(object)
 	if object is Island and !camera_locked:
-		play.set_cam_anchor(plane_projection(get_window().get_mouse_position(), play.cam))
+		_conjure_input_camera(play.cam)
+		play.set_cam_anchor(plane_projection(get_window().get_mouse_position(), camera_input_clone))
 
 
 func object_released(object : Node3D):
@@ -32,17 +34,27 @@ func object_released(object : Node3D):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		if !event.pressed and selected_object != null:
+		if !event.pressed:
 			if selected_object is IslandObject:
 				selected_object.held = false
+			elif selected_object is Island:
+				if is_instance_valid(camera_input_clone):
+					camera_input_clone.queue_free()
+				camera_input_clone = null
 			selected_object = null
 	if event is InputEventMouseMotion and selected_object != null:
 		if selected_object is Island and !camera_locked:
 			#play.manipulate_camera(event.relative)
-			play.manipulate_camera(plane_projection(event.global_position, play.cam))
+			play.manipulate_camera(plane_projection(event.global_position, camera_input_clone))
 		if selected_object is IslandObject and !movement_locked:
 			var world_pos : Vector3 = plane_projection(event.global_position, play.cam)
 			play.focused_island.translate_object(selected_object, world_pos)
+
+
+func _conjure_input_camera(target_cam : Camera3D):
+	camera_input_clone = Camera3D.new()
+	camera_input_clone.global_transform = target_cam.global_transform
+	add_child(camera_input_clone)
 
 
 ## Nice Answer Theraot
