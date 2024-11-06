@@ -60,19 +60,14 @@ func island_object_selected(object : IslandObject):
 
 func set_cam_anchor(world_pos : Vector3):
 	camera_anchor = world_pos
-	$pointer_a.position = world_pos
 	camera_anchor_dir = cam_dial.basis * Vector3.FORWARD
 	print("camera_anchor_dir: ", camera_anchor_dir)
 	camera_anchor_rot = cam_dial.rotation
 
 
 func manipulate_camera(world_pos : Vector3):
-	#print("Manipulating Camera by: ", input_vec)
-	#cam_dial.rotate_y((input_vec.x / PI) * -0.045)
-	$pointer_b.position = world_pos
 	var angle_a = camera_anchor_dir.signed_angle_to(camera_anchor, Vector3.UP)
 	var angle_b = camera_anchor_dir.signed_angle_to(world_pos, Vector3.UP)
-	print("A: ", angle_a, "  |  B: ", angle_b, "  |  difference: ", angle_a - angle_b)
 	cam_dial.rotation.y = camera_anchor_rot.y + (angle_a - angle_b)
 
 

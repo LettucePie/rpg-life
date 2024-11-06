@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://oorapa2wllas"]
+[gd_scene load_steps=5 format=3 uid="uid://oorapa2wllas"]
 
 [ext_resource type="Script" path="res://Scenes/PLAY/galaxy_play.gd" id="1_d75na"]
 [ext_resource type="PackedScene" uid="uid://bumidsvtd0rql" path="res://Scenes/GUI/galaxy_menu.tscn" id="2_p6km3"]
 [ext_resource type="PackedScene" uid="uid://dbrr8gpliiu2s" path="res://Scenes/Userspace/camera_dial.tscn" id="3_f2ti4"]
 [ext_resource type="PackedScene" uid="uid://pbcncmyk6ao2" path="res://Scenes/Userspace/island.tscn" id="4_q7c1h"]
-[ext_resource type="PackedScene" uid="uid://df6g8qcjqokfv" path="res://Assets/3D/Models/Generic/pointer.glb" id="5_qqb0a"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3g71"]
-albedo_color = Color(1, 0.258824, 1, 1)
 
 [node name="Galaxy" type="Node" node_paths=PackedStringArray("island_container", "main_island")]
 script = ExtResource("1_d75na")
@@ -21,12 +17,3 @@ main_island = NodePath("Islands/MainIsland")
 [node name="MainIsland" parent="Islands" instance=ExtResource("4_q7c1h")]
 
 [node name="CameraDial" parent="." instance=ExtResource("3_f2ti4")]
-
-[node name="pointer_a" parent="." instance=ExtResource("5_qqb0a")]
-
-[node name="pointer_b" parent="." instance=ExtResource("5_qqb0a")]
-
-[node name="pointer" parent="pointer_b" index="0"]
-material_override = SubResource("StandardMaterial3D_h3g71")
-
-[editable path="pointer_b"]
