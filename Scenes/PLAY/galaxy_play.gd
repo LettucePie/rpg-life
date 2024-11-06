@@ -70,8 +70,8 @@ func manipulate_camera(world_pos : Vector3):
 	#print("Manipulating Camera by: ", input_vec)
 	#cam_dial.rotate_y((input_vec.x / PI) * -0.045)
 	$pointer_b.position = world_pos
-	var angle_a = camera_anchor_dir.angle_to(camera_anchor)
-	var angle_b = camera_anchor_dir.angle_to(world_pos)
+	var angle_a = camera_anchor_dir.signed_angle_to(camera_anchor, Vector3.UP)
+	var angle_b = camera_anchor_dir.signed_angle_to(world_pos, Vector3.UP)
 	print("A: ", angle_a, "  |  B: ", angle_b, "  |  difference: ", angle_a - angle_b)
 	cam_dial.rotation.y = camera_anchor_rot.y + (angle_a - angle_b)
 
