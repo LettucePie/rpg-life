@@ -82,9 +82,6 @@ func _on_back_button_pressed():
 	## Save/update island data
 
 
-func _on_spawn_button_pressed():
-	pass # Replace with function body.
-
 
 func _active_buttons(id : int):
 	if id == 0:
@@ -101,6 +98,13 @@ func _on_rotate_zone_pressed():
 	print("Begin Rotating")
 	##
 	PlayerInput.movement_locked = true
+
+
+func _on_spawn_button_pressed():
+	if spawn_tools.visible:
+		spawn_tools.hide()
+	else:
+		spawn_tools.show()
 
 
 func _input(event):
