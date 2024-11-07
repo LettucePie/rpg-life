@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=26 format=3 uid="uid://cosewbtd26cka"]
+[gd_resource type="Theme" load_steps=27 format=3 uid="uid://cosewbtd26cka"]
 
 [ext_resource type="StyleBox" uid="uid://dstf4yr12n44n" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_highlight_beige_stylebox_texture.tres" id="1_1x1is"]
 [ext_resource type="StyleBox" uid="uid://bnmkyo634a12c" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_normal_beige_stylebox_texture.tres" id="1_3ocjr"]
@@ -20,6 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://sygu6lv3rrs8" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_highlight_white_stylebox_texture.tres" id="9_baahx"]
 [ext_resource type="StyleBox" uid="uid://ddv3kw5map7e8" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_normal_white_stylebox_texture.tres" id="10_6sbn3"]
 [ext_resource type="StyleBox" uid="uid://blakub8yc5k08" path="res://Assets/2D/UI/Styles/Buttons/smallbutton_pressed_white_stylebox_texture.tres" id="11_ww1ob"]
+[ext_resource type="Texture2D" uid="uid://qx76ee12xhy7" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/iconCross_grey.png" id="17_lmmnk"]
 [ext_resource type="StyleBox" uid="uid://gh0w88q84s7r" path="res://Assets/2D/UI/Styles/Panels/panel_space_stylebox_texture.tres" id="20_g8ca7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4u2u"]
@@ -63,6 +64,17 @@ InletBrown/base_type = &"Panel"
 InletBrown/styles/panel = ExtResource("4_0vxx3")
 InletWhite/base_type = &"Panel"
 InletWhite/styles/panel = ExtResource("5_vngcw")
+LineEdit/colors/caret_color = Color(0.281185, 0.281187, 0.281187, 1)
+LineEdit/colors/clear_button_color = Color(0.212304, 0.212305, 0.212305, 1)
+LineEdit/colors/clear_button_color_pressed = Color(0.252026, 0.252028, 0.252028, 1)
+LineEdit/colors/font_color = Color(0.212304, 0.212305, 0.212305, 1)
+LineEdit/colors/font_outline_color = Color(0.183589, 0.183591, 0.183591, 1)
+LineEdit/colors/font_placeholder_color = Color(0.211765, 0.211765, 0.211765, 0.72549)
+LineEdit/colors/font_selected_color = Color(0.240725, 0.242583, 0.358473, 1)
+LineEdit/colors/font_uneditable_color = Color(0.875, 0.875, 0.875, 0.5)
+LineEdit/icons/clear = ExtResource("17_lmmnk")
+LineEdit/styles/normal = ExtResource("5_vngcw")
+LineEdit/styles/read_only = ExtResource("3_s5pun")
 Panel/styles/panel = ExtResource("6_d3f6n")
 PanelBlue/base_type = &"Panel"
 PanelBlue/styles/panel = ExtResource("7_0kqk6")

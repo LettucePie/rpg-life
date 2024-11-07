@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgh0rnbsb6o7q"]
+[gd_scene load_steps=12 format=3 uid="uid://dgh0rnbsb6o7q"]
 
 [ext_resource type="Theme" uid="uid://cosewbtd26cka" path="res://Assets/2D/UI/theme_a.tres" id="1_rvsfk"]
 [ext_resource type="Script" path="res://Scenes/GUI/decorate_menu.gd" id="1_yyjg0"]
 [ext_resource type="Script" path="res://Classes/StudioTexture.gd" id="3_qr6gy"]
 [ext_resource type="Texture2D" uid="uid://byhy7ay4gf8ah" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/buttonRound_beige.png" id="4_63ur0"]
 [ext_resource type="Texture2D" uid="uid://quv7hi83dri5" path="res://Assets/2D/UI/rotate_guide.png" id="4_wbw3g"]
+[ext_resource type="Texture2D" uid="uid://b2ojkeh0osuwj" path="res://Assets/ThirdParty/Kenney-NL/Game Icons/PNG_White_2x/zoom.png" id="5_onxd7"]
 [ext_resource type="Texture2D" uid="uid://dfoi0btexvk1o" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/arrowBrown_left.png" id="5_sqfrd"]
 [ext_resource type="Texture2D" uid="uid://bmw3p4hxrnsnd" path="res://Assets/2D/UI/decorate_button_big.png" id="7_t4c4m"]
 
@@ -135,28 +136,31 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SearchBar" type="HBoxContainer" parent="Spawn_Toolset/Panel/List"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
 
-[node name="Panel" type="Panel" parent="Spawn_Toolset/Panel/List/SearchBar"]
+[node name="LineEdit" type="LineEdit" parent="Spawn_Toolset/Panel/List/SearchBar"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_type_variation = &"InletWhite"
+placeholder_text = "Search..."
+max_length = 36
+clear_button_enabled = true
 
-[node name="LineEdit" type="LineEdit" parent="Spawn_Toolset/Panel/List/SearchBar/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="Spawn_Toolset/Panel/List/SearchBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+texture = ExtResource("5_onxd7")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="CategoryRow" type="HBoxContainer" parent="Spawn_Toolset/Panel/List"]
 layout_mode = 2
