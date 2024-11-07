@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3a4icdi5y3hc"]
+
+[ext_resource type="Script" path="res://Classes/IslandObject.gd" id="1_putjd"]
+[ext_resource type="PackedScene" uid="uid://4d7apb2xy8mx" path="res://Assets/3D/Models/Foliage/pinetree_a.glb" id="2_700f7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wf33w"]
+height = 2.39144
+radius = 0.983859
+
+[node name="PinetreeA" type="StaticBody3D"]
+script = ExtResource("1_putjd")
+object_name = "Pine Tree B \"TEST\""
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17961, 0)
+shape = SubResource("CylinderShape3D_wf33w")
+
+[node name="pinetree_a2" parent="." instance=ExtResource("2_700f7")]
+transform = Transform3D(0.558412, 0, 0, 0, 0.558412, 0, 0, 0, 0.558412, 0, 0.0515704, 0)

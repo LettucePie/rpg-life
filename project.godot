@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerInput="*res://Scenes/PLAY/player_input_manager.tscn"
+IslandObjectCompendium="*res://Scenes/PLAY/IslandObjectCompendium.gd"
 
 [display]
 
