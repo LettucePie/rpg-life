@@ -15,6 +15,7 @@ var current_object : IslandObject
 ## Static Elements
 @onready var back_button : BaseButton = $MarginContainer/BackButton
 @onready var edit_tools : Control = $Edit_Toolset
+@onready var spawn_tools : Control = $Spawn_Toolset
 
 ## Tool States
 var rotating : bool = false
@@ -39,6 +40,7 @@ func hide_all():
 	active_actions.hide()
 	back_button.show()
 	edit_tools.hide()
+	spawn_tools.hide()
 
 
 func set_active_object(object : IslandObject):
