@@ -8,12 +8,13 @@ const ROTATE_SPEED : float = 0.045
 
 ## Active Elements
 var current_object : IslandObject
-@onready var active_actions : Container = $ActiveHUD/ActiveVbox/ActiveActions
+@onready var active_actions : Control = $ActiveHUD
 @onready var active_icon : TextureRect = $ActiveHUD/ActiveVbox/ActiveIcon
 @onready var active_label : Label = $ActiveHUD/ActiveVbox/ActiveLabel
 
 ## Static Elements
 @onready var back_button : BaseButton = $MarginContainer/BackButton
+@onready var spawn_button : BaseButton = $MarginContainer2/SpawnButton
 @onready var edit_tools : Control = $Edit_Toolset
 @onready var spawn_tools : Control = $Spawn_Toolset
 
@@ -39,6 +40,7 @@ func _reset_active_elements():
 func hide_all():
 	active_actions.hide()
 	back_button.show()
+	spawn_button.show()
 	edit_tools.hide()
 	spawn_tools.hide()
 
@@ -51,6 +53,7 @@ func set_active_object(object : IslandObject):
 	active_label.text = object.object_name
 	active_actions.show()
 	back_button.hide()
+	spawn_button.hide()
 	edit_tools.show()
 	##
 	PlayerInput.movement_locked = false
@@ -63,6 +66,7 @@ func unset_active_object():
 	current_object = null
 	active_actions.hide()
 	back_button.show()
+	spawn_button.show()
 	edit_tools.hide()
 	##
 	PlayerInput.movement_locked = true
@@ -76,6 +80,10 @@ func _on_back_button_pressed():
 	print("Exit Decorate")
 	emit_signal("exit_decorate")
 	## Save/update island data
+
+
+func _on_spawn_button_pressed():
+	pass # Replace with function body.
 
 
 func _active_buttons(id : int):
@@ -104,3 +112,4 @@ func _input(event):
 			PlayerInput.movement_locked = false
 	if rotating and event is InputEventMouseMotion:
 		current_object.rotate_y((event.relative.x / PI) * ROTATE_SPEED)
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgh0rnbsb6o7q"]
+[gd_scene load_steps=11 format=3 uid="uid://dgh0rnbsb6o7q"]
 
 [ext_resource type="Theme" uid="uid://cosewbtd26cka" path="res://Assets/2D/UI/theme_a.tres" id="1_rvsfk"]
 [ext_resource type="Script" path="res://Scenes/GUI/decorate_menu.gd" id="1_yyjg0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://byhy7ay4gf8ah" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/buttonRound_beige.png" id="4_63ur0"]
 [ext_resource type="Texture2D" uid="uid://quv7hi83dri5" path="res://Assets/2D/UI/rotate_guide.png" id="4_wbw3g"]
 [ext_resource type="Texture2D" uid="uid://dfoi0btexvk1o" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/arrowBrown_left.png" id="5_sqfrd"]
+[ext_resource type="Texture2D" uid="uid://bmw3p4hxrnsnd" path="res://Assets/2D/UI/decorate_button_big.png" id="7_t4c4m"]
 
 [sub_resource type="Gradient" id="Gradient_gobuk"]
 colors = PackedColorArray(0, 0, 0, 0.278431, 0, 0, 0, 0)
@@ -88,6 +89,7 @@ size_flags_horizontal = 3
 text = "Done"
 
 [node name="Edit_Toolset" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_top = 0.817
 anchor_right = 1.0
@@ -110,10 +112,10 @@ stretch_mode = 0
 
 [node name="Spawn_Toolset" type="Control" parent="."]
 layout_mode = 1
-anchor_top = 0.348
+anchor_top = 0.479
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.0800171
+offset_top = 0.159973
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -167,17 +169,11 @@ size_flags_vertical = 3
 [node name="GridContainer" type="GridContainer" parent="Spawn_Toolset/Panel/List/GridScroll"]
 layout_mode = 2
 
-[node name="CloseSpawnList" type="Button" parent="Spawn_Toolset/Panel/List"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_type_variation = &"ButtonBlue"
-text = "Close"
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.189
-anchor_bottom = 0.106
+anchor_right = 0.231
+anchor_bottom = 0.127
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
@@ -205,8 +201,26 @@ grow_vertical = 2
 texture = ExtResource("5_sqfrd")
 stretch_mode = 5
 
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.769
+anchor_right = 1.0
+anchor_bottom = 0.127
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="SpawnButton" type="TextureButton" parent="MarginContainer2"]
+layout_mode = 2
+texture_normal = ExtResource("7_t4c4m")
+ignore_texture_size = true
+stretch_mode = 5
+
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/RemoveActive" to="." method="_active_buttons" binds= [0]]
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DuplicateActive" to="." method="_active_buttons" binds= [1]]
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DoneActive" to="." method="_active_buttons" binds= [2]]
 [connection signal="pressed" from="Edit_Toolset/RotateZone" to="." method="_on_rotate_zone_pressed"]
 [connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/SpawnButton" to="." method="_on_spawn_button_pressed"]
