@@ -42,25 +42,33 @@ func _catalog_io_scene(path):
 	var content_lines = content.split("\n", false)
 	for line in content_lines:
 		if line.contains("object_name = "):
-			var io_name : String = _rebuild_io_name(line - "object_name = ")
+			var io_name : String = _rebuild_io_name(line.trim_prefix("object_name = "))
 			if !_check_repeat_by_io_name(io_name):
 				var new_entry : CompendiumEntry = CompendiumEntry.new()
 				new_entry.io_name = io_name
 				new_entry.io_scene_path = path
+				compendium.append(new_entry)
 	scene_file.close()
 
 
 func _check_repeat_by_io_name(io_name : String) -> bool:
 	var result : bool = false
 	
-	
+	for entry in compendium:
+		if entry.io_name == io_name:
+			result = true
 	
 	return result
 
 
-func _rebuild_io_name(io_name_raw) -> String:
-	var result : String = io_name_raw
+func _rebuild_io_name(io_name_raw : String) -> String:
+	var result : String = ""
 	
-	
+	var io_name_shaved : String = io_name_raw.trim_prefix("\"")
+	io_name_shaved = io_name_shaved.trim_suffix("\"")
+	for index in io_name_shaved.length():
+		var char : String = io_name_shaved[index]
+		if char != "\\":
+			result += char
 	
 	return result
