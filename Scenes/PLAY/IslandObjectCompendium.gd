@@ -9,7 +9,7 @@ var icon_regex : RegEx
 class CompendiumEntry:
 	var io_name : String = ""
 	var io_scene_path : String = ""
-	var io_icon : Texture = null
+	var io_icon : Texture2D = null
 	var scene_loaded : bool = false
 	var loaded_scene : PackedScene = null
 
@@ -17,7 +17,7 @@ class CompendiumEntry:
 func _ready():
 	## TODO replace with some form of caching
 	icon_regex = RegEx.new()
-	icon_regex.compile("path=(\\S*)")
+	icon_regex.compile("path=\"(\\S*)\"")
 	rebuild_compendium_from_data()
 	emit_signal("io_catalogued")
 
@@ -65,10 +65,8 @@ func _catalog_io_scene(path):
 					print("Found Icon Ext")
 					var regex_result = icon_regex.search(subline)
 					if regex_result and regex_result.get_string(1).is_absolute_path():
-						new_entry.io_icon = load(regex_result.get_string(1))
 						print(regex_result.get_string(1))
-						print("Loaded Icon: ", new_entry.io_icon)
-						print(load(regex_result.get_string(1)))
+						new_entry.io_icon = load(regex_result.get_string(1))
 	if new_entry.io_name != "":
 		compendium.append(new_entry)
 	scene_file.close()

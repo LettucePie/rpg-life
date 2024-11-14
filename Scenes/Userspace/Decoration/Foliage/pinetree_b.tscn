@@ -7,7 +7,7 @@
 height = 2.39144
 radius = 0.983859
 
-[node name="PinetreeA" type="StaticBody3D"]
+[node name="PinetreeB" type="StaticBody3D"]
 script = ExtResource("1_putjd")
 object_name = "Pine Tree B \"TEST\""
 

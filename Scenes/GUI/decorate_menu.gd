@@ -90,7 +90,8 @@ func _populate_deco_grid():
 		print(entry.io_name)
 		var new_grid_button : GridButton = grid_button_scene.instantiate()
 		new_grid_button.assign_island_object_entry(entry, 5)
-		deco_storage_grid.add_child(new_grid_button)
+		#deco_storage_grid.add_child(new_grid_button)
+		new_grid_button.adoption(deco_storage_grid)
 		grid_buttons.append(new_grid_button)
 
 

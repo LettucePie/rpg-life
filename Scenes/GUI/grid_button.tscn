@@ -9,9 +9,12 @@ starting_angle = 0.392699
 rotate_cam = false
 
 [node name="GridButton" type="Button"]
+size_flags_horizontal = 3
 text = "Button Text
 x122"
 icon = SubResource("ViewportTexture_2js5n")
+text_overrun_behavior = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+expand_icon = true
 script = ExtResource("2_j5hyt")
