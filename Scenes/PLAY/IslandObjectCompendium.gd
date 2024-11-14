@@ -4,17 +4,20 @@ class_name IOCompendium
 signal io_catalogued
 
 var compendium : Array = []
-
+var icon_regex : RegEx
 
 class CompendiumEntry:
 	var io_name : String = ""
 	var io_scene_path : String = ""
+	var io_icon : Texture = null
 	var scene_loaded : bool = false
 	var loaded_scene : PackedScene = null
 
 
 func _ready():
 	## TODO replace with some form of caching
+	icon_regex = RegEx.new()
+	icon_regex.compile("path=(\\S*)")
 	rebuild_compendium_from_data()
 	emit_signal("io_catalogued")
 
@@ -45,14 +48,29 @@ func _catalog_io_scene(path):
 	var scene_file : FileAccess = FileAccess.open(path, FileAccess.READ)
 	var content = scene_file.get_as_text()
 	var content_lines = content.split("\n", false)
+	var new_entry : CompendiumEntry = CompendiumEntry.new()
 	for line in content_lines:
 		if line.contains("object_name = "):
 			var io_name : String = _rebuild_io_name(line.trim_prefix("object_name = "))
 			if !_check_repeat_by_io_name(io_name):
-				var new_entry : CompendiumEntry = CompendiumEntry.new()
 				new_entry.io_name = io_name
 				new_entry.io_scene_path = path
-				compendium.append(new_entry)
+		if line.contains("object_icon = "):
+			var icon_ext_id : String = line.trim_prefix("object_icon = ExtResource(")
+			icon_ext_id = icon_ext_id.trim_suffix(")")
+			print(icon_ext_id)
+			for subline in content_lines:
+				if subline.contains("id=" + icon_ext_id) \
+				and subline.contains("type=\"Texture2D\""):
+					print("Found Icon Ext")
+					var regex_result = icon_regex.search(subline)
+					if regex_result and regex_result.get_string(1).is_absolute_path():
+						new_entry.io_icon = load(regex_result.get_string(1))
+						print(regex_result.get_string(1))
+						print("Loaded Icon: ", new_entry.io_icon)
+						print(load(regex_result.get_string(1)))
+	if new_entry.io_name != "":
+		compendium.append(new_entry)
 	scene_file.close()
 
 
@@ -109,3 +127,6 @@ func request_io_scene_by_entry(req_entry : CompendiumEntry) -> PackedScene:
 	if result == null:
 		print("Failed to find requested io_scene by entry")
 	return result
+
+
+

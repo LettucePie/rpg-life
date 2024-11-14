@@ -6,6 +6,7 @@ signal object_released(object)
 
 ## Settings
 @export var object_name : String
+@export var object_icon : Texture
 
 ## Assets
 var default_object_shape : PackedScene = preload(
