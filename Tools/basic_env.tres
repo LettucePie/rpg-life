@@ -1,0 +1,12 @@
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://chu1uolg16wxp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p444h"]
+ground_curve = 0.32
+
+[sub_resource type="Sky" id="Sky_1pjbo"]
+sky_material = SubResource("ProceduralSkyMaterial_p444h")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_1pjbo")
+tonemap_mode = 2

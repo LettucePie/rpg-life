@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy3epkvckaom3"]
+
+[ext_resource type="Script" path="res://Tools/Screenshot_Studio.gd" id="1_iiww4"]
+[ext_resource type="Environment" uid="uid://chu1uolg16wxp" path="res://Tools/basic_env.tres" id="2_h752r"]
+[ext_resource type="PackedScene" uid="uid://bpsrsfdfuasjx" path="res://Scenes/Userspace/Decoration/pinetree_a.tscn" id="2_mdgwc"]
+
+[node name="ScreenshotStudio" type="Node3D"]
+script = ExtResource("1_iiww4")
+cap_name = "pinetree_a"
+
+[node name="Spin" type="Node3D" parent="."]
+transform = Transform3D(-0.180399, 0.397396, 0.89974, -5.58794e-09, 0.914748, -0.404024, -0.983594, -0.0728856, -0.16502, 0, 0, 0)
+
+[node name="Distance" type="Node3D" parent="Spin"]
+transform = Transform3D(1, -7.45058e-09, 0, 0, 0.714082, 0.700062, 1.49012e-08, -0.700062, 0.714082, 5.96046e-08, 2.83732, 2.89414)
+
+[node name="Camera3D" type="Camera3D" parent="Spin/Distance"]
+transform = Transform3D(1, -7.45058e-09, 2.98023e-08, 1.49012e-08, 0.997492, -0.0707836, -2.98023e-08, 0.0707837, 0.997492, 0, 0.982734, 0.00743437)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_h752r")
+
+[node name="PinetreeA" parent="." instance=ExtResource("2_mdgwc")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.979589, 0.169294, 0.108372, 0, -0.539138, 0.842217, 0.20101, -0.825027, -0.528134, 0, 0, 0)

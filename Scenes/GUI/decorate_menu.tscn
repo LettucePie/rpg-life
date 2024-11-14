@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgh0rnbsb6o7q"]
+[gd_scene load_steps=12 format=3 uid="uid://dgh0rnbsb6o7q"]
 
 [ext_resource type="Theme" uid="uid://cosewbtd26cka" path="res://Assets/2D/UI/theme_a.tres" id="1_rvsfk"]
 [ext_resource type="Script" path="res://Scenes/GUI/decorate_menu.gd" id="1_yyjg0"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://quv7hi83dri5" path="res://Assets/2D/UI/rotate_guide.png" id="4_wbw3g"]
 [ext_resource type="Texture2D" uid="uid://b2ojkeh0osuwj" path="res://Assets/ThirdParty/Kenney-NL/Game Icons/PNG_White_2x/zoom.png" id="5_onxd7"]
 [ext_resource type="Texture2D" uid="uid://dfoi0btexvk1o" path="res://Assets/ThirdParty/Kenney-NL/UI Adventure Pack/PNG/arrowBrown_left.png" id="5_sqfrd"]
-[ext_resource type="PackedScene" uid="uid://bnb5vbg8nf50a" path="res://Scenes/GUI/grid_button.tscn" id="6_jxd1p"]
 [ext_resource type="Texture2D" uid="uid://bmw3p4hxrnsnd" path="res://Assets/2D/UI/decorate_button_big.png" id="7_t4c4m"]
 
 [sub_resource type="Gradient" id="Gradient_gobuk"]
@@ -18,11 +17,6 @@ gradient = SubResource("Gradient_gobuk")
 fill_to = Vector2(0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_egma1"]
-script = ExtResource("3_qr6gy")
-starting_angle = 0.392699
-rotate_cam = false
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_xjmmm"]
 script = ExtResource("3_qr6gy")
 starting_angle = 0.392699
 rotate_cam = false
@@ -194,42 +188,6 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
-
-[node name="GridButton" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton2" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton3" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton4" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton5" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton6" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton7" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton8" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
-
-[node name="GridButton9" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer" instance=ExtResource("6_jxd1p")]
-layout_mode = 2
-icon = SubResource("ViewportTexture_xjmmm")
 
 [node name="Upper_Left_Action" type="MarginContainer" parent="."]
 layout_mode = 1
