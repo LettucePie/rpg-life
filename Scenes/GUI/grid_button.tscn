@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnb5vbg8nf50a"]
+
+[ext_resource type="Script" path="res://Classes/StudioTexture.gd" id="1_n7p2a"]
+[ext_resource type="Script" path="res://Scenes/GUI/grid_button.gd" id="2_j5hyt"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2js5n"]
+script = ExtResource("1_n7p2a")
+starting_angle = 0.392699
+rotate_cam = false
+
+[node name="GridButton" type="Button"]
+text = "Button Text
+x122"
+icon = SubResource("ViewportTexture_2js5n")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("2_j5hyt")

@@ -11,12 +11,16 @@ var current_object : IslandObject
 @onready var active_actions : Control = $ActiveHUD
 @onready var active_icon : TextureRect = $ActiveHUD/ActiveVbox/ActiveIcon
 @onready var active_label : Label = $ActiveHUD/ActiveVbox/ActiveLabel
+@onready var deco_storage_grid : GridContainer = $Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer
 
 ## Static Elements
-@onready var back_button : BaseButton = $MarginContainer/BackButton
-@onready var spawn_button : BaseButton = $MarginContainer2/SpawnButton
+@onready var back_button : BaseButton = $Upper_Left_Action/BackButton
+@onready var spawn_button : BaseButton = $Upper_Right_Action/SpawnButton
 @onready var edit_tools : Control = $Edit_Toolset
 @onready var spawn_tools : Control = $Spawn_Toolset
+
+## Spawn
+var grid_button_scene : PackedScene = preload("res://Scenes/GUI/grid_button.tscn")
 
 ## Tool States
 var rotating : bool = false

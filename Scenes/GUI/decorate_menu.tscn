@@ -166,14 +166,25 @@ stretch_mode = 5
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GridScroll" type="ScrollContainer" parent="Spawn_Toolset/Panel/List"]
+[node name="GridPanel" type="Panel" parent="Spawn_Toolset/Panel/List"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"InletBrown"
 
-[node name="GridContainer" type="GridContainer" parent="Spawn_Toolset/Panel/List/GridScroll"]
+[node name="GridScroll" type="ScrollContainer" parent="Spawn_Toolset/Panel/List/GridPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Spawn_Toolset/Panel/List/GridPanel/GridScroll"]
 layout_mode = 2
+columns = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Upper_Left_Action" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.231
@@ -183,13 +194,13 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="BackButton" type="TextureButton" parent="MarginContainer"]
+[node name="BackButton" type="TextureButton" parent="Upper_Left_Action"]
 layout_mode = 2
 texture_normal = ExtResource("4_63ur0")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="BackIcon" type="TextureRect" parent="MarginContainer/BackButton"]
+[node name="BackIcon" type="TextureRect" parent="Upper_Left_Action/BackButton"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.146
@@ -205,7 +216,7 @@ grow_vertical = 2
 texture = ExtResource("5_sqfrd")
 stretch_mode = 5
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="Upper_Right_Action" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.769
@@ -216,7 +227,7 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
 
-[node name="SpawnButton" type="TextureButton" parent="MarginContainer2"]
+[node name="SpawnButton" type="TextureButton" parent="Upper_Right_Action"]
 layout_mode = 2
 texture_normal = ExtResource("7_t4c4m")
 ignore_texture_size = true
@@ -226,5 +237,5 @@ stretch_mode = 5
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DuplicateActive" to="." method="_active_buttons" binds= [1]]
 [connection signal="pressed" from="ActiveHUD/ActiveVbox/ActiveActions/DoneActive" to="." method="_active_buttons" binds= [2]]
 [connection signal="pressed" from="Edit_Toolset/RotateZone" to="." method="_on_rotate_zone_pressed"]
-[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/SpawnButton" to="." method="_on_spawn_button_pressed"]
+[connection signal="pressed" from="Upper_Left_Action/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Upper_Right_Action/SpawnButton" to="." method="_on_spawn_button_pressed"]

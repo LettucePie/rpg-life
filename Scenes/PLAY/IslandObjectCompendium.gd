@@ -1,6 +1,8 @@
 extends Node
 class_name IOCompendium
 
+signal io_catalogued
+
 var compendium : Array = []
 
 
@@ -12,6 +14,7 @@ class CompendiumEntry:
 func _ready():
 	## TODO replace with some form of caching
 	rebuild_compendium_from_data()
+	emit_signal("io_catalogued")
 
 
 func rebuild_compendium_from_data():
