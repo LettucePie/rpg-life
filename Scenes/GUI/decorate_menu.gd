@@ -11,15 +11,15 @@ var current_object : IslandObject
 @onready var active_actions : Control = $ActiveHUD
 @onready var active_icon : TextureRect = $ActiveHUD/ActiveVbox/ActiveIcon
 @onready var active_label : Label = $ActiveHUD/ActiveVbox/ActiveLabel
-@onready var deco_storage_grid : GridContainer = $Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer
+var grid_buttons : Array = []
+@onready var deco_storage_grid : GridContainer = \
+$Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer
 
 ## Static Elements
 @onready var back_button : BaseButton = $Upper_Left_Action/BackButton
 @onready var spawn_button : BaseButton = $Upper_Right_Action/SpawnButton
 @onready var edit_tools : Control = $Edit_Toolset
 @onready var spawn_tools : Control = $Spawn_Toolset
-
-## Spawn
 var grid_button_scene : PackedScene = preload("res://Scenes/GUI/grid_button.tscn")
 
 ## Tool States
@@ -28,6 +28,7 @@ var rotating : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clean()
+	_populate_deco_grid()
 
 
 func clean():
@@ -74,6 +75,23 @@ func unset_active_object():
 	edit_tools.hide()
 	##
 	PlayerInput.movement_locked = true
+
+
+func _populate_deco_grid():
+	print("Populating DecoGrid")
+	print("Currently filling with all, replace to Persist data")
+	
+	if grid_buttons.size() > 0:
+		for gb in grid_buttons:
+			gb.queue_free()
+	grid_buttons.clear()
+	
+	for entry in IslandObjectCompendium.compendium:
+		print(entry.io_name)
+		var new_grid_button : GridButton = grid_button_scene.instantiate()
+		new_grid_button.assign_island_object_entry(entry, 5)
+		deco_storage_grid.add_child(new_grid_button)
+		grid_buttons.append(new_grid_button)
 
 
 func _process(delta):

@@ -145,7 +145,7 @@ grow_vertical = 2
 [node name="SearchBar" type="HBoxContainer" parent="Spawn_Toolset/Panel/List"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
+size_flags_stretch_ratio = 0.6
 
 [node name="LineEdit" type="LineEdit" parent="Spawn_Toolset/Panel/List/SearchBar"]
 layout_mode = 2
@@ -169,6 +169,7 @@ size_flags_vertical = 3
 [node name="GridPanel" type="Panel" parent="Spawn_Toolset/Panel/List"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 4.22
 theme_type_variation = &"InletBrown"
 
 [node name="GridScroll" type="ScrollContainer" parent="Spawn_Toolset/Panel/List/GridPanel"]

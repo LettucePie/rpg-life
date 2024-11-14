@@ -9,6 +9,8 @@ var compendium : Array = []
 class CompendiumEntry:
 	var io_name : String = ""
 	var io_scene_path : String = ""
+	var scene_loaded : bool = false
+	var loaded_scene : PackedScene = null
 
 
 func _ready():
@@ -74,4 +76,36 @@ func _rebuild_io_name(io_name_raw : String) -> String:
 		if char != "\\":
 			result += char
 	
+	return result
+
+
+func load_entry_scene(entry : CompendiumEntry):
+	if !entry.scene_loaded or entry.loaded_scene == null:
+		entry.loaded_scene = load(entry.io_scene_path)
+		entry.scene_loaded = true
+
+
+func request_io_scene_by_name(req_name : String) -> PackedScene:
+	var result = null
+	
+	for entry in compendium:
+		if entry.io_name == req_name:
+			if !entry.scene_loaded:
+				load_entry_scene(entry)
+			result = entry.loaded_scene
+	
+	if result == null:
+		print("Failed to find requested io_scene by name of: ", req_name)
+	return result
+
+
+func request_io_scene_by_entry(req_entry : CompendiumEntry) -> PackedScene:
+	var result = null
+	
+	if !req_entry.scene_loaded:
+		load_entry_scene(req_entry)
+	result = req_entry.loaded_scene
+	
+	if result == null:
+		print("Failed to find requested io_scene by entry")
 	return result
