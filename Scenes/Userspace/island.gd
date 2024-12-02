@@ -65,3 +65,7 @@ func unfocus():
 
 func translate_object(target_object : IslandObject, target_pos : Vector3):
 	target_object.global_position = target_pos
+
+
+func add_object(island_object : IslandObject):
+	print("Adding IslandObject: ", island_object, " to Island: ", self)

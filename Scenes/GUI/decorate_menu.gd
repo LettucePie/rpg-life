@@ -104,7 +104,6 @@ func _on_back_button_pressed():
 	## Save/update island data
 
 
-
 func _active_buttons(id : int):
 	if id == 0:
 		print("Remove Active Decoration")

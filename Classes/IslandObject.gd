@@ -1,5 +1,8 @@
 extends StaticBody3D
 class_name IslandObject
+## Parent Class
+## Every object that can be seen on a Players Island.
+## Stations, Decorations, and more to be made?
 
 signal object_selected(object)
 signal object_released(object)
@@ -82,9 +85,11 @@ func _iterate(array, pile):
 		_gather(a, pile)
 		_ponder(a, pile)
 
+
 func _gather(a, pile):
 	if !pile.has(a):
 		pile.append(a)
+
 
 func _ponder(a, pile):
 	if a.get_child_count() > 0:

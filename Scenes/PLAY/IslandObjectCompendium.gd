@@ -1,5 +1,8 @@
 extends Node
 class_name IOCompendium
+## This is a database class
+## io stands for Island Object, however it seems like I also call them decorations...
+## I should make notes like this the day of lmao
 
 signal io_catalogued
 
