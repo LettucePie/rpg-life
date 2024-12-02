@@ -90,8 +90,17 @@ func _populate_deco_grid():
 		print(entry.io_name)
 		var new_grid_button : GridButton = grid_button_scene.instantiate()
 		new_grid_button.assign_island_object_entry(entry, 5)
+		new_grid_button.grid_button_pressed.connect(deco_button_pressed)
 		new_grid_button.adoption(deco_storage_grid)
 		grid_buttons.append(new_grid_button)
+
+
+func deco_button_pressed(grid_button : GridButton):
+	print("Decorate Menu Received GridButton: ", grid_button)
+	if grid_button.button_type == grid_button.BUTTON_TYPE.island_object:
+		PlayerInput.play.spawn_island_object_into_island(
+			IslandObjectCompendium.request_io_scene_by_entry(
+				grid_button.data_ref[0]).instantiate())
 
 
 func _process(delta):

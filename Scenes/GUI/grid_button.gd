@@ -1,6 +1,7 @@
 extends Button
 class_name GridButton
 enum BUTTON_TYPE {island_object, resource}
+signal grid_button_pressed(button)
 
 var default_icon : Texture2D = preload("res://icon.svg")
 
@@ -37,5 +38,5 @@ func _adjust_size():
 
 func _button_pressed():
 	print("Button Pressed")
-	
+	emit_signal("grid_button_pressed", self)
 

@@ -69,3 +69,9 @@ func translate_object(target_object : IslandObject, target_pos : Vector3):
 
 func add_object(island_object : IslandObject):
 	print("Adding IslandObject: ", island_object, " to Island: ", self)
+	object_container.add_child(island_object)
+	objects.append(island_object)
+	if island_object is Station:
+		stations.append(island_object)
+	_connect_objects()
+

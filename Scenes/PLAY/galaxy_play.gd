@@ -71,6 +71,14 @@ func manipulate_camera(world_pos : Vector3):
 	cam_dial.rotation.y = camera_anchor_rot.y + (angle_a - angle_b)
 
 
+func spawn_island_object_into_island(island_object : IslandObject):
+	print("GalaxyPlay recieved request to place IslandObject: ", \
+	island_object.object_name, " from inventory onto the Island.")
+	## TODO remove object from stored inventory into active inventory
+	_island_selected(main_island)
+	main_island.add_object(island_object)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
