@@ -77,6 +77,7 @@ func spawn_island_object_into_island(island_object : IslandObject):
 	## TODO remove object from stored inventory into active inventory
 	_island_selected(main_island)
 	main_island.add_object(island_object)
+	menu.decoration_menu.set_active_object(island_object)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

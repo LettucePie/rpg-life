@@ -108,6 +108,7 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 
 
 func outline(tf : bool):
+	outlined = tf
 	if tf:
 		for geo in children_geometry:
 			geo.set_material_overlay(outline_material)

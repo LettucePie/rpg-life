@@ -50,18 +50,22 @@ func hide_all():
 	spawn_tools.hide()
 
 
-func set_active_object(object : IslandObject):
-	_reset_active_elements()
-	current_object = object
-	current_object.outline(true)
-	active_icon.texture.studio_capture_object(object)
-	active_label.text = object.object_name
-	active_actions.show()
-	back_button.hide()
-	spawn_button.hide()
-	edit_tools.show()
-	##
-	PlayerInput.movement_locked = false
+func set_active_object(object : IslandObject) -> bool:
+	if current_object != null:
+		return false
+	else:
+		_reset_active_elements()
+		current_object = object
+		current_object.outline(true)
+		active_icon.texture.studio_capture_object(object)
+		active_label.text = object.object_name
+		active_actions.show()
+		back_button.hide()
+		spawn_button.hide()
+		edit_tools.show()
+		##
+		PlayerInput.movement_locked = false
+		return true
 
 
 func unset_active_object():
@@ -101,6 +105,7 @@ func deco_button_pressed(grid_button : GridButton):
 		PlayerInput.play.spawn_island_object_into_island(
 			IslandObjectCompendium.request_io_scene_by_entry(
 				grid_button.data_ref[0]).instantiate())
+	spawn_tools.hide()
 
 
 func _process(delta):
