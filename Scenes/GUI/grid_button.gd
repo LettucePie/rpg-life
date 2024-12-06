@@ -15,7 +15,10 @@ func _ready():
 		pressed.connect(_button_pressed)
 
 
-func assign_island_object_entry(entry : IOCompendium.CompendiumEntry, quantity : int):
+func assign_island_object_entry(
+	entry : IslandObjectCompendium.CompendiumEntry, quantity : int
+):
+	
 	button_type = BUTTON_TYPE.island_object
 	data_ref = [entry, quantity]
 	if entry.io_icon != null:
