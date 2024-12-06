@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="RPG Life 4"
+config/version="0.1"
 run/main_scene="res://Scenes/PLAY/galaxy_play.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
