@@ -100,6 +100,7 @@ func inventory_sub_button(id : int):
 		hide_all_primary()
 		decoration_menu.show()
 		set_menu_state(MENU_STATES.DECORATE)
+		decoration_menu.target_island = PlayerInput.play.main_island
 
 
 func _on_decorate_menu_exit_decorate():

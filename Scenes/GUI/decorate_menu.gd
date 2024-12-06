@@ -3,11 +3,16 @@ class_name DecorateMenu
 
 signal exit_decorate()
 
+enum STATE {REST, EDIT, MOVE, PLACE}
+var current_state : STATE = STATE.REST
+
 ## Constants
 const ROTATE_SPEED : float = 0.045
 
 ## Active Elements
+var target_island : Island
 var current_object : IslandObject
+var suspended_island_object : IslandObject = null
 @onready var active_actions : Control = $ActiveHUD
 @onready var active_icon : TextureRect = $ActiveHUD/ActiveVbox/ActiveIcon
 @onready var active_label : Label = $ActiveHUD/ActiveVbox/ActiveLabel
@@ -21,6 +26,11 @@ $Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer
 @onready var edit_tools : Control = $Edit_Toolset
 @onready var spawn_tools : Control = $Spawn_Toolset
 var grid_button_scene : PackedScene = preload("res://Scenes/GUI/grid_button.tscn")
+@onready var active_action_buttons : Array = [
+	$ActiveHUD/ActiveVbox/ActiveActions/RemoveActive,
+	$ActiveHUD/ActiveVbox/ActiveActions/DuplicateActive,
+	$ActiveHUD/ActiveVbox/ActiveActions/DoneActive
+]
 
 ## Tool States
 var rotating : bool = false
@@ -33,8 +43,10 @@ func _ready():
 
 func clean():
 	current_object = null
+	suspended_island_object = null
 	_reset_active_elements()
 	hide_all()
+	current_state = STATE.REST
 
 
 func _reset_active_elements():
@@ -51,7 +63,7 @@ func hide_all():
 
 
 func set_active_object(object : IslandObject) -> bool:
-	if current_object != null:
+	if current_state != STATE.REST:
 		return false
 	else:
 		_reset_active_elements()
@@ -59,12 +71,14 @@ func set_active_object(object : IslandObject) -> bool:
 		current_object.outline(true)
 		active_icon.texture.studio_capture_object(object)
 		active_label.text = object.object_name
+		_active_action_visibility([1, 1, 1])
 		active_actions.show()
 		back_button.hide()
 		spawn_button.hide()
 		edit_tools.show()
 		##
 		PlayerInput.movement_locked = false
+		current_state = STATE.EDIT
 		return true
 
 
@@ -79,6 +93,13 @@ func unset_active_object():
 	edit_tools.hide()
 	##
 	PlayerInput.movement_locked = true
+	current_state = STATE.REST
+
+
+func _active_action_visibility(bools : PackedByteArray):
+	if bools.size() == active_action_buttons.size():
+		for i in bools.size():
+			active_action_buttons[i].visible = bools[i]
 
 
 func _populate_deco_grid():
@@ -101,11 +122,63 @@ func _populate_deco_grid():
 
 func deco_button_pressed(grid_button : GridButton):
 	print("Decorate Menu Received GridButton: ", grid_button)
+	## Set target decoration into suspension, allowing it to be placed at
+	## pointed position when player taps on their Island.
+	## Then authenticate inventory.
 	if grid_button.button_type == grid_button.BUTTON_TYPE.island_object:
-		PlayerInput.play.spawn_island_object_into_island(
-			IslandObjectCompendium.request_io_scene_by_entry(
+		place_in_suspension(IslandObjectCompendium.request_io_scene_by_entry(
 				grid_button.data_ref[0]).instantiate())
 	spawn_tools.hide()
+
+
+func place_in_suspension(island_object : IslandObject) -> bool:
+	if current_state != STATE.REST:
+		return false
+	else:
+		print("Placing IslandObject: ", island_object.object_name, " into placement Suspension.")
+		_reset_active_elements()
+		suspended_island_object = island_object
+		active_icon.texture.studio_capture_object(island_object)
+		active_label.text = island_object.object_name
+		print(" Add Quantity to label")
+		active_actions.show()
+		_active_action_visibility([0, 0, 1])
+		back_button.hide()
+		spawn_button.hide()
+		edit_tools.hide()
+		current_state = STATE.PLACE
+		target_island.setup_suspended_island_object(
+			suspended_island_object, self.suspension_status
+		)
+		##
+		PlayerInput.movement_locked = false
+		return true
+
+
+func suspension_status(tf : bool):
+	if tf:
+		print("DecoMenu call that suspended object has been placed.")
+		print("** UPDATE INVENTORY **")
+		print("update label / quantity")
+		cancel_suspension()
+		
+	else:
+		print("DecoMenu call that suspended object has Not been placed.")
+		cancel_suspension()
+
+
+func cancel_suspension():
+	print("unsuspend object i guess")
+	suspended_island_object = null
+	current_state = STATE.REST
+	target_island.cancel_suspended_island_object()
+	_reset_active_elements()
+	#hide_all()
+	spawn_tools.show()
+	edit_tools.hide()
+	active_actions.hide()
+	spawn_button.show()
+	back_button.show()
 
 
 func _process(delta):
@@ -125,7 +198,10 @@ func _active_buttons(id : int):
 		print("Duplicate Active Decoration")
 	elif id == 2:
 		print("Finish Manipulating Active Decoration")
-		unset_active_object()
+		if current_state == STATE.EDIT:
+			unset_active_object()
+		elif current_state == STATE.PLACE:
+			cancel_suspension()
 
 
 func _on_rotate_zone_pressed():
@@ -140,6 +216,8 @@ func _on_spawn_button_pressed():
 		spawn_tools.hide()
 	else:
 		spawn_tools.show()
+		edit_tools.hide()
+		active_actions.hide()
 
 
 func _input(event):

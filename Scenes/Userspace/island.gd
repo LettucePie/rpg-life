@@ -10,6 +10,10 @@ var focused : bool = false
 var objects : Array[IslandObject] = []
 var stations : Array[Station] = []
 
+var awaiting_suspended_object : bool = false
+var suspended_island_object : IslandObject
+var deco_menu_callable : Callable
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -20,6 +24,9 @@ func _on_island_area_input_event(camera, event, position, normal, shape_idx):
 		if event.pressed and event.button_index <= 1:
 			print("Island Selected: ", self)
 			emit_signal("island_selected", self)
+			if awaiting_suspended_object:
+				add_object(suspended_island_object, position)
+				deco_menu_callable.call(true)
 		else:
 			emit_signal("island_released", self)
 
@@ -67,11 +74,22 @@ func translate_object(target_object : IslandObject, target_pos : Vector3):
 	target_object.global_position = target_pos
 
 
-func add_object(island_object : IslandObject):
+func add_object(island_object : IslandObject, at_pos : Vector3):
 	print("Adding IslandObject: ", island_object, " to Island: ", self)
 	object_container.add_child(island_object)
 	objects.append(island_object)
+	island_object.position = at_pos
 	if island_object is Station:
 		stations.append(island_object)
 	_connect_objects()
 
+
+func setup_suspended_island_object(suspended_object : IslandObject, return_address : Callable):
+	awaiting_suspended_object = true
+	suspended_island_object = suspended_object
+	deco_menu_callable = return_address
+
+
+func cancel_suspended_island_object():
+	awaiting_suspended_object = false
+	suspended_island_object = null
