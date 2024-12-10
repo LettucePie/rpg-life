@@ -18,10 +18,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerInput="*res://Scenes/PLAY/player_input_manager.tscn"
 IslandObjectCompendium="*res://Scenes/PLAY/IslandObjectCompendium.gd"
 MaterialCompendium="*res://Scenes/PLAY/MaterialCompendium.gd"
 EquipmentCompendium="*res://Scenes/PLAY/EquipmentCompendium.gd"
+Persist="*res://Classes/Persist.gd"
+PlayerInput="*res://Scenes/PLAY/player_input_manager.tscn"
 
 [display]
 

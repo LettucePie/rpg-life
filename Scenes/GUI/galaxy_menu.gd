@@ -98,7 +98,8 @@ func inventory_sub_button(id : int):
 		print("Show Decoration Menu")
 		hide_all_submenus(false)
 		hide_all_primary()
-		decoration_menu.show()
+		#decoration_menu.show()
+		decoration_menu.prepare_deco_menu()
 		set_menu_state(MENU_STATES.DECORATE)
 		decoration_menu.target_island = PlayerInput.play.main_island
 

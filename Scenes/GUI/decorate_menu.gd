@@ -38,7 +38,12 @@ var rotating : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clean()
+
+
+func prepare_deco_menu():
+	clean()
 	_populate_deco_grid()
+	self.show()
 
 
 func clean():
