@@ -32,6 +32,11 @@ func _ready():
 ## Loads data from File
 func load_data():
 	print("Loading")
+	if FileAccess.file_exists("user://savegame.save"):
+		var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+		print("Save File Opened")
+	else:
+		print("Save File Missing")
 
 
 ## Saves data to File

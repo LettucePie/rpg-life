@@ -21,12 +21,13 @@ func _ready():
 	## TODO replace with some form of caching
 	icon_regex = RegEx.new()
 	icon_regex.compile("path=\"(\\S*)\"")
-	rebuild_compendium_from_data()
-	emit_signal("io_catalogued")
+	#rebuild_compendium_from_data()
+	#emit_signal("io_catalogued")
 
 
 func rebuild_compendium_from_data():
 	_dir_contents("res://Scenes/Userspace/Decoration/")
+	emit_signal("io_catalogued")
 
 
 func _dir_contents(path):
@@ -36,10 +37,8 @@ func _dir_contents(path):
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Found directory: " + file_name)
 				_dir_contents(path + "/" + file_name)
 			else:
-				print("Found file: " + file_name)
 				if file_name.contains(".tscn"):
 					_catalog_io_scene(path + "/" + file_name)
 			file_name = dir.get_next()
@@ -54,21 +53,25 @@ func _catalog_io_scene(path):
 	var new_entry : CompendiumEntry = CompendiumEntry.new()
 	for line in content_lines:
 		if line.contains("object_name = "):
-			var io_name : String = _rebuild_io_name(line.trim_prefix("object_name = "))
+			var io_name : String = _rebuild_io_name(line.trim_prefix(
+				"object_name = "
+				))
 			if !_check_repeat_by_io_name(io_name):
 				new_entry.io_name = io_name
 				new_entry.io_scene_path = path
 		if line.contains("object_icon = "):
-			var icon_ext_id : String = line.trim_prefix("object_icon = ExtResource(")
+			var icon_ext_id : String = line.trim_prefix(
+				"object_icon = ExtResource("
+				)
 			icon_ext_id = icon_ext_id.trim_suffix(")")
-			print(icon_ext_id)
 			for subline in content_lines:
 				if subline.contains("id=" + icon_ext_id) \
 				and subline.contains("type=\"Texture2D\""):
-					print("Found Icon Ext")
+					print("Found ExternalResource Icon, ", icon_ext_id, \
+						" : ", new_entry.io_name)
 					var regex_result = icon_regex.search(subline)
-					if regex_result and regex_result.get_string(1).is_absolute_path():
-						print(regex_result.get_string(1))
+					if regex_result \
+					and regex_result.get_string(1).is_absolute_path():
 						new_entry.io_icon = load(regex_result.get_string(1))
 	if new_entry.io_name != "":
 		compendium.append(new_entry)
