@@ -25,11 +25,32 @@ func _load_step():
 		io_state = LOADSTATE.STARTED
 		progress_label.text = "Loading IO..."
 		IslandObjectCompendium.rebuild_compendium_from_data()
+	if target == 0 and player_state == LOADSTATE.FROZEN:
+		target = 3
+		Persist.finished_loading.connect(_asset_checked_in)
+		player_state = LOADSTATE.STARTED
+		progress_label.text += "\nLoading PlayerData..."
+		Persist.load_data()
+	if target == 3 \
+	and io_state == LOADSTATE.DONE \
+	and player_state == LOADSTATE.DONE:
+		_setup_galaxy_play()
 
 
 func _asset_checked_in():
 	if target == 0 and io_state == LOADSTATE.STARTED:
 		print("Island Object Compendium finished loading.")
 		progress_label.text += "\nIO Loaded!"
+		io_state = LOADSTATE.DONE
+	if target == 1 and player_state == LOADSTATE.STARTED:
+		print("Player Data finished loading.")
+		progress_label.text += "\nPlayerData Loaded!"
+		player_state = LOADSTATE.DONE
 	
 	_load_step()
+
+
+func _setup_galaxy_play():
+	var galaxy = galaxy_play.instantiate()
+	get_window().add_child(galaxy)
+	self.queue_free()
