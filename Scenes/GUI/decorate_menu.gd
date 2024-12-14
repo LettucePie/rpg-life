@@ -109,20 +109,27 @@ func _active_action_visibility(bools : PackedByteArray):
 
 func _populate_deco_grid():
 	print("Populating DecoGrid")
-	print("Currently filling with all, replace to Persist data")
 	
 	if grid_buttons.size() > 0:
 		for gb in grid_buttons:
 			gb.queue_free()
 	grid_buttons.clear()
 	
-	for entry in IslandObjectCompendium.compendium:
-		print(entry.io_name)
-		var new_grid_button : GridButton = grid_button_scene.instantiate()
-		new_grid_button.assign_island_object_entry(entry, 5)
-		new_grid_button.grid_button_pressed.connect(deco_button_pressed)
-		new_grid_button.adoption(deco_storage_grid)
-		grid_buttons.append(new_grid_button)
+	for item in Persist.inventory:
+		if item.types.has(Persist.ItemEntry.ITEMTYPE.OBJECT):
+			var entry : IslandObjectCompendium.CompendiumEntry = null
+			entry = item.return_entry_of_type(Persist.ItemEntry.ITEMTYPE.OBJECT)
+			if entry != null:
+				var new_grid_button : GridButton \
+						= grid_button_scene.instantiate()
+				new_grid_button.assign_island_object_entry(entry, item.quantity)
+				new_grid_button.grid_button_pressed.connect(
+						deco_button_pressed)
+				new_grid_button.adoption(deco_storage_grid)
+				grid_buttons.append(new_grid_button)
+			else:
+				print("**ERROR** Failed to retrieve CompendiumEntry from \
+					Persist ItemEntry: ", item.item_name)
 
 
 func deco_button_pressed(grid_button : GridButton):

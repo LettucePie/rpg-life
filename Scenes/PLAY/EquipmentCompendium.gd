@@ -3,4 +3,5 @@ extends Node
 ## This is a database class
 ## Catalogues equipment from resources into data entries
 
-
+class CompendiumEntry:
+	var test = 2

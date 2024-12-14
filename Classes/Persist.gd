@@ -15,6 +15,22 @@ class ItemEntry:
 	## Connected Data
 	var glossarized : bool = false
 	var compendium_entries : Array = []
+	
+	## Filters compendium_entries for typeof entry.
+	func return_entry_of_type(type : ITEMTYPE):
+		if glossarized and types.has(type):
+			for entry in compendium_entries:
+				if type == ITEMTYPE.MATERIAL \
+				and entry is MaterialCompendium.CompendiumEntry:
+					return entry
+				if type == ITEMTYPE.OBJECT \
+				and entry is IslandObjectCompendium.CompendiumEntry:
+					return entry
+				if type == ITEMTYPE.EQUIPMENT \
+				and entry is EquipmentCompendium.CompendiumEntry:
+					return entry
+		else:
+			return null
 
 
 ## Player Data
