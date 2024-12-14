@@ -38,11 +38,12 @@ func _load_step():
 
 
 func _asset_checked_in():
+	print("Asset Checked in at target: ", target)
 	if target == 0 and io_state == LOADSTATE.STARTED:
 		print("Island Object Compendium finished loading.")
 		progress_label.text += "\nIO Loaded!"
 		io_state = LOADSTATE.DONE
-	if target == 1 and player_state == LOADSTATE.STARTED:
+	if target == 3 and player_state == LOADSTATE.STARTED:
 		print("Player Data finished loading.")
 		progress_label.text += "\nPlayerData Loaded!"
 		player_state = LOADSTATE.DONE
@@ -52,5 +53,5 @@ func _asset_checked_in():
 
 func _setup_galaxy_play():
 	var galaxy = galaxy_play.instantiate()
-	get_window().add_child(galaxy)
+	get_window().add_child.call_deferred(galaxy)
 	self.queue_free()
