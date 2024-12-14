@@ -16,8 +16,8 @@ func _ready():
 
 
 func assign_island_object_entry(
-	entry : IslandObjectCompendium.CompendiumEntry, quantity : int
-):
+	entry : IslandObjectCompendium.CompendiumEntry, quantity : int):
+	##
 	
 	button_type = BUTTON_TYPE.island_object
 	data_ref = [entry, quantity]

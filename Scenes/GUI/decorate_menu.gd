@@ -19,6 +19,7 @@ var suspended_island_object : IslandObject = null
 var grid_buttons : Array = []
 @onready var deco_storage_grid : GridContainer = \
 $Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer
+var latest_grid_button : GridButton = null
 
 ## Static Elements
 @onready var back_button : BaseButton = $Upper_Left_Action/BackButton
@@ -137,6 +138,7 @@ func deco_button_pressed(grid_button : GridButton):
 	## Set target decoration into suspension, allowing it to be placed at
 	## pointed position when player taps on their Island.
 	## Then authenticate inventory.
+	latest_grid_button = grid_button
 	if grid_button.button_type == grid_button.BUTTON_TYPE.island_object:
 		place_in_suspension(IslandObjectCompendium.request_io_scene_by_entry(
 				grid_button.data_ref[0]).instantiate())
@@ -151,7 +153,7 @@ func place_in_suspension(island_object : IslandObject) -> bool:
 		_reset_active_elements()
 		suspended_island_object = island_object
 		active_icon.texture.studio_capture_object(island_object)
-		active_label.text = island_object.object_name
+		active_label.text = "Placing " + island_object.object_name
 		print(" Add Quantity to label")
 		active_actions.show()
 		_active_action_visibility([0, 0, 1])
@@ -170,8 +172,23 @@ func place_in_suspension(island_object : IslandObject) -> bool:
 func suspension_status(tf : bool):
 	if tf:
 		print("DecoMenu call that suspended object has been placed.")
-		print("** UPDATE INVENTORY **")
-		print("update label / quantity")
+		Persist.update_quantity_by_item_name_type(
+			suspended_island_object.object_name,
+			Persist.ItemEntry.ITEMTYPE.OBJECT,
+			-1
+		)
+		var new_quantity : int = Persist.get_quantity_by_item_name_type(
+			suspended_island_object.object_name,
+			Persist.ItemEntry.ITEMTYPE.OBJECT
+		)
+		if new_quantity > 0:
+			latest_grid_button.assign_island_object_entry(
+				latest_grid_button.data_ref[0],
+				new_quantity
+			)
+		else:
+			grid_buttons.erase(latest_grid_button)
+			latest_grid_button.queue_free()
 		cancel_suspension()
 		
 	else:

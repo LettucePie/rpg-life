@@ -95,3 +95,48 @@ func template_data():
 	inventory.append(tree_entry)
 
 
+func update_quantity_by_item_entry(target : ItemEntry, variable : int):
+	if inventory.has(target):
+		target.quantity += variable
+		_validate_quantity(target)
+		save_data()
+
+
+func update_quantity_by_item_name_type(
+	tar_name : String, tar_type : ItemEntry.ITEMTYPE, variable : int):
+	##
+	var valid : bool = false
+	for item in inventory:
+		if item.types.has(tar_type) and item.item_name == tar_name:
+			item.quantity += variable
+			valid = true
+			_validate_quantity(item)
+	if valid:
+		save_data()
+
+
+func _validate_quantity(target : ItemEntry):
+	if target.quantity <= 0:
+		inventory.erase(target)
+
+
+func get_quantity_by_item_entry(target : ItemEntry) -> int:
+	var result : int = 0
+	
+	if inventory.has(target):
+		result = target.quantity
+	
+	return result
+
+
+func get_quantity_by_item_name_type(
+	tar_name : String, tar_type : ItemEntry.ITEMTYPE) -> int:
+	##
+	var result : int = 0
+	
+	for item in inventory:
+		if item.item_name == tar_name and item.types.has(tar_type):
+			result = item.quantity
+	
+	return result
+

@@ -12,6 +12,8 @@ var stations : Array[Station] = []
 
 var awaiting_suspended_object : bool = false
 var suspended_island_object : IslandObject
+## For reasons I don't entirely understand, I decided to, for the first time
+## in my entire life, assign a callable method dynamically.
 var deco_menu_callable : Callable
 
 # Called when the node enters the scene tree for the first time.
