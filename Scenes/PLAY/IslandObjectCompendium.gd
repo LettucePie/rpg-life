@@ -133,4 +133,11 @@ func request_io_scene_by_entry(req_entry : CompendiumEntry) -> PackedScene:
 	return result
 
 
-
+func request_compendium_entry_by_name(req_name : String) -> CompendiumEntry:
+	var result = null
+	
+	for entry in compendium:
+		if entry.io_name == req_name:
+			result = entry
+	
+	return result
