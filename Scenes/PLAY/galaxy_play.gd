@@ -18,6 +18,11 @@ var camera_anchor_rot : Vector3 = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#initialize()
+	pass
+
+
+func initialize():
 	PlayerInput._introduce_play(self)
 	if main_island != null:
 		_gather_islands()

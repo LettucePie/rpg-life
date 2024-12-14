@@ -34,6 +34,8 @@ func _load_step():
 	if target == 3 \
 	and io_state == LOADSTATE.DONE \
 	and player_state == LOADSTATE.DONE:
+		print("ME")
+		target = 99
 		_setup_galaxy_play()
 
 
@@ -52,6 +54,8 @@ func _asset_checked_in():
 
 
 func _setup_galaxy_play():
+	print("Setting up Galaxy")
 	var galaxy = galaxy_play.instantiate()
 	get_window().add_child.call_deferred(galaxy)
+	galaxy.call_deferred("initialize")
 	self.queue_free()
