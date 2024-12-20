@@ -8,9 +8,11 @@ var play : Play = null
 
 ## Dynamic
 var selected_object : Node3D = null
+var selected_object_pos_start : Vector3 = Vector3.ZERO
 var camera_locked : bool = false
 var camera_input_clone : Camera3D = null
 var movement_locked : bool = true
+var mouse_grab_pos_start : Vector2 = Vector2.ZERO
 
 
 func _introduce_play(in_play : Play):
@@ -20,6 +22,8 @@ func _introduce_play(in_play : Play):
 func object_selected(object : Node3D):
 	print("InputManager Grabbed: ", object)
 	selected_object = object
+	selected_object_pos_start = object.position
+	mouse_grab_pos_start = get_window().get_mouse_position()
 	if object is IslandObject:
 		play.island_object_selected(object)
 	if object is Island and !camera_locked:
@@ -43,6 +47,10 @@ func object_dragged(object : Node3D, event : InputEvent):
 			var world_pos : Vector3 = plane_projection(
 					event.global_position, play.cam
 			)
+			## TODO diagnose the snap to position difference
+			## maybe calculate off a start plane_projection
+			print(event.global_position - mouse_grab_pos_start)
+			print(world_pos - selected_object_pos_start)
 			play.focused_island.translate_object(selected_object, world_pos)
 
 
