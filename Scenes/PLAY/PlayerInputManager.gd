@@ -24,12 +24,25 @@ func object_selected(object : Node3D):
 		play.island_object_selected(object)
 	if object is Island and !camera_locked:
 		_conjure_input_camera(play.cam)
-		play.set_cam_anchor(plane_projection(get_window().get_mouse_position(), camera_input_clone))
+		play.set_cam_anchor(
+				plane_projection(
+						get_window().get_mouse_position(), camera_input_clone
+				)
+		)
 
 
 func object_released(object : Node3D):
 	print("InputManager Released: ", object)
 	selected_object = null
+
+
+func object_dragged(object : Node3D, event : InputEvent):
+	print("InputManager Dragging: ", object)
+	if selected_object.outlined and !movement_locked:
+		var world_pos : Vector3 = plane_projection(
+				event.global_position, play.cam
+		)
+		play.focused_island.translate_object(selected_object, world_pos)
 
 
 func _input(event):
@@ -45,11 +58,13 @@ func _input(event):
 	if event is InputEventMouseMotion and selected_object != null:
 		if selected_object is Island and !camera_locked:
 			#play.manipulate_camera(event.relative)
-			play.manipulate_camera(plane_projection(event.global_position, camera_input_clone))
-		if selected_object is IslandObject and selected_object.outlined \
-		and !movement_locked:
-			var world_pos : Vector3 = plane_projection(event.global_position, play.cam)
-			play.focused_island.translate_object(selected_object, world_pos)
+			play.manipulate_camera(
+					plane_projection(
+							event.global_position, camera_input_clone
+					)
+			)
+		if selected_object is IslandObject:
+			object_dragged(selected_object, event)
 
 
 func _conjure_input_camera(target_cam : Camera3D):
@@ -65,7 +80,9 @@ func plane_projection(mouse_pos : Vector2, cam : Camera3D):
 	##
 	var origin : Vector3 = cam.project_ray_origin(mouse_pos)
 	var normal : Vector3 = cam.project_ray_normal(mouse_pos)
-	var distance : float = play.focused_island.global_position.distance_to(cam.global_position)
+	var distance : float = play.focused_island.global_position.distance_to(
+			cam.global_position
+	)
 	if normal.y != 0:
 		distance = -origin.y / normal.y
 	result = origin + normal * distance

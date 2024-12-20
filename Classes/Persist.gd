@@ -37,7 +37,7 @@ class ItemEntry:
 var inventory : Array[ItemEntry] = []
 
 ## Player Settings
-
+var select_next_deco : bool = false
  
 
 # Called when the node enters the scene tree for the first time.
