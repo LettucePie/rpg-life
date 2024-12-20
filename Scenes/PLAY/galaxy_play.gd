@@ -60,7 +60,9 @@ func island_object_selected(object : IslandObject):
 	print("Play Recieved Island Object: ", object.object_name)
 	if menu.state == menu.MENU_STATES.DECORATE:
 		if menu.decoration_menu.current_object != object:
-			menu.decoration_menu.set_active_object(object)
+			if !menu.decoration_menu.set_active_object(object) \
+			and Persist.select_next_deco:
+				menu.decoration_menu.quickset_active_object(object)
 
 
 func set_cam_anchor(world_pos : Vector3):

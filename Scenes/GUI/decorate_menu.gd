@@ -88,6 +88,11 @@ func set_active_object(object : IslandObject) -> bool:
 		return true
 
 
+func quickset_active_object(object : IslandObject):
+	unset_active_object()
+	set_active_object(object)
+
+
 func unset_active_object():
 	_reset_active_elements()
 	if current_object != null:

@@ -38,11 +38,12 @@ func object_released(object : Node3D):
 
 func object_dragged(object : Node3D, event : InputEvent):
 	print("InputManager Dragging: ", object)
-	if selected_object.outlined and !movement_locked:
-		var world_pos : Vector3 = plane_projection(
-				event.global_position, play.cam
-		)
-		play.focused_island.translate_object(selected_object, world_pos)
+	if play.menu.state == GalaxyMenu.MENU_STATES.DECORATE:
+		if selected_object.outlined:
+			var world_pos : Vector3 = plane_projection(
+					event.global_position, play.cam
+			)
+			play.focused_island.translate_object(selected_object, world_pos)
 
 
 func _input(event):
@@ -63,7 +64,7 @@ func _input(event):
 							event.global_position, camera_input_clone
 					)
 			)
-		if selected_object is IslandObject:
+		if selected_object is IslandObject and !movement_locked:
 			object_dragged(selected_object, event)
 
 
