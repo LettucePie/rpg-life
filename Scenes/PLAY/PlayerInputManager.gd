@@ -13,6 +13,7 @@ var camera_locked : bool = false
 var camera_input_clone : Camera3D = null
 var movement_locked : bool = true
 var mouse_grab_pos_start : Vector2 = Vector2.ZERO
+var mouse_grab_projection_start : Vector3 = Vector3.ZERO
 
 
 func _introduce_play(in_play : Play):
@@ -24,6 +25,9 @@ func object_selected(object : Node3D):
 	selected_object = object
 	selected_object_pos_start = object.position
 	mouse_grab_pos_start = get_window().get_mouse_position()
+	mouse_grab_projection_start = plane_projection(
+			mouse_grab_pos_start, play.cam
+	)
 	if object is IslandObject:
 		play.island_object_selected(object)
 	if object is Island and !camera_locked:
@@ -49,9 +53,14 @@ func object_dragged(object : Node3D, event : InputEvent):
 			)
 			## TODO diagnose the snap to position difference
 			## maybe calculate off a start plane_projection
-			print(event.global_position - mouse_grab_pos_start)
-			print(world_pos - selected_object_pos_start)
-			play.focused_island.translate_object(selected_object, world_pos)
+			print("INP: ", event.global_position - mouse_grab_pos_start)
+			print("POS: ", world_pos - selected_object_pos_start)
+			print("ADJ: ", world_pos - mouse_grab_projection_start)
+			var offset : Vector3 = (world_pos - mouse_grab_projection_start) \
+					+ selected_object_pos_start
+			play.focused_island.translate_object(
+					selected_object, offset
+			)
 
 
 func _input(event):
