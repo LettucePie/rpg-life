@@ -23,12 +23,17 @@ MaterialCompendium="*res://Scenes/PLAY/MaterialCompendium.gd"
 EquipmentCompendium="*res://Scenes/PLAY/EquipmentCompendium.gd"
 Persist="*res://Classes/Persist.gd"
 PlayerInput="*res://Scenes/PLAY/player_input_manager.tscn"
+VPrint="*res://Tools/visual_print.tscn"
 
 [display]
 
 window/size/viewport_width=540
 window/size/viewport_height=960
 window/handheld/orientation=5
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [filesystem]
 

@@ -48,6 +48,7 @@ func _ready():
 ## Loads data from File
 func load_data():
 	print("Loading")
+	VPrint.vprint("Loading PersistData")
 	if FileAccess.file_exists("user://savegame.save"):
 		var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 		print("Save File Opened")
@@ -67,6 +68,7 @@ func save_data():
 ## Connects items in inventory to their Compendium (Database) entries
 func _glossarize_inventory():
 	print("Connecting loaded inventory entries to corresponding compendiums.")
+	VPrint.vprint("Glossarizing Inventory")
 	for item in inventory:
 		if !item.glossarized:
 			if item.types.has(ItemEntry.ITEMTYPE.MATERIAL):
@@ -81,6 +83,7 @@ func _glossarize_inventory():
 				else:
 					print("**ERROR** Glossarizing Inventory Failed!")
 					print("ITEMTYPE.OBJECT | ", item.item_name, " MISSING")
+					VPrint.vprint("Error Glossarizing Inventory")
 			if item.types.has(ItemEntry.ITEMTYPE.EQUIPMENT):
 				pass
 
@@ -88,6 +91,7 @@ func _glossarize_inventory():
 ## Creates a template for testing
 func template_data():
 	print("**DEBUG** Creating Testing Data")
+	VPrint.vprint("Creating Testing PersistData")
 	var tree_entry : ItemEntry = ItemEntry.new()
 	tree_entry.quantity = 5
 	tree_entry.item_name = "Pine Tree A"

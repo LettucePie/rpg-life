@@ -43,10 +43,12 @@ func _asset_checked_in():
 	print("Asset Checked in at target: ", target)
 	if target == 0 and io_state == LOADSTATE.STARTED:
 		print("Island Object Compendium finished loading.")
+		VPrint.vprint("IOC Loaded")
 		progress_label.text += "\nIO Loaded!"
 		io_state = LOADSTATE.DONE
 	if target == 3 and player_state == LOADSTATE.STARTED:
 		print("Player Data finished loading.")
+		VPrint.vprint("PlayerData Loaded")
 		progress_label.text += "\nPlayerData Loaded!"
 		player_state = LOADSTATE.DONE
 	

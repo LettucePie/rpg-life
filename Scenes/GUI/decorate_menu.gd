@@ -115,6 +115,7 @@ func _active_action_visibility(bools : PackedByteArray):
 
 func _populate_deco_grid():
 	print("Populating DecoGrid")
+	VPrint.vprint("Populating DecoGrid")
 	
 	if grid_buttons.size() > 0:
 		for gb in grid_buttons:
@@ -133,9 +134,11 @@ func _populate_deco_grid():
 						deco_button_pressed)
 				new_grid_button.adoption(deco_storage_grid)
 				grid_buttons.append(new_grid_button)
+				VPrint.vprint("Added GridEntry " + entry.io_name)
 			else:
 				print("**ERROR** Failed to retrieve CompendiumEntry from \
 					Persist ItemEntry: ", item.item_name)
+				VPrint.vprint("Failed to Catch IOC_entry for " + item.item_name)
 
 
 func deco_button_pressed(grid_button : GridButton):
@@ -263,4 +266,3 @@ func _input(event):
 			PlayerInput.movement_locked = false
 	if rotating and event is InputEventMouseMotion:
 		current_object.rotate_y((event.relative.x / PI) * ROTATE_SPEED)
-

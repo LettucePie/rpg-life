@@ -27,6 +27,7 @@ func _ready():
 
 func rebuild_compendium_from_data():
 	_dir_contents("res://Scenes/Userspace/Decoration/")
+	VPrint.vprint("IOC Size: " + str(compendium.size()))
 	emit_signal("io_catalogued")
 
 
@@ -44,9 +45,11 @@ func _dir_contents(path):
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
+		VPrint.vprint("Error occurered accessing the path: " + str(path))
 
 
 func _catalog_io_scene(path):
+	VPrint.vprint("Cataloging IOC Scene: " + path)
 	var scene_file : FileAccess = FileAccess.open(path, FileAccess.READ)
 	var content = scene_file.get_as_text()
 	var content_lines = content.split("\n", false)
@@ -118,6 +121,7 @@ func request_io_scene_by_name(req_name : String) -> PackedScene:
 	
 	if result == null:
 		print("Failed to find requested io_scene by name of: ", req_name)
+		VPrint.vprint("Failed to find requested io_scene by name of " + req_name)
 	return result
 
 
@@ -130,6 +134,7 @@ func request_io_scene_by_entry(req_entry : CompendiumEntry) -> PackedScene:
 	
 	if result == null:
 		print("Failed to find requested io_scene by entry")
+		VPrint.vprint("Failed to find requested io_scene by entry")
 	return result
 
 
