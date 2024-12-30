@@ -18,14 +18,18 @@ class CompendiumEntry:
 
 
 func _ready():
-	## TODO replace with some form of caching
 	icon_regex = RegEx.new()
 	icon_regex.compile("path=\"(\\S*)\"")
-	#rebuild_compendium_from_data()
-	#emit_signal("io_catalogued")
 
 
 func rebuild_compendium_from_data():
+	## TODO replace with some form of caching
+	## rather than rebuilding entire compendium on every load.
+	## also the issue where dynamic loading these scenes could be bad
+	
+	## TODO Okay make most of these functions a @tool script that generates
+	## tres that connect to this scene. Just paths, names, and icons.
+	## Then set convert text to binary on export to true again.
 	_dir_contents("res://Scenes/Userspace/Decoration/")
 	VPrint.vprint("IOC Size: " + str(compendium.size()))
 	emit_signal("io_catalogued")
