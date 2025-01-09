@@ -19,7 +19,7 @@ var suspended_island_object : IslandObject = null
 var grid_buttons : Array = []
 @onready var deco_storage_grid : GridContainer = \
 $Spawn_Toolset/Panel/List/GridPanel/GridScroll/GridContainer
-var latest_grid_button : GridButton = null
+#var latest_grid_button : GridButton = null
 
 ## Static Elements
 @onready var back_button : BaseButton = $Upper_Left_Action/BackButton
@@ -113,6 +113,8 @@ func _active_action_visibility(bools : PackedByteArray):
 			active_action_buttons[i].visible = bools[i]
 
 
+## Freshly populates the Decoration Grid based on IslandObjects
+## found within Persist. Avoid recalling after each inventory change.
 func _populate_deco_grid():
 	print("Populating DecoGrid")
 	VPrint.vprint("Populating DecoGrid")
@@ -136,9 +138,44 @@ func _populate_deco_grid():
 				grid_buttons.append(new_grid_button)
 				VPrint.vprint("Added GridEntry " + entry.io_name)
 			else:
+				## TODO fix this
 				print("**ERROR** Failed to retrieve CompendiumEntry from \
-					Persist ItemEntry: ", item.item_name)
+Persist ItemEntry: ", item.item_name)
 				VPrint.vprint("Failed to Catch IOC_entry for " + item.item_name)
+
+
+func _update_deco_grid(deco_name : String, adjustment : int):
+	print("Updating GridButton for: ", deco_name, " by: ", adjustment)
+	var found : bool = false
+	var remove : GridButton = null
+	for button : GridButton in grid_buttons:
+		if button.button_type == GridButton.BUTTON_TYPE.island_object \
+		and button.data_ref[0].io_name == deco_name:
+			found = true
+			button.data_ref[1] += adjustment
+			if button.data_ref[1] <= 0:
+				remove = button
+			else:
+				button.update_button_text()
+	if found == false:
+		## Create new button in grid to be interacted with.
+		## FIRST, validate with Persist.
+		var io_entry : IslandObjectCompendium.CompendiumEntry
+		io_entry = IslandObjectCompendium.request_compendium_entry_by_name(
+				deco_name)
+		var quantity = Persist.get_quantity_by_item_name_type(
+				deco_name, Persist.ItemEntry.ITEMTYPE.OBJECT)
+		if quantity > 0:
+			var new_grid_button : GridButton = grid_button_scene.instantiate()
+			new_grid_button.assign_island_object_entry(io_entry, quantity)
+			new_grid_button.grid_button_pressed.connect(
+					deco_button_pressed)
+			new_grid_button.adoption(deco_storage_grid)
+			grid_buttons.append(new_grid_button)
+			VPrint.vprint("Added GridEntry " + io_entry.io_name)
+	if remove != null:
+		grid_buttons.erase(remove)
+		remove.queue_free()
 
 
 func deco_button_pressed(grid_button : GridButton):
@@ -146,7 +183,7 @@ func deco_button_pressed(grid_button : GridButton):
 	## Set target decoration into suspension, allowing it to be placed at
 	## pointed position when player taps on their Island.
 	## Then authenticate inventory.
-	latest_grid_button = grid_button
+	#latest_grid_button = grid_button
 	if grid_button.button_type == grid_button.BUTTON_TYPE.island_object:
 		place_in_suspension(IslandObjectCompendium.request_io_scene_by_entry(
 				grid_button.data_ref[0]).instantiate())
@@ -181,6 +218,7 @@ func place_in_suspension(island_object : IslandObject):
 func suspension_status(tf : bool):
 	if tf:
 		print("DecoMenu call that suspended object has been placed.")
+		_update_deco_grid(suspended_island_object.object_name, -1)
 		Persist.update_quantity_by_item_name_type(
 			suspended_island_object.object_name,
 			Persist.ItemEntry.ITEMTYPE.OBJECT,
@@ -191,16 +229,9 @@ func suspension_status(tf : bool):
 			Persist.ItemEntry.ITEMTYPE.OBJECT
 		)
 		if new_quantity > 0:
-			latest_grid_button.assign_island_object_entry(
-				latest_grid_button.data_ref[0],
-				new_quantity
-			)
 			place_in_suspension(suspended_island_object.duplicate())
 		else:
-			grid_buttons.erase(latest_grid_button)
-			latest_grid_button.queue_free()
 			cancel_suspension()
-		
 	else:
 		print("DecoMenu call that suspended object has Not been placed.")
 		cancel_suspension()
@@ -233,6 +264,26 @@ func _on_back_button_pressed():
 func _active_buttons(id : int):
 	if id == 0:
 		print("Remove Active Decoration")
+		if current_state == STATE.EDIT:
+			if Persist.get_quantity_by_item_name_type(
+					current_object.object_name, 
+					Persist.ItemEntry.ITEMTYPE.OBJECT) > 0:
+				## Persist has Inventory of item.
+				Persist.update_quantity_by_item_name_type(
+						current_object.object_name,
+						Persist.ItemEntry.ITEMTYPE.OBJECT,
+						1
+				)
+			else:
+				## Persist does not have Inventory of item, add it.
+				Persist.add_inventory_by_name_type(
+						current_object.object_name,
+						[Persist.ItemEntry.ITEMTYPE.OBJECT],
+						1
+				)
+		_update_deco_grid(current_object.object_name, 1)
+		target_island.remove_object(current_object)
+		unset_active_object()
 	elif id == 1:
 		print("Duplicate Active Decoration")
 	elif id == 2:

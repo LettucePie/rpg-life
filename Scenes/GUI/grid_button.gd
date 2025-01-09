@@ -28,6 +28,12 @@ func assign_island_object_entry(
 	text = entry.io_name + "\nx" + str(quantity)
 
 
+func update_button_text():
+	if button_type == BUTTON_TYPE.island_object \
+	and data_ref[0] is IslandObjectCompendium.CompendiumEntry:
+		text = data_ref[0].io_name + "\nx" + str(data_ref[1])
+
+
 func adoption(parent : GridContainer):
 	parent.add_child(self)
 	parent.resized.connect(_adjust_size)

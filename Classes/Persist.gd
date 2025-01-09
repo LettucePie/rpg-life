@@ -124,6 +124,24 @@ func _validate_quantity(target : ItemEntry):
 		inventory.erase(target)
 
 
+func add_inventory_by_name_type(
+		tar_name : String, tar_types : Array[ItemEntry.ITEMTYPE], amount : int):
+	##
+	print("Adding to Persist Inventory a ", tar_name, " by ", amount)
+	print("**TODO** scry through Compendiums to validate/retrieve item types.")
+	print("Current Situation allows exception where a Material + Object will \
+	get placed onto the Island, then when removed be converted to Object only.")
+	if get_quantity_by_item_name_type(tar_name, tar_types[0]) <= 0:
+		var new_inventory_entry : ItemEntry = ItemEntry.new()
+		new_inventory_entry.quantity = amount
+		new_inventory_entry.item_name = tar_name
+		new_inventory_entry.types = tar_types
+		inventory.append(new_inventory_entry)
+		save_data()
+	else:
+		print("Inventory already has ItemEntry for ", tar_name)
+
+
 func get_quantity_by_item_entry(target : ItemEntry) -> int:
 	var result : int = 0
 	

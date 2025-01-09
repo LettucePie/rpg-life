@@ -101,6 +101,7 @@ func inventory_sub_button(id : int):
 		#decoration_menu.show()
 		decoration_menu.prepare_deco_menu()
 		set_menu_state(MENU_STATES.DECORATE)
+		PlayerInput.play.refocus_main_island()
 		decoration_menu.target_island = PlayerInput.play.main_island
 
 

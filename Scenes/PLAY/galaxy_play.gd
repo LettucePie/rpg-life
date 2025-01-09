@@ -56,6 +56,11 @@ func _island_selected(target_island : Island):
 			target_island.focus()
 
 
+func refocus_main_island():
+	print("Refocusing Main Island")
+	_island_selected(main_island)
+
+
 func island_object_selected(object : IslandObject):
 	print("Play Recieved Island Object: ", object.object_name)
 	if menu.state == menu.MENU_STATES.DECORATE:

@@ -86,6 +86,17 @@ func add_object(island_object : IslandObject, at_pos : Vector3):
 	_connect_objects()
 
 
+func remove_object(island_object : IslandObject):
+	print("Removing IslandObject: ", island_object)
+	if objects.has(island_object):
+		objects.erase(island_object)
+	if island_object is Station and stations.has(island_object):
+		stations.erase(island_object)
+	if is_instance_valid(island_object):
+		island_object.queue_free()
+	_connect_objects()
+
+
 func setup_suspended_island_object(suspended_object : IslandObject, return_address : Callable):
 	awaiting_suspended_object = true
 	suspended_island_object = suspended_object
