@@ -153,28 +153,29 @@ func deco_button_pressed(grid_button : GridButton):
 	spawn_tools.hide()
 
 
-func place_in_suspension(island_object : IslandObject) -> bool:
-	if current_state != STATE.REST:
-		return false
-	else:
-		print("Placing IslandObject: ", island_object.object_name, " into placement Suspension.")
-		_reset_active_elements()
-		suspended_island_object = island_object
-		active_icon.texture.studio_capture_object(island_object)
-		active_label.text = "Placing " + island_object.object_name
-		print(" Add Quantity to label")
-		active_actions.show()
-		_active_action_visibility([0, 0, 1])
-		back_button.hide()
-		spawn_button.hide()
-		edit_tools.hide()
-		current_state = STATE.PLACE
-		target_island.setup_suspended_island_object(
-			suspended_island_object, self.suspension_status
-		)
-		##
-		PlayerInput.movement_locked = false
-		return true
+func place_in_suspension(island_object : IslandObject):
+	print("Placing IslandObject: ", island_object.object_name, " into placement Suspension.")
+	_reset_active_elements()
+	suspended_island_object = island_object
+	active_icon.texture.studio_capture_object(island_object)
+	active_label.text = "Placing " + island_object.object_name
+	#print(" Add Quantity to label")
+	var new_quantity : int = Persist.get_quantity_by_item_name_type(
+			suspended_island_object.object_name,
+			Persist.ItemEntry.ITEMTYPE.OBJECT
+	)
+	active_label.text += " | " + str(new_quantity)
+	active_actions.show()
+	_active_action_visibility([0, 0, 1])
+	back_button.hide()
+	spawn_button.hide()
+	edit_tools.hide()
+	current_state = STATE.PLACE
+	target_island.setup_suspended_island_object(
+		suspended_island_object, self.suspension_status
+	)
+	##
+	PlayerInput.movement_locked = false
 
 
 func suspension_status(tf : bool):
@@ -194,10 +195,11 @@ func suspension_status(tf : bool):
 				latest_grid_button.data_ref[0],
 				new_quantity
 			)
+			place_in_suspension(suspended_island_object.duplicate())
 		else:
 			grid_buttons.erase(latest_grid_button)
 			latest_grid_button.queue_free()
-		cancel_suspension()
+			cancel_suspension()
 		
 	else:
 		print("DecoMenu call that suspended object has Not been placed.")
