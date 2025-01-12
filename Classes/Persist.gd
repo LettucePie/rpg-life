@@ -34,7 +34,9 @@ class ItemEntry:
 
 
 ## Player Data
+var player_data : PlayerData
 var inventory : Array[ItemEntry] = []
+var player_island_data : IslandData
 
 ## Player Settings
 var select_next_deco : bool = false
@@ -97,6 +99,11 @@ func template_data():
 	tree_entry.item_name = "Pine Tree A"
 	tree_entry.types = [1]
 	inventory.append(tree_entry)
+	print("**DEBUG** Creating playerdata.")
+	player_data = PlayerData.new()
+	player_data.assign_name("Matthew")
+	player_data.generate_id_hash(player_data.player_name)
+	print("PlayerData player_id: ", player_data.player_id)
 
 
 func update_quantity_by_item_entry(target : ItemEntry, variable : int):
