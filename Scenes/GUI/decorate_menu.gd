@@ -77,7 +77,14 @@ func set_active_object(object : IslandObject) -> bool:
 		current_object.outline(true)
 		active_icon.texture.studio_capture_object(object)
 		active_label.text = object.object_name
-		_active_action_visibility([1, 1, 1])
+		var quantity : int = Persist.get_quantity_by_item_name_type(
+			object.object_name,
+			Persist.ItemEntry.ITEMTYPE.OBJECT
+		)
+		if quantity > 0:
+			active_label.text += " | " + str(quantity)
+		var extra_available : bool = quantity > 0
+		_active_action_visibility([1, int(extra_available), 1])
 		active_actions.show()
 		back_button.hide()
 		spawn_button.hide()
@@ -286,6 +293,12 @@ func _active_buttons(id : int):
 		unset_active_object()
 	elif id == 1:
 		print("Duplicate Active Decoration")
+		if current_state == STATE.EDIT and current_object != null:
+			current_object.outline(false)
+			var dupe : IslandObject = current_object.duplicate()
+			unset_active_object()
+			place_in_suspension(dupe)
+			current_state = STATE.PLACE
 	elif id == 2:
 		print("Finish Manipulating Active Decoration")
 		if current_state == STATE.EDIT:
