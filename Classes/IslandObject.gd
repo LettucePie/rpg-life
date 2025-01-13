@@ -13,7 +13,7 @@ signal object_released(object)
 
 ## Assets
 var default_object_shape : PackedScene = preload(
-	"res://Scenes/Userspace/Stations/default_station_shape.tscn"
+	"res://Scenes/Userspace/default_station_shape.tscn"
 	)
 var outline_material : ShaderMaterial = preload(
 	"res://Assets/3D/Materials/FX/outline_shader_mat.tres"

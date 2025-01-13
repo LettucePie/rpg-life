@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqlqwfeehuxvf"]
+
+[ext_resource type="Script" path="res://Classes/Station.gd" id="1_b2tgr"]
+[ext_resource type="Texture2D" uid="uid://c4mijdmqly0ye" path="res://Assets/2D/UI/Object_Icons/house_01.png" id="2_7qr45"]
+[ext_resource type="PackedScene" uid="uid://bbkoqgg1cajig" path="res://Assets/3D/Models/house_01.glb" id="3_4t2kx"]
+[ext_resource type="PackedScene" uid="uid://b7s8khb5jf8pn" path="res://Scenes/Userspace/default_station_shape.tscn" id="4_sionu"]
+
+[node name="House_01" type="StaticBody3D"]
+script = ExtResource("1_b2tgr")
+object_name = "House A"
+object_icon = ExtResource("2_7qr45")
+
+[node name="house_01" parent="." instance=ExtResource("3_4t2kx")]
+
+[node name="Default_Station_Shape" parent="." instance=ExtResource("4_sionu")]

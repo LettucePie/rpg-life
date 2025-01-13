@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://nxnuxj8k2vqt" path="res://Assets/3D/Models/island.glb" id="1_5q8sx"]
 [ext_resource type="Script" path="res://Scenes/Userspace/island.gd" id="1_p7qw4"]
-[ext_resource type="PackedScene" uid="uid://dqlqwfeehuxvf" path="res://Scenes/Userspace/Stations/house_station_01.tscn" id="3_j84yx"]
+[ext_resource type="PackedScene" uid="uid://dqlqwfeehuxvf" path="res://Scenes/Userspace/Decoration/Stations/house_station_01.tscn" id="3_j84yx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_g35o5"]
 height = 6.18917

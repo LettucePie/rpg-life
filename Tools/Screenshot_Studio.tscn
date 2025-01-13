@@ -1,15 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy3epkvckaom3"]
+[gd_scene load_steps=5 format=3 uid="uid://dy3epkvckaom3"]
 
 [ext_resource type="Script" path="res://Tools/Screenshot_Studio.gd" id="1_iiww4"]
 [ext_resource type="Environment" uid="uid://chu1uolg16wxp" path="res://Tools/basic_env.tres" id="2_h752r"]
 [ext_resource type="PackedScene" uid="uid://bpsrsfdfuasjx" path="res://Scenes/Userspace/Decoration/pinetree_a.tscn" id="2_mdgwc"]
+[ext_resource type="PackedScene" uid="uid://bbkoqgg1cajig" path="res://Assets/3D/Models/house_01.glb" id="4_b2ll0"]
 
 [node name="ScreenshotStudio" type="Node3D"]
 script = ExtResource("1_iiww4")
-cap_name = "pinetree_a"
 
 [node name="Spin" type="Node3D" parent="."]
-transform = Transform3D(-0.180399, 0.397396, 0.89974, -5.58794e-09, 0.914748, -0.404024, -0.983594, -0.0728856, -0.16502, 0, 0, 0)
+transform = Transform3D(0.873773, 0.196258, 0.444977, 0, 0.91496, -0.403545, -0.486336, 0.352607, 0.799466, 0, 0, 0)
 
 [node name="Distance" type="Node3D" parent="Spin"]
 transform = Transform3D(1, -7.45058e-09, 0, 0, 0.714082, 0.700062, 1.49012e-08, -0.700062, 0.714082, 5.96046e-08, 2.83732, 2.89414)
@@ -21,6 +21,10 @@ transform = Transform3D(1, -7.45058e-09, 2.98023e-08, 1.49012e-08, 0.997492, -0.
 environment = ExtResource("2_h752r")
 
 [node name="PinetreeA" parent="." instance=ExtResource("2_mdgwc")]
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.979589, 0.169294, 0.108372, 0, -0.539138, 0.842217, 0.20101, -0.825027, -0.528134, 0, 0, 0)
+transform = Transform3D(-0.978374, 0.121623, 0.167312, 0.0330494, -0.706564, 0.706877, 0.204189, 0.69712, 0.687264, 0, 0, 0)
+
+[node name="house_01" parent="." instance=ExtResource("4_b2ll0")]
+visible = false
