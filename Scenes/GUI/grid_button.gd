@@ -37,6 +37,7 @@ func update_button_text():
 func adoption(parent : GridContainer):
 	parent.add_child(self)
 	parent.resized.connect(_adjust_size)
+	_adjust_size()
 
 
 func _adjust_size():
