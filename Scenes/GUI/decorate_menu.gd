@@ -165,7 +165,7 @@ func _update_deco_grid(deco_name : String, adjustment : int):
 				deco_name)
 		var quantity = Persist.get_quantity_by_item_name_type(
 				deco_name, Persist.ItemEntry.ITEMTYPE.OBJECT)
-		if quantity > 0:
+		if quantity > 0 and io_entry != null:
 			var new_grid_button : GridButton = grid_button_scene.instantiate()
 			new_grid_button.assign_island_object_entry(io_entry, quantity)
 			new_grid_button.grid_button_pressed.connect(
