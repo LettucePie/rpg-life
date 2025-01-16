@@ -40,6 +40,7 @@ func initialize():
 	connect_signals()
 	_groupify()
 	_find_geometries()
+	print(object_name, " children_geo: ", children_geometry.size())
 
 
 func _check_shape() -> bool:

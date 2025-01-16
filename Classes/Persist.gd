@@ -99,6 +99,11 @@ func template_data():
 	tree_entry.item_name = "Pine Tree A"
 	tree_entry.types = [1]
 	inventory.append(tree_entry)
+	var bush_entry : ItemEntry = ItemEntry.new()
+	bush_entry.quantity = 5
+	bush_entry.item_name = "Bush A"
+	bush_entry.types = [1]
+	inventory.append(bush_entry)
 	print("**DEBUG** Creating playerdata.")
 	player_data = PlayerData.new()
 	player_data.assign_name("Matthew")
