@@ -66,15 +66,6 @@ func object_dragged(object : Node3D, event : InputEvent):
 			)
 
 
-func object_rotated(object : Node3D, event : InputEvent):
-	print("InputManager Rotating: ", object)
-	if play.menu.state == GalaxyMenu.MENU_STATES.DECORATE:
-		if selected_object.outlined:
-			play.focused_island.rotate_object(
-					selected_object, (event.relative.x / PI) * ROTATE_SPEED
-			)
-
-
 func _input(event):
 	if event is InputEventMouseButton:
 		if !event.pressed:
@@ -94,10 +85,7 @@ func _input(event):
 					)
 			)
 		if selected_object is IslandObject and !movement_locked:
-			if play.menu.decoration_menu.rotating:
-				object_rotated(selected_object, event)
-			else:
-				object_dragged(selected_object, event)
+			object_dragged(selected_object, event)
 
 
 func _conjure_input_camera(target_cam : Camera3D):

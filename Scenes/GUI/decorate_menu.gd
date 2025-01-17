@@ -329,3 +329,8 @@ func _input(event):
 			rotating = false
 			##
 			PlayerInput.movement_locked = false
+	if rotating and event is InputEventMouseMotion:
+		target_island.rotate_object(
+				current_object, 
+				(event.relative.x / PI) * PlayerInputManager.ROTATE_SPEED
+		)
