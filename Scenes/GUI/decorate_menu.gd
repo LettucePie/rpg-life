@@ -6,9 +6,6 @@ signal exit_decorate()
 enum STATE {REST, EDIT, MOVE, PLACE}
 var current_state : STATE = STATE.REST
 
-## Constants
-const ROTATE_SPEED : float = 0.045
-
 ## Active Elements
 var target_island : Island
 var current_object : IslandObject
@@ -307,13 +304,6 @@ func _active_buttons(id : int):
 			cancel_suspension()
 
 
-func _on_rotate_zone_pressed():
-	rotating = true
-	print("Begin Rotating")
-	##
-	PlayerInput.movement_locked = true
-
-
 func _on_spawn_button_pressed():
 	if spawn_tools.visible:
 		spawn_tools.hide()
@@ -324,11 +314,18 @@ func _on_spawn_button_pressed():
 
 
 func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index <= 1 \
+		and event.pressed \
+		and (event.position.y / get_window().size.y) >= 0.8 \
+		and current_state == STATE.EDIT:
+			rotating = true
+			print("Begin Rotating")
+			##
+			PlayerInput.movement_locked = true
 	if rotating and event is InputEventMouseButton:
 		if event.pressed == false:
 			print("End Rotating")
 			rotating = false
 			##
 			PlayerInput.movement_locked = false
-	if rotating and event is InputEventMouseMotion:
-		current_object.rotate_y((event.relative.x / PI) * ROTATE_SPEED)

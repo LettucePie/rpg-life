@@ -5,6 +5,8 @@ class_name Island
 signal island_selected(island)
 signal island_released(island)
 
+
+var island_data : IslandData
 var focused : bool = false
 @export var object_container : Node3D
 var objects : Array[IslandObject] = []
@@ -21,13 +23,32 @@ func _ready():
 	pass # Replace with function body.
 
 
+func assign_island_data(data : IslandData):
+	print("Assigning Island Data to island")
+	island_data = data
+	if !objects.is_empty():
+		print("Dumping and Reassigning Island... is this right?")
+		for object in objects:
+			object.queue_free()
+		objects.clear()
+		stations.clear()
+	for i in data.io_data["object_names"].size():
+		var io_name = data.io_data["object_names"][i]
+		var io_scene = IslandObjectCompendium.request_io_scene_by_name(io_name)
+		var io_pos = data.io_data["positions"][i]
+		var io_rot = data.io_data["angles"][i]
+		if io_scene != null:
+			_add_object_disconnected(io_scene.instantiate(), io_pos, io_rot)
+	_connect_objects()
+
+
 func _on_island_area_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index <= 1:
 			print("Island Selected: ", self)
 			emit_signal("island_selected", self)
 			if awaiting_suspended_object:
-				add_object(suspended_island_object, position)
+				add_object(suspended_island_object, position, 0)
 				deco_menu_callable.call(true)
 		else:
 			emit_signal("island_released", self)
@@ -74,16 +95,40 @@ func unfocus():
 
 func translate_object(target_object : IslandObject, target_pos : Vector3):
 	target_object.global_position = target_pos
+	#island_data.update_data(self)
 
 
-func add_object(island_object : IslandObject, at_pos : Vector3):
+func rotate_object(target_object : IslandObject, offset : float):
+	target_object.rotate_y(offset)
+	#island_data.update_data(self)
+
+
+func finish_manipulation():
+	island_data.update_data(self)
+
+
+func add_object(island_object : IslandObject, at_pos : Vector3, at_rot : float):
 	print("Adding IslandObject: ", island_object, " to Island: ", self)
 	object_container.add_child(island_object)
 	objects.append(island_object)
 	island_object.position = at_pos
+	island_object.rotation.y = at_rot
 	if island_object is Station:
 		stations.append(island_object)
 	_connect_objects()
+	island_data.update_data(self)
+
+
+## Adds Objects to the island withouth calling _connect_objects.
+## Useful for adding multiple objects and reducing _connect_objects calls.
+func _add_object_disconnected(io: IslandObject, pos : Vector3, rot : float):
+	print("Adding object without connecting")
+	object_container.add_child(io)
+	objects.append(io)
+	io.position = pos
+	io.rotation.y = rot
+	if io is Station:
+		stations.append(io)
 
 
 func remove_object(island_object : IslandObject):
@@ -95,6 +140,7 @@ func remove_object(island_object : IslandObject):
 	if is_instance_valid(island_object):
 		island_object.queue_free()
 	_connect_objects()
+	island_data.update_data(self)
 
 
 func setup_suspended_island_object(suspended_object : IslandObject, return_address : Callable):

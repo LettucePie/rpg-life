@@ -33,38 +33,116 @@ class ItemEntry:
 			return null
 
 
-## Player Data
-var player_data : PlayerData
-var inventory : Array[ItemEntry] = []
-var player_island_data : IslandData
+## Game Data
+@onready var version = ProjectSettings.get_setting("application/config/version")
 
-## Player Settings
+
+## Player Data
+var player_data : PlayerData = null
+var player_island_data : IslandData = null
+var inventory : Array[ItemEntry] = []
 var select_next_deco : bool = false
- 
+const user_keys : Array = [
+	"version",
+	"player_id",
+	"player_name"
+]
+const island_keys : Array = [
+	"island_owner_id",
+	"island_name",
+	
+]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print(version)
 
 
 ## Loads data from File
 func load_data():
 	print("Loading")
 	VPrint.vprint("Loading PersistData")
-	if FileAccess.file_exists("user://savegame.save"):
-		var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
-		print("Save File Opened")
+	if FileAccess.file_exists("user://user/user.save") \
+	and FileAccess.file_exists("user://user/island.save"):
+		var validity = [
+			_load_user_data()
+		]
+		if validity.has(false):
+			print("Invalid Data, move to recovery.")
+			#_file_surgery(data)
+			## TODO refer to flicky-bee project persist.gd for guidance
+			## on how I would update outdatted save files.
 	else:
-		print("Save File Missing")
+		print("Data Missing, new user?")
 		## Setting up test file.
 		template_data()
 		_glossarize_inventory()
 		emit_signal("finished_loading")
 
 
+func _load_user_data() -> bool:
+	var user_file = FileAccess.open("user://user/user.save", FileAccess.READ)
+	print("UserData File Opened")
+	if player_data == null:
+		player_data = PlayerData.new()
+	var valid = true
+	while user_file.get_position() < user_file.get_length():
+		var json_string = user_file.get_line()
+		var json = JSON.new()
+		var parse = json.parse(json_string)
+		if not parse == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", \
+					json_string, " at line ", json.get_error_line())
+			continue
+		var data = json.get_data()
+		if data.has("version"):
+			if data["version"] != version:
+				valid = false
+		for k in user_keys:
+			if !data.has(k):
+				valid = false
+	return valid
+
+
+func _load_island_data() -> bool:
+	var island_file = FileAccess.open("user://user/user.island", FileAccess.READ)
+	print("IslandData File Opened")
+	if player_island_data == null:
+		player_island_data = IslandData.new()
+	var valid = true
+	while island_file.get_position() < island_file.get_length():
+		var json_string = island_file.get_line()
+		var json = JSON.new()
+		var parse = json.parse(json_string)
+		if not parse == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", \
+					json_string, " at line ", json.get_error_line())
+			continue
+		var data = json.get_data()
+		if data.has("island_owner_id"):
+			if data["island_owner_id"] != player_data.player_id:
+				print("Island to IslandOwner mismatch... Island Theft?")
+				valid = false
+		for k in island_keys:
+			if !data.has(k):
+				valid = false
+	return valid
+
+
 ## Saves data to File
 func save_data():
-	print("Saving")
+	print("Saving User")
+	var user_dict : Dictionary = {
+		"version" = version,
+		"player_id" = player_data.player_id
+	}
+	var user_file = FileAccess.open("user://user/user.save", FileAccess.WRITE)
+	var json_string = JSON.stringify(user_dict)
+	user_file.store_line(json_string)
+	print("Saved USER!")
+	print("Saving Island")
+	var island_dict : Dictionary = {}
 
 
 ## Connects items in inventory to their Compendium (Database) entries
