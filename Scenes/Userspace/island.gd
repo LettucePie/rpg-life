@@ -26,6 +26,7 @@ func _ready():
 func assign_island_data(data : IslandData):
 	print("Assigning Island Data to island")
 	island_data = data
+	data.island_node = self
 	if !objects.is_empty():
 		print("Dumping and Reassigning Island... is this right?")
 		for object in objects:

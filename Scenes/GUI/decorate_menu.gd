@@ -261,6 +261,7 @@ func _process(delta):
 
 func _on_back_button_pressed():
 	print("Exit Decorate")
+	target_island.finish_manipulation()
 	emit_signal("exit_decorate")
 	## Save/update island data
 

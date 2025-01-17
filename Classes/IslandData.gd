@@ -39,4 +39,11 @@ func assign_island_owner(owner : PlayerData):
 
 func update_data(island : Island):
 	print("Convert Island: ", island, " to Savable/Sharable data.")
-	
+	io_data["object_names"].clear()
+	io_data["positions"].clear()
+	io_data["angles"].clear()
+	for object in island.objects:
+		io_data["object_names"].append(object.object_name)
+		io_data["positions"].append(object.position)
+		io_data["angles"].append(object.rotation.y)
+	Persist.save_data()

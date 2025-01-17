@@ -50,7 +50,13 @@ const user_keys : Array = [
 const island_keys : Array = [
 	"island_owner_id",
 	"island_name",
-	
+	"io_data"
+]
+const inventory_keys : Array = [
+	"inventory_owner",
+	"item_names",
+	"item_amounts",
+	"item_types"
 ]
 
 
@@ -64,9 +70,12 @@ func load_data():
 	print("Loading")
 	VPrint.vprint("Loading PersistData")
 	if FileAccess.file_exists("user://user/user.save") \
-	and FileAccess.file_exists("user://user/island.save"):
+	and FileAccess.file_exists("user://user/user.island") \
+	and FileAccess.file_exists("user://user/user.inventory"):
 		var validity = [
-			_load_user_data()
+			_load_user_data(),
+			_load_island_data(),
+			_load_inventory_data()
 		]
 		if validity.has(false):
 			print("Invalid Data, move to recovery.")
@@ -102,6 +111,9 @@ func _load_user_data() -> bool:
 		for k in user_keys:
 			if !data.has(k):
 				valid = false
+		if valid:
+			player_data.player_id = data["player_id"]
+			player_data.player_name = data["player_name"]
 	return valid
 
 
@@ -130,7 +142,32 @@ func _load_island_data() -> bool:
 	return valid
 
 
-## Saves data to File
+func _load_inventory_data() -> bool:
+	var island_file = FileAccess.open("user://user/user.inventory", FileAccess.READ)
+	print("IslandData File Opened")
+	if player_island_data == null:
+		player_island_data = IslandData.new()
+	var valid = true
+	while island_file.get_position() < island_file.get_length():
+		var json_string = island_file.get_line()
+		var json = JSON.new()
+		var parse = json.parse(json_string)
+		if not parse == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", \
+					json_string, " at line ", json.get_error_line())
+			continue
+		var data = json.get_data()
+		if data.has("island_owner_id"):
+			if data["island_owner_id"] != player_data.player_id:
+				print("Island to IslandOwner mismatch... Island Theft?")
+				valid = false
+		for k in island_keys:
+			if !data.has(k):
+				valid = false
+	return valid
+
+
+## Saves data to Files
 func save_data():
 	print("Saving User")
 	var user_dict : Dictionary = {
@@ -142,7 +179,34 @@ func save_data():
 	user_file.store_line(json_string)
 	print("Saved USER!")
 	print("Saving Island")
-	var island_dict : Dictionary = {}
+	var island_dict : Dictionary = {
+		"island_owner_id" = player_island_data.island_owner_id,
+		"island_name" = player_island_data.island_name,
+		"io_data" = JSON.stringify(player_island_data.io_data)
+	}
+	var island_file = FileAccess.open("user://user/user.island", FileAccess.WRITE)
+	json_string = JSON.stringify(island_dict)
+	island_file.store_line(json_string)
+	print("Saved ISLAND!")
+	print("Saving Items")
+	var item_names : Array = []
+	var item_amounts : Array = []
+	var item_types : Array = []
+	for entry in inventory:
+		if entry.quantity > 0:
+			item_names.append(entry.item_name)
+			item_amounts.append(entry.quantity)
+			item_types.append(entry.types)
+	var item_dict : Dictionary = {
+		"inventory_owner" : player_data.player_id,
+		"item_names" : item_names,
+		"item_amounts" : item_amounts,
+		"item_types" : item_types
+	}
+	var item_file = FileAccess.open("user://user/user.inventory", FileAccess.WRITE)
+	json_string = JSON.stringify(item_dict)
+	item_file.store_line(json_string)
+	print("Saved INVENTORY!")
 
 
 ## Connects items in inventory to their Compendium (Database) entries
