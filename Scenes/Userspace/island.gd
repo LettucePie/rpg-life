@@ -40,7 +40,6 @@ func assign_island_data(data : IslandData):
 		var io_pos : Vector3 = Vector3.ZERO
 		io_pos_string = io_pos_string.trim_prefix("(")
 		io_pos_string = io_pos_string.trim_suffix(")")
-		print("io_pos_string operated: ", io_pos_string)
 		var io_pos_string_parts = io_pos_string.split(",")
 		io_pos.x = float(io_pos_string_parts[0])
 		io_pos.y = float(io_pos_string_parts[1])
