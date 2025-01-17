@@ -14,7 +14,12 @@ var state : MENU_STATES = MENU_STATES.FREE
 ## Submenu Stuff
 @onready var submenu_root : Control = $SubMenus
 @onready var inventory_sub : Control = $SubMenus/InventorySubMenu
+@onready var inventory_sub_controls : Control \
+	= $SubMenus/InventorySubMenu/BackPanel/InventoryControls
+@onready var inventory_stock_inlet : Control \
+	= $SubMenus/ConnectSubMenu/BackPanel/StockInletPanel
 @onready var connect_sub : Control = $SubMenus/ConnectSubMenu
+@onready var inlets : Array = get_tree().get_nodes_in_group("Inlet")
 
 ## Auxillery Menu Stuff
 @onready var decoration_menu : DecorateMenu = $DecorateMenu
@@ -30,6 +35,7 @@ func _ready():
 	_gather_menus()
 	hide_all_submenus(true)
 	hide_all_auxmenus()
+	hide_all_inlets()
 
 
 func _gather_menus():
@@ -68,10 +74,17 @@ func hide_all_auxmenus():
 		a_menu.hide()
 
 
+func hide_all_inlets():
+	print("Hide All Inlets")
+	for i_menu in inlets:
+		i_menu.hide()
+
+
 func bottom_row_button(id : int):
 	print("Bottom Row Button: ", id)
 	if current_submenu != id:
 		hide_all_submenus(true)
+		hide_all_inlets()
 		submenu_root.show()
 		current_submenu = id
 		set_menu_state(MENU_STATES.SUBMENU)
@@ -79,6 +92,7 @@ func bottom_row_button(id : int):
 			print("Inventory Button")
 			#hide_all_primary()
 			inventory_sub.show()
+			inventory_sub_controls.show()
 		elif id == 1:
 			print("Connect Button")
 		elif id == 2:
@@ -92,6 +106,10 @@ func bottom_row_button(id : int):
 func inventory_sub_button(id : int):
 	if id <= 0:
 		print("Show Stock")
+		#inventory_sub_controls.hide()
+		inventory_stock_inlet.show()
+		#inventory_stock_inlet.visible = true
+		print(inventory_stock_inlet)
 	elif id == 1:
 		print("Show Crafting")
 	elif id == 2:

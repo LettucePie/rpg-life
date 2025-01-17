@@ -175,8 +175,7 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Decorate"
 
-[node name="StockInletPanel" type="Panel" parent="SubMenus/InventorySubMenu/BackPanel"]
-visible = false
+[node name="StockInletPanel" type="Panel" parent="SubMenus/InventorySubMenu/BackPanel" groups=["Inlet"]]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05

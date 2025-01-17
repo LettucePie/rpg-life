@@ -298,20 +298,20 @@ func update_quantity_by_item_entry(target : ItemEntry, variable : int):
 	if inventory.has(target):
 		target.quantity += variable
 		_validate_quantity(target)
-		save_data()
+		#save_data()
 
 
 func update_quantity_by_item_name_type(
 	tar_name : String, tar_type : ItemEntry.ITEMTYPE, variable : int):
 	##
-	var valid : bool = false
+	#var valid : bool = false
 	for item in inventory:
 		if item.types.has(tar_type) and item.item_name == tar_name:
 			item.quantity += variable
-			valid = true
+			#valid = true
 			_validate_quantity(item)
-	if valid:
-		save_data()
+	#if valid:
+		#save_data()
 
 
 func _validate_quantity(target : ItemEntry):
@@ -332,7 +332,7 @@ func add_inventory_by_name_type(
 		new_inventory_entry.item_name = tar_name
 		new_inventory_entry.types = tar_types
 		inventory.append(new_inventory_entry)
-		save_data()
+		#save_data()
 	else:
 		print("Inventory already has ItemEntry for ", tar_name)
 
