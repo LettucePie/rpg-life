@@ -36,7 +36,15 @@ func assign_island_data(data : IslandData):
 	for i in data.io_data["object_names"].size():
 		var io_name = data.io_data["object_names"][i]
 		var io_scene = IslandObjectCompendium.request_io_scene_by_name(io_name)
-		var io_pos = data.io_data["positions"][i]
+		var io_pos_string = data.io_data["positions"][i]
+		var io_pos : Vector3 = Vector3.ZERO
+		io_pos_string = io_pos_string.trim_prefix("(")
+		io_pos_string = io_pos_string.trim_suffix(")")
+		print("io_pos_string operated: ", io_pos_string)
+		var io_pos_string_parts = io_pos_string.split(",")
+		io_pos.x = float(io_pos_string_parts[0])
+		io_pos.y = float(io_pos_string_parts[1])
+		io_pos.z = float(io_pos_string_parts[2])
 		var io_rot = data.io_data["angles"][i]
 		if io_scene != null:
 			_add_object_disconnected(io_scene.instantiate(), io_pos, io_rot)

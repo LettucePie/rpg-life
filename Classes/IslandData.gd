@@ -28,6 +28,7 @@ func assign_island_name(new_name : String):
 	if sanitized.is_empty():
 		sanitized = "USER ISLAND"
 	island_name = sanitized
+	## TODO Check if island being assigned a name is the main island?
 	Persist.save_data()
 
 
@@ -46,4 +47,4 @@ func update_data(island : Island):
 		io_data["object_names"].append(object.object_name)
 		io_data["positions"].append(object.position)
 		io_data["angles"].append(object.rotation.y)
-	Persist.save_data()
+	#Persist.save_data()

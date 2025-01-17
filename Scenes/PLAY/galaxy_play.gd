@@ -28,6 +28,14 @@ func initialize():
 		_gather_islands()
 		_connect_islands()
 		_island_selected(main_island)
+		if Persist.player_island_data == null:
+			Persist.player_island_data = IslandData.new()
+			Persist.player_island_data.island_node = main_island
+			Persist.player_island_data.update_data(main_island)
+			Persist.player_island_data.assign_island_owner(Persist.player_data)
+			main_island.island_data = Persist.player_island_data
+		else:
+			main_island.assign_island_data(Persist.player_island_data)
 	else:
 		print("**ERROR** Main Island Missing! Game cannot continue.")
 

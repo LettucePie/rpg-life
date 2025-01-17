@@ -34,7 +34,7 @@ class ItemEntry:
 
 
 ## Game Data
-@onready var version = ProjectSettings.get_setting("application/config/version")
+var version : String = ""
 
 
 ## Player Data
@@ -67,6 +67,7 @@ func _ready():
 
 ## Loads data from File
 func load_data():
+	version = str(ProjectSettings.get_setting("application/config/version"))
 	print("Loading")
 	VPrint.vprint("Loading PersistData")
 	if FileAccess.file_exists("user://user/user.save") \
@@ -82,8 +83,13 @@ func load_data():
 			#_file_surgery(data)
 			## TODO refer to flicky-bee project persist.gd for guidance
 			## on how I would update outdatted save files.
+		else:
+			emit_signal("finished_loading")
 	else:
 		print("Data Missing, new user?")
+		var dir = DirAccess.open("user://")
+		dir.make_dir("user")
+		dir.make_dir("mesh")
 		## Setting up test file.
 		template_data()
 		_glossarize_inventory()
@@ -108,12 +114,17 @@ func _load_user_data() -> bool:
 		if data.has("version"):
 			if data["version"] != version:
 				valid = false
+		if !valid:
+			print("UserData Load :: Version Mismatch")
 		for k in user_keys:
 			if !data.has(k):
 				valid = false
+		if !valid:
+			print("UserData Load :: Keys Missing")
 		if valid:
 			player_data.player_id = data["player_id"]
 			player_data.player_name = data["player_name"]
+			## TODO Load player settings and accomplishments
 	return valid
 
 
@@ -132,24 +143,41 @@ func _load_island_data() -> bool:
 					json_string, " at line ", json.get_error_line())
 			continue
 		var data = json.get_data()
-		if data.has("island_owner_id"):
+		if data.has("island_owner_id") and player_data != null:
 			if data["island_owner_id"] != player_data.player_id:
 				print("Island to IslandOwner mismatch... Island Theft?")
+				print("Island registered : ", data["island_owner_id"], "  || User registerd : ", player_data.player_id)
 				valid = false
 		for k in island_keys:
 			if !data.has(k):
 				valid = false
+		if valid:
+			player_island_data.island_owner_id = data["island_owner_id"]
+			player_island_data.assign_island_owner(player_data)
+			player_island_data.island_name = data["island_name"]
+			var nested_json = JSON.new()
+			var nested_parse = nested_json.parse(data["io_data"])
+			if not nested_parse == OK:
+				print("NESTED JSON Parse Error for io_data.")
+				continue
+			var nested_data = nested_json.get_data()
+			if nested_data.has("object_names"):
+				player_island_data.io_data["object_names"] \
+					= nested_data["object_names"]
+				player_island_data.io_data["positions"] \
+					= nested_data["positions"]
+				player_island_data.io_data["angles"] \
+					= nested_data["angles"]
 	return valid
 
 
 func _load_inventory_data() -> bool:
-	var island_file = FileAccess.open("user://user/user.inventory", FileAccess.READ)
-	print("IslandData File Opened")
-	if player_island_data == null:
-		player_island_data = IslandData.new()
+	var inventory_file = FileAccess.open("user://user/user.inventory", FileAccess.READ)
+	print("InventoryData File Opened")
+	inventory.clear()
 	var valid = true
-	while island_file.get_position() < island_file.get_length():
-		var json_string = island_file.get_line()
+	while inventory_file.get_position() < inventory_file.get_length():
+		var json_string = inventory_file.get_line()
 		var json = JSON.new()
 		var parse = json.parse(json_string)
 		if not parse == OK:
@@ -157,13 +185,23 @@ func _load_inventory_data() -> bool:
 					json_string, " at line ", json.get_error_line())
 			continue
 		var data = json.get_data()
-		if data.has("island_owner_id"):
-			if data["island_owner_id"] != player_data.player_id:
-				print("Island to IslandOwner mismatch... Island Theft?")
+		if data.has("inventory_owner") and player_data != null:
+			if data["inventory_owner"] != player_data.player_id:
+				print("ERROR Inventory to InventoryOwner mismatch")
 				valid = false
-		for k in island_keys:
+		for k in inventory_keys:
 			if !data.has(k):
 				valid = false
+		if valid:
+			print("Building Inventory from file")
+			for i in data["item_names"].size():
+				var item_entry : ItemEntry = ItemEntry.new()
+				item_entry.item_name = data["item_names"][i]
+				item_entry.quantity = data["item_amounts"][i]
+				for t in data["item_types"][i]:
+					item_entry.types.append(int(t))
+				inventory.append(item_entry)
+			_glossarize_inventory()
 	return valid
 
 
@@ -172,9 +210,11 @@ func save_data():
 	print("Saving User")
 	var user_dict : Dictionary = {
 		"version" = version,
-		"player_id" = player_data.player_id
+		"player_id" = player_data.player_id,
+		"player_name" = player_data.player_name
 	}
 	var user_file = FileAccess.open("user://user/user.save", FileAccess.WRITE)
+	print(FileAccess.get_open_error())
 	var json_string = JSON.stringify(user_dict)
 	user_file.store_line(json_string)
 	print("Saved USER!")
@@ -251,6 +291,7 @@ func template_data():
 	player_data.assign_name("Matthew")
 	player_data.generate_id_hash(player_data.player_name)
 	print("PlayerData player_id: ", player_data.player_id)
+	
 
 
 func update_quantity_by_item_entry(target : ItemEntry, variable : int):
