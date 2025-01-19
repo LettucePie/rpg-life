@@ -17,7 +17,7 @@ var state : MENU_STATES = MENU_STATES.FREE
 @onready var inventory_sub_controls : Control \
 	= $SubMenus/InventorySubMenu/BackPanel/InventoryControls
 @onready var inventory_stock_inlet : Control \
-	= $SubMenus/ConnectSubMenu/BackPanel/StockInletPanel
+	= $SubMenus/InventorySubMenu/BackPanel/StockInletPanel
 @onready var connect_sub : Control = $SubMenus/ConnectSubMenu
 @onready var inlets : Array = get_tree().get_nodes_in_group("Inlet")
 
@@ -109,7 +109,8 @@ func inventory_sub_button(id : int):
 		#inventory_sub_controls.hide()
 		inventory_stock_inlet.show()
 		#inventory_stock_inlet.visible = true
-		print(inventory_stock_inlet)
+		print(inventory_stock_inlet, inventory_stock_inlet.visible)
+		print(inventory_stock_inlet.get_parent())
 	elif id == 1:
 		print("Show Crafting")
 	elif id == 2:
