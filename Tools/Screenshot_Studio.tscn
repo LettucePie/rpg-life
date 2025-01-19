@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy3epkvckaom3"]
+[gd_scene load_steps=7 format=3 uid="uid://dy3epkvckaom3"]
 
 [ext_resource type="Script" path="res://Tools/Screenshot_Studio.gd" id="1_iiww4"]
 [ext_resource type="Environment" uid="uid://chu1uolg16wxp" path="res://Tools/basic_env.tres" id="2_h752r"]
 [ext_resource type="PackedScene" uid="uid://bpsrsfdfuasjx" path="res://Scenes/Userspace/Decoration/Foliage/pinetree_a.tscn" id="2_mdgwc"]
 [ext_resource type="PackedScene" uid="uid://bbkoqgg1cajig" path="res://Assets/3D/Models/house_01.glb" id="4_b2ll0"]
 [ext_resource type="PackedScene" uid="uid://dxyy70iplr5cc" path="res://Assets/3D/Models/Foliage/bush_a.glb" id="5_dldc0"]
+[ext_resource type="PackedScene" uid="uid://bptiwwbhyhrqj" path="res://Assets/3D/Models/GameMats/wood_oak_bundle.glb" id="6_mwtfy"]
 
 [node name="ScreenshotStudio" type="Node3D"]
 script = ExtResource("1_iiww4")
-cap_name = "bush_a_icon"
+cap_name = "wood_oak_bundle_icon"
 
 [node name="Spin" type="Node3D" parent="."]
 transform = Transform3D(0.873773, 0.196258, 0.444977, 0, 0.91496, -0.403545, -0.486336, 0.352607, 0.799466, 0, 0, 0)
@@ -17,7 +18,7 @@ transform = Transform3D(0.873773, 0.196258, 0.444977, 0, 0.91496, -0.403545, -0.
 transform = Transform3D(1, -7.45058e-09, 0, 0, 0.714082, 0.700062, 1.49012e-08, -0.700062, 0.714082, 5.96046e-08, 2.83732, 2.89414)
 
 [node name="Camera3D" type="Camera3D" parent="Spin/Distance"]
-transform = Transform3D(1, -7.45058e-09, 2.98023e-08, 1.49012e-08, 0.997492, -0.0707836, -2.98023e-08, 0.0707837, 0.997492, 0, 0.982734, 0.00743437)
+transform = Transform3D(0.999999, 2.30968e-07, 5.06639e-07, 0, 0.997492, -0.0707846, 2.98023e-08, 0.0707837, 0.997492, 1.19209e-07, 1.36715, 0.0347128)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_h752r")
@@ -32,3 +33,7 @@ transform = Transform3D(-0.978374, 0.121623, 0.167312, 0.0330494, -0.706564, 0.7
 visible = false
 
 [node name="bush_a" parent="." instance=ExtResource("5_dldc0")]
+visible = false
+
+[node name="wood_oak_bundle" parent="." instance=ExtResource("6_mwtfy")]
+transform = Transform3D(0.476357, 0, -0.0677871, 0, 0.481156, 0, 0.0677871, 0, 0.476357, 0, 1.47351, 0)
