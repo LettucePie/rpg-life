@@ -8,29 +8,46 @@ This list aims to clarify the number of Jobs, what abilities they may provide in
 
  - Farmer
 	- Farm Station
+	- Grows Crops and handles livestock
  - Tailor
 	- Loom Station
+	- Sews material into thing
  - Forager
 	- Foraging Station
+	- Scavenges the land
  - Hunter
 	- Hunting Station
+	- Hunts animal and beast
  - Jeweler
 	- Artisan Station
+	- Crafts ornaments and trinkets
  - Artist
 	- Studio Station
+	- Makes music, paintings, and statues
  - Chef
 	- Kitchen Station
+	- Cooks food
  - Builder
 	- Bench Station
+	- Builds housing and furnishing.
  - Blacksmith
 	- Forge Station
+	- Builds weapons, armors, and tools
  - Miner
 	- Mine Station
+	- Extracts material from the rock
  - Lumberer
 	- Forest Station
+	- Gathers wood
  - Mystic
 	- Stone Circle Station
+	- Enchants and imbues
  - Alchemist
 	- Alchemy Station
+	- crafts medicine and poultices
  - Fisher
 	- Fishing Station
+	- gets fishy
+ - Professor
+    - Library
+    - Research and discovery
