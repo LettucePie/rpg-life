@@ -12,9 +12,6 @@ This list aims to clarify the number of Jobs, what abilities they may provide in
  - Tailor
 	- Loom Station
 	- Sews material into thing
- - Forager
-	- Foraging Station
-	- Scavenges the land
  - Hunter
 	- Hunting Station
 	- Hunts animal and beast
@@ -51,3 +48,6 @@ This list aims to clarify the number of Jobs, what abilities they may provide in
  - Professor
     - Library
     - Research and discovery
+
+
+Should Foraging be an activity anyone can do? Currently it provides a tremendous variety of materials... 
