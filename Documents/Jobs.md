@@ -48,6 +48,18 @@ This list aims to clarify the number of Jobs, what abilities they may provide in
  - Professor
     - Library
     - Research and discovery
+    - Capable of satisfying the conditions required by mushrooms, herbs, and flowers. (mushroom farmer)
 
+
+### Brainstorming
 
 Should Foraging be an activity anyone can do? Currently it provides a tremendous variety of materials... 
+
+What about Herbs and Flowers? Should Farmer handle
+ - Crops
+ - Animal Husbandry
+ - Fruit Trees
+ - Herbs
+ - Flowers
+
+Seems excessive... Perhaps making an Herbologist, or letting the Professor grow plants and other natural findings?
