@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/PLAY/galaxy_play.gd" id="1_d75na"]
 [ext_resource type="PackedScene" uid="uid://bumidsvtd0rql" path="res://Scenes/GUI/galaxy_menu.tscn" id="2_p6km3"]
-[ext_resource type="PackedScene" uid="uid://dbrr8gpliiu2s" path="res://Scenes/Userspace/camera_dial.tscn" id="3_f2ti4"]
-[ext_resource type="PackedScene" uid="uid://pbcncmyk6ao2" path="res://Scenes/Userspace/island.tscn" id="4_q7c1h"]
+[ext_resource type="PackedScene" uid="uid://dbrr8gpliiu2s" path="res://Scenes/Functions/camera_dial.tscn" id="3_f2ti4"]
+[ext_resource type="PackedScene" uid="uid://pbcncmyk6ao2" path="res://Scenes/Functions/island.tscn" id="4_q7c1h"]
 
 [node name="Galaxy" type="Node" node_paths=PackedStringArray("island_container", "main_island")]
 script = ExtResource("1_d75na")

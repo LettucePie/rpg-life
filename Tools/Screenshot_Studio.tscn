@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Tools/Screenshot_Studio.gd" id="1_iiww4"]
 [ext_resource type="Environment" uid="uid://chu1uolg16wxp" path="res://Tools/basic_env.tres" id="2_h752r"]
-[ext_resource type="PackedScene" uid="uid://bpsrsfdfuasjx" path="res://Scenes/Userspace/Decoration/Foliage/pinetree_a.tscn" id="2_mdgwc"]
+[ext_resource type="PackedScene" uid="uid://bpsrsfdfuasjx" path="res://Scenes/IslandObjects/Foliage/pinetree_a.tscn" id="2_mdgwc"]
 [ext_resource type="PackedScene" uid="uid://bbkoqgg1cajig" path="res://Assets/3D/Models/house_01.glb" id="4_b2ll0"]
 [ext_resource type="PackedScene" uid="uid://dxyy70iplr5cc" path="res://Assets/3D/Models/Foliage/bush_a.glb" id="5_dldc0"]
 [ext_resource type="PackedScene" uid="uid://bptiwwbhyhrqj" path="res://Assets/3D/Models/GameMats/wood_oak_bundle.glb" id="6_mwtfy"]

@@ -30,7 +30,7 @@ func rebuild_compendium_from_data():
 	## TODO Okay make most of these functions a @tool script that generates
 	## tres that connect to this scene. Just paths, names, and icons.
 	## Then set convert text to binary on export to true again.
-	_dir_contents("res://Scenes/Userspace/Decoration/")
+	_dir_contents("res://Scenes/IslandObjects/")
 	VPrint.vprint("IOC Size: " + str(compendium.size()))
 	emit_signal("io_catalogued")
 

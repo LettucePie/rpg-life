@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://irf8qjn53euo"]
+
+[ext_resource type="Script" path="res://Scenes/Autoload/box.gd" id="1_ua826"]
+
+[node name="Box" type="Node"]
+script = ExtResource("1_ua826")
+io_dir = "res://Scenes/IslandObjects"

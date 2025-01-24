@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddhnp3xioaf6q"]
 
-[ext_resource type="Script" path="res://Scenes/PLAY/PlayerInputManager.gd" id="1_dv3b4"]
+[ext_resource type="Script" path="res://Scenes/Autoload/PlayerInputManager.gd" id="1_dv3b4"]
 
 [node name="PlayerInputManager" type="Node"]
 script = ExtResource("1_dv3b4")

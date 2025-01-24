@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://jo5yp7cqy2k4"]
 
-[ext_resource type="Script" path="res://Scenes/Connection/ConnectionTesting.gd" id="1_yudlh"]
+[ext_resource type="Script" path="res://Testing/ConnectionTesting.gd" id="1_yudlh"]
 
 [sub_resource type="SystemFont" id="SystemFont_5qpny"]
 font_names = PackedStringArray("Arial")

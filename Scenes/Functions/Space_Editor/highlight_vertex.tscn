@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2hu0nsgfdkcv"]
 
-[ext_resource type="Script" path="res://Scenes/Userspace/Space_Editor/highlight_vertex.gd" id="1_vqj28"]
+[ext_resource type="Script" path="res://Scenes/Functions/Space_Editor/highlight_vertex.gd" id="1_vqj28"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hlpd"]
 albedo_color = Color(0.847059, 0, 0.203922, 1)
