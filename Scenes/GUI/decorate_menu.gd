@@ -130,17 +130,16 @@ func _populate_deco_grid():
 	
 	for item in Persist.inventory:
 		if item.types.has(Persist.ItemEntry.ITEMTYPE.OBJECT):
-			var entry : IslandObjectCompendium.CompendiumEntry = null
-			entry = item.return_entry_of_type(Persist.ItemEntry.ITEMTYPE.OBJECT)
-			if entry != null:
+			var io_data : IO_Data = null
+			io_data = item.return_entry_of_type(Persist.ItemEntry.ITEMTYPE.OBJECT)
+			if io_data != null:
 				var new_grid_button : GridButton \
 						= grid_button_scene.instantiate()
-				new_grid_button.assign_island_object_entry(entry, item.quantity)
+				new_grid_button.assign_island_object_data(io_data, item.quantity)
 				new_grid_button.grid_button_pressed.connect(
 						deco_button_pressed)
 				new_grid_button.adoption(deco_storage_grid)
 				grid_buttons.append(new_grid_button)
-				VPrint.vprint("Added GridEntry " + entry.io_name)
 			else:
 				## TODO fix this
 				print("**ERROR** Failed to retrieve CompendiumEntry from \
@@ -164,19 +163,17 @@ func _update_deco_grid(deco_name : String, adjustment : int):
 	if found == false:
 		## Create new button in grid to be interacted with.
 		## FIRST, validate with Persist.
-		var io_entry : IslandObjectCompendium.CompendiumEntry
-		io_entry = IslandObjectCompendium.request_compendium_entry_by_name(
-				deco_name)
+		var io_data : IO_Data
+		io_data = TheBox.request_io_data_by_name(deco_name)
 		var quantity = Persist.get_quantity_by_item_name_type(
 				deco_name, Persist.ItemEntry.ITEMTYPE.OBJECT)
-		if quantity > 0 and io_entry != null:
+		if quantity > 0 and io_data != null:
 			var new_grid_button : GridButton = grid_button_scene.instantiate()
-			new_grid_button.assign_island_object_entry(io_entry, quantity)
+			new_grid_button.assign_island_object_data(io_data, quantity)
 			new_grid_button.grid_button_pressed.connect(
 					deco_button_pressed)
 			new_grid_button.adoption(deco_storage_grid)
 			grid_buttons.append(new_grid_button)
-			VPrint.vprint("Added GridEntry " + io_entry.io_name)
 	if remove != null:
 		grid_buttons.erase(remove)
 		remove.queue_free()
@@ -189,8 +186,8 @@ func deco_button_pressed(grid_button : GridButton):
 	## Then authenticate inventory.
 	#latest_grid_button = grid_button
 	if grid_button.button_type == grid_button.BUTTON_TYPE.island_object:
-		place_in_suspension(IslandObjectCompendium.request_io_scene_by_entry(
-				grid_button.data_ref[0]).instantiate())
+		if grid_button.data_ref[0] is IO_Data:
+			place_in_suspension(grid_button.data_ref[0].io_scene.instantiate())
 	spawn_tools.hide()
 
 

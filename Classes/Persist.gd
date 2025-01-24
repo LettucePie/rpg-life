@@ -14,17 +14,17 @@ class ItemEntry:
 	var types : Array[ITEMTYPE] = []
 	## Connected Data
 	var glossarized : bool = false
-	var compendium_entries : Array = []
+	var data_entries : Array = []
 	
 	## Filters compendium_entries for typeof entry.
 	func return_entry_of_type(type : ITEMTYPE):
 		if glossarized and types.has(type):
-			for entry in compendium_entries:
+			for entry in data_entries:
 				if type == ITEMTYPE.MATERIAL \
 				and entry is MaterialCompendium.CompendiumEntry:
 					return entry
 				if type == ITEMTYPE.OBJECT \
-				and entry is IslandObjectCompendium.CompendiumEntry:
+				and entry is IO_Data:
 					return entry
 				if type == ITEMTYPE.EQUIPMENT \
 				and entry is EquipmentCompendium.CompendiumEntry:
@@ -258,11 +258,10 @@ func _glossarize_inventory():
 			if item.types.has(ItemEntry.ITEMTYPE.MATERIAL):
 				pass
 			if item.types.has(ItemEntry.ITEMTYPE.OBJECT):
-				var compendium_entry : IslandObjectCompendium.CompendiumEntry
-				compendium_entry = IslandObjectCompendium \
-						.request_compendium_entry_by_name(item.item_name)
-				if compendium_entry != null:
-					item.compendium_entries.append(compendium_entry)
+				var io_data : IO_Data
+				io_data = TheBox.request_io_data_by_name(item.item_name)
+				if io_data != null:
+					item.data_entries.append(io_data)
 					item.glossarized = true
 				else:
 					print("**ERROR** Glossarizing Inventory Failed!")

@@ -18,23 +18,18 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-IslandObjectCompendium="*res://Scenes/Autoload/IslandObjectCompendium.gd"
+TheBox="*res://Scenes/Autoload/box.tscn"
 MaterialCompendium="*res://Scenes/Autoload/MaterialCompendium.gd"
 EquipmentCompendium="*res://Scenes/Autoload/EquipmentCompendium.gd"
 Persist="*res://Classes/Persist.gd"
 PlayerInput="*res://Scenes/Autoload/player_input_manager.tscn"
 VPrint="*res://Tools/visual_print.tscn"
-TheBox="*res://Scenes/Autoload/box.tscn"
 
 [display]
 
 window/size/viewport_width=540
 window/size/viewport_height=960
 window/handheld/orientation=5
-
-[editor]
-
-export/convert_text_resources_to_binary=false
 
 [editor_plugins]
 

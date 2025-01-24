@@ -21,10 +21,10 @@ func _ready():
 func _load_step():
 	if target < 0 and io_state == LOADSTATE.FROZEN:
 		target = 0
-		IslandObjectCompendium.io_catalogued.connect(_asset_checked_in)
+		TheBox.io_catalogued.connect(_asset_checked_in)
 		io_state = LOADSTATE.STARTED
 		progress_label.text = "Loading IO..."
-		IslandObjectCompendium.rebuild_compendium_from_data()
+		TheBox.rebuild_io_catalog()
 	if target == 0 and player_state == LOADSTATE.FROZEN:
 		target = 3
 		Persist.finished_loading.connect(_asset_checked_in)

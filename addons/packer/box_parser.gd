@@ -15,6 +15,7 @@ func _parse_category(object, category):
 	if category == "box.gd":
 		var p_con = parser_control.new()
 		p_con.pack_me.connect(self._button_pack_me)
+		box.io_catalogued.connect(p_con.done_packing)
 		add_custom_control(p_con)
 
 

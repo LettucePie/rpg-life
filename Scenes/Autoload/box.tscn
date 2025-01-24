@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://irf8qjn53euo"]
+[gd_scene load_steps=12 format=3 uid="uid://irf8qjn53euo"]
 
 [ext_resource type="Script" path="res://Scenes/Autoload/box.gd" id="1_ua826"]
 [ext_resource type="Texture2D" uid="uid://bgrxage4tjauo" path="res://Assets/2D/UI/Object_Icons/pinetree_a.png" id="2_hu2gj"]
@@ -6,31 +6,24 @@
 [ext_resource type="Script" path="res://Classes/IslandObjectData.gd" id="4_g75fm"]
 [ext_resource type="Texture2D" uid="uid://bunfjrbgvkprc" path="res://Assets/2D/UI/Object_Icons/bush_a_icon.png" id="5_03enh"]
 [ext_resource type="PackedScene" uid="uid://gycbbad77jyj" path="res://Scenes/IslandObjects/Foliage/bush_a.tscn" id="6_7w75y"]
-[ext_resource type="PackedScene" uid="uid://c3a4icdi5y3hc" path="res://Scenes/IslandObjects/Foliage/pinetree_b.tscn" id="7_awghb"]
 [ext_resource type="Texture2D" uid="uid://c4mijdmqly0ye" path="res://Assets/2D/UI/Object_Icons/house_01.png" id="8_yowf6"]
 [ext_resource type="PackedScene" uid="uid://dqlqwfeehuxvf" path="res://Scenes/IslandObjects/Stations/house_station_01.tscn" id="9_jmu61"]
 
-[sub_resource type="Resource" id="Resource_mrvi6"]
+[sub_resource type="Resource" id="Resource_dpoq2"]
 script = ExtResource("4_g75fm")
 io_name = "Pine Tree A"
 io_icon = ExtResource("2_hu2gj")
 io_scene_path = "res://Scenes/IslandObjects/Foliage/pinetree_a.tscn"
 io_scene = ExtResource("3_sdiep")
 
-[sub_resource type="Resource" id="Resource_1wvf1"]
+[sub_resource type="Resource" id="Resource_2cjdh"]
 script = ExtResource("4_g75fm")
 io_name = "Bush A"
 io_icon = ExtResource("5_03enh")
 io_scene_path = "res://Scenes/IslandObjects/Foliage/bush_a.tscn"
 io_scene = ExtResource("6_7w75y")
 
-[sub_resource type="Resource" id="Resource_p0586"]
-script = ExtResource("4_g75fm")
-io_name = "Pine Tree B \"TEST\""
-io_scene_path = "res://Scenes/IslandObjects/Foliage/pinetree_b.tscn"
-io_scene = ExtResource("7_awghb")
-
-[sub_resource type="Resource" id="Resource_jmkfy"]
+[sub_resource type="Resource" id="Resource_2xkxe"]
 script = ExtResource("4_g75fm")
 io_name = "House A"
 io_icon = ExtResource("8_yowf6")
@@ -40,4 +33,4 @@ io_scene = ExtResource("9_jmu61")
 [node name="Box" type="Node"]
 script = ExtResource("1_ua826")
 io_dir = "res://Scenes/IslandObjects"
-io_catalog = Array[ExtResource("4_g75fm")]([SubResource("Resource_mrvi6"), SubResource("Resource_1wvf1"), SubResource("Resource_p0586"), SubResource("Resource_jmkfy")])
+io_catalog = Array[ExtResource("4_g75fm")]([SubResource("Resource_dpoq2"), SubResource("Resource_2cjdh"), SubResource("Resource_2xkxe")])

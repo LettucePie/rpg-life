@@ -114,3 +114,13 @@ func request_io_scene_by_name(req_name : String) -> PackedScene:
 	if result == null:
 		print("Failed to find requested io_scene by name of: ", req_name)
 	return result
+
+
+func request_io_data_by_name(req_name : String) -> IO_Data:
+	var result : IO_Data = null
+	
+	for data in io_catalog:
+		if data.io_name == req_name:
+			result = data
+	
+	return result

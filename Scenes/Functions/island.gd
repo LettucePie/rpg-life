@@ -35,7 +35,7 @@ func assign_island_data(data : IslandData):
 		stations.clear()
 	for i in data.io_data["object_names"].size():
 		var io_name = data.io_data["object_names"][i]
-		var io_scene = IslandObjectCompendium.request_io_scene_by_name(io_name)
+		var io_scene = TheBox.request_io_scene_by_name(io_name)
 		var io_pos_string = data.io_data["positions"][i]
 		var io_pos : Vector3 = Vector3.ZERO
 		io_pos_string = io_pos_string.trim_prefix("(")
