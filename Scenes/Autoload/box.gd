@@ -21,6 +21,7 @@ func _ready():
 
 
 func catalog_all():
+	print("THE BOX CATALOGS ALL!!!")
 	rebuild_io_catalog()
 
 
@@ -45,11 +46,9 @@ func _dir_contents(path, target : PARSE_TARGET):
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-		VPrint.vprint("Error occurered accessing the path: " + str(path))
 
 
 func _catalog_io_scene(path):
-	VPrint.vprint("Cataloging IOC Scene: " + path)
 	var scene_file : FileAccess = FileAccess.open(path, FileAccess.READ)
 	var content = scene_file.get_as_text()
 	var content_lines = content.split("\n", false)
@@ -105,12 +104,6 @@ func _rebuild_io_name(io_name_raw : String) -> String:
 	return result
 
 
-#func load_entry_scene(entry : CompendiumEntry):
-	#if !entry.scene_loaded or entry.loaded_scene == null:
-		#entry.loaded_scene = load(entry.io_scene_path)
-		#entry.scene_loaded = true
-
-
 func request_io_scene_by_name(req_name : String) -> PackedScene:
 	var result = null
 	
@@ -120,5 +113,4 @@ func request_io_scene_by_name(req_name : String) -> PackedScene:
 	
 	if result == null:
 		print("Failed to find requested io_scene by name of: ", req_name)
-		VPrint.vprint("Failed to find requested io_scene by name of " + req_name)
 	return result

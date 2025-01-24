@@ -22,3 +22,4 @@ func _exit_tree():
 
 func _packing_time(box : Box):
 	print("IT'S PACKING TIME!!! ", box)
+	box.catalog_all()
