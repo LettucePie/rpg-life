@@ -7,7 +7,7 @@ enum PARSE_TARGET {IO, MAT, EQP}
 
 ## Import
 @export_dir var io_dir : String
-@export_dir var mat_icon_dir : String
+@export_dir var m : String
 #@export var io_list : Array[PackedScene]
 
 ## Catalogued
@@ -37,7 +37,8 @@ func rebuild_io_catalog():
 
 func rebuild_mat_catalog():
 	mat_catalog.clear()
-	_dir_contents(mat_icon_dir, PARSE_TARGET.MAT)
+	## or just parse the csv file if there is only one?
+	#_dir_contents(mat_icon_dir, PARSE_TARGET.MAT)
 	emit_signal("mat_catalogued")
 
 
@@ -53,6 +54,8 @@ func _dir_contents(path, target : PARSE_TARGET):
 				if file_name.contains(".tscn"):
 					if target == PARSE_TARGET.IO:
 						_catalog_io_scene(path + "/" + file_name)
+				elif file_name.contains(".csv"):
+					pass
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
@@ -89,6 +92,10 @@ func _catalog_io_scene(path):
 	if new_data.res_name != "":
 		io_catalog.append(new_data)
 	scene_file.close()
+
+## Will I have multiple csv files?
+func parse_materials_csv():
+	pass
 
 
 func _check_repeat_by_io_name(io_name : String) -> bool:
