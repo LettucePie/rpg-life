@@ -7,11 +7,15 @@ enum PARSE_TARGET {IO, MAT, EQP}
 
 ## Import
 @export_dir var io_dir : String
+@export_dir var mat_icon_dir : String
 #@export var io_list : Array[PackedScene]
 
 ## Catalogued
+@export var res_catalog : Array[PlayerResource]
 @export var io_catalog : Array[IO_Data]
+@export var mat_catalog : Array[MaterialData]
 signal io_catalogued
+signal mat_catalogued
 
 var icon_regex : RegEx
 
@@ -29,6 +33,12 @@ func rebuild_io_catalog():
 	io_catalog.clear()
 	_dir_contents(io_dir, PARSE_TARGET.IO)
 	emit_signal("io_catalogued")
+
+
+func rebuild_mat_catalog():
+	mat_catalog.clear()
+	_dir_contents(mat_icon_dir, PARSE_TARGET.MAT)
+	emit_signal("mat_catalogued")
 
 
 func _dir_contents(path, target : PARSE_TARGET):
@@ -60,7 +70,7 @@ func _catalog_io_scene(path):
 				"object_name = "
 				))
 			if !_check_repeat_by_io_name(io_name):
-				new_data.io_name = io_name
+				new_data.res_name = io_name
 				new_data.io_scene_path = path
 		if line.contains("object_icon = "):
 			var icon_ext_id : String = line.trim_prefix(
@@ -71,12 +81,12 @@ func _catalog_io_scene(path):
 				if subline.contains("id=" + icon_ext_id) \
 				and subline.contains("type=\"Texture2D\""):
 					print("Found ExternalResource Icon, ", icon_ext_id, \
-						" : ", new_data.io_name)
+						" : ", new_data.res_name)
 					var regex_result = icon_regex.search(subline)
 					if regex_result \
 					and regex_result.get_string(1).is_absolute_path():
 						new_data.io_icon = load(regex_result.get_string(1))
-	if new_data.io_name != "":
+	if new_data.res_name != "":
 		io_catalog.append(new_data)
 	scene_file.close()
 
@@ -85,7 +95,7 @@ func _check_repeat_by_io_name(io_name : String) -> bool:
 	var result : bool = false
 	
 	for data in io_catalog:
-		if data.io_name == io_name:
+		if data.res_name == io_name:
 			result = true
 	
 	return result
@@ -108,7 +118,7 @@ func request_io_scene_by_name(req_name : String) -> PackedScene:
 	var result = null
 	
 	for data in io_catalog:
-		if data.io_name == req_name:
+		if data.res_name == req_name:
 			result = data.io_scene
 	
 	if result == null:
@@ -120,7 +130,7 @@ func request_io_data_by_name(req_name : String) -> IO_Data:
 	var result : IO_Data = null
 	
 	for data in io_catalog:
-		if data.io_name == req_name:
+		if data.res_name == req_name:
 			result = data
 	
 	return result
