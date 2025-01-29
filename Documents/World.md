@@ -21,7 +21,7 @@ This Document aims to provide a solid contextual world and backbone to the Enemi
 ## The Deities ##
 
  - Perlin – The All Powerful
-    - Origin of all other Deities
+    - Origin of all other Deities (except True Death)
     - Often visualized as a Whale made of light
     - Never intervenes, Never witnessed
     - Only has one Story
@@ -93,4 +93,49 @@ Trestoria features many Biomes and Ecosystems. Most of these biomes are Earth Ad
  - Brolean Edge
     - Tectonic collision that forms large mountains and jagged peaks.
     - Runs along the Eastern end of the Continent, wrapping around at the North.
- - 
+
+
+## Trestoria Biology ##
+
+Grounded mostly adjacent to Earth, with Magic and Fantasy added on. 
+
+### Background
+
+**Perlin** wandering the cosmos was struck with a fear, it's own mortality. Knowing that all life must eventually end, it sought to prolong it's own death by distracting **True Death** itself. It tried creating life to fill up the queue.
+
+The first few attempts were not entirely successful; often resulting in dead vacant solar systems. Eventually **Perlin** figured it out, although the systems would only die out slower. Perlin was making sophisticated circles of life, but the life would consistently turn afoul; destroying itself. The work of **True Death**? Perlin didn't know.
+
+Trestoria is another attempt, perhaps successful. This time however Perlin introduced divinity and magic. A great risk; not knowing if their creations would rise against.
+
+### Creatures
+
+I like Greek mythology. Japanese/Shinto stuff is cool too, however avoiding culture clash is probably wise... Future content?
+
+#### Greek Mythos
+
+ - Giants
+ - Cyclops
+ - Gods
+ - Realms
+ - Nymphs
+ - Sirens
+ - Hippogryphs 
+ - Lions
+ - Chimeras
+ - Medusas
+ - Spiders
+ - Minotaurs
+ - Hydra
+
+#### Generic
+
+ - Knights
+ - Dragons
+ - Devils
+ - Angels
+ - Demons
+ - Wizards
+ - Elementals
+ - Dwarfs
+ 
+
