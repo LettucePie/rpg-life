@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MaterialData" load_steps=3 format=3 uid="uid://bu5l5lr2h0nih"]
+
+[ext_resource type="Texture2D" uid="uid://brg6atqtql8s0" path="res://Assets/2D/UI/Object_Icons/krita_renders/wooden_logs_cherrywood.png" id="1_d32cy"]
+[ext_resource type="Script" path="res://Classes/MaterialData.gd" id="1_wltf1"]
+
+[resource]
+script = ExtResource("1_wltf1")
+mat_icon = ExtResource("1_d32cy")
+res_name = "Cherrywood Logs"

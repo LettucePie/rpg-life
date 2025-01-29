@@ -24,9 +24,22 @@ func _ready():
 	icon_regex.compile("path=\"(\\S*)\"")
 
 
-func catalog_all():
+func catalog_all(save_local : bool):
 	print("THE BOX CATALOGS ALL!!!")
 	rebuild_io_catalog()
+	if save_local and Engine.is_editor_hint():
+		print("Saving generated metadata resources.")
+		var io_path_start : String = "res://Data/IO_Data/"
+		for io_dat in io_catalog:
+			io_dat.take_over_path(io_path_start + io_dat.res_name + ".tres")
+			ResourceSaver.save(io_dat)
+		var file_count = DirAccess.get_files_at(io_path_start).size()
+		if file_count > io_catalog.size():
+			print("PACKING NOTICE! : more IO_Data files in filesystem than the box.")
+		elif file_count < io_catalog.size():
+			print("PACKING ERROR! : there are less IO_DATA files in filesystem than box")
+		elif file_count == io_catalog.size():
+			print("IO_Data is saved, no issues of note.")
 
 
 func rebuild_io_catalog():

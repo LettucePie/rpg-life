@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="IO_Data" load_steps=4 format=3 uid="uid://cwb25gsc857cn"]
+
+[ext_resource type="Texture2D" uid="uid://c4mijdmqly0ye" path="res://Assets/2D/UI/Object_Icons/house_01.png" id="1_6576u"]
+[ext_resource type="PackedScene" uid="uid://dqlqwfeehuxvf" path="res://Scenes/IslandObjects/Stations/house_station_01.tscn" id="2_di50s"]
+[ext_resource type="Script" path="res://Classes/IslandObjectData.gd" id="3_v2xjk"]
+
+[resource]
+script = ExtResource("3_v2xjk")
+io_icon = ExtResource("1_6576u")
+io_scene_path = "res://Scenes/IslandObjects/Stations/house_station_01.tscn"
+io_scene = ExtResource("2_di50s")
+res_name = "House A"

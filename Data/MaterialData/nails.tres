@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MaterialData" load_steps=3 format=3 uid="uid://b8c2kmm1jlxxx"]
+
+[ext_resource type="Script" path="res://Classes/MaterialData.gd" id="1_kf4ri"]
+[ext_resource type="Texture2D" uid="uid://ct55tctarr3nj" path="res://Assets/2D/UI/Object_Icons/krita_renders/nails_icon.png" id="1_v80js"]
+
+[resource]
+script = ExtResource("1_kf4ri")
+mat_icon = ExtResource("1_v80js")
+res_name = "Nails"
